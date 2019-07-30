@@ -1,0 +1,53 @@
+﻿// Copyright (c) Isaiah Williams. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace Microsoft.Store.PartnerCenter.Offers
+{
+    using Models;
+    using Models.Offers;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Offers categories implementation.
+    /// </summary>
+    internal class OfferCategoryCollectionOperations : BasePartnerComponent<string>, IOfferCategoryCollection
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OfferCategoryCollectionOperations" /> class.
+        /// </summary>
+        /// <param name="rootPartnerOperations">The root partner operations instance.</param>
+        /// <param name="country">The country on which to base the offer categories.</param>
+        public OfferCategoryCollectionOperations(IPartner rootPartnerOperations, string country)
+          : base(rootPartnerOperations, country)
+        {
+        }
+
+        /// <summary>
+        /// Retrieves all offer categories available to the partner for the provided country.
+        /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>All offer categories for the provided country.</returns>
+        public async Task<ResourceCollection<OfferCategory>> GetAsync(CancellationToken cancellationToken = default)
+        {
+            IDictionary<string, string> parameters;
+
+            parameters = new Dictionary<string, string>
+            {
+                {
+                    PartnerService.Instance.Configuration.Apis.GetOfferCategories.Parameters.Country,
+                    Context
+                }
+            };
+
+            return await Partner.ServiceClient.GetAsync<ResourceCollection<OfferCategory>>(
+                new Uri(
+                    $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetOfferCategories.Path}",
+                    UriKind.Relative),
+                parameters,
+                cancellationToken).ConfigureAwait(false);
+        }
+    }
+}

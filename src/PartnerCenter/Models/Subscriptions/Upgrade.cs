@@ -1,0 +1,38 @@
+﻿// Copyright (c) Isaiah Williams. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace Microsoft.Store.PartnerCenter.Models.Subscriptions
+{
+    using Offers;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Represents a form of upgrade for a subscription.
+    /// </summary>
+    public sealed class Upgrade : ResourceBase
+    {
+        /// <summary>
+        /// Gets or sets a value indicating whether the upgrade can be performed.
+        /// </summary>
+        public bool IsEligible { get; set; }
+
+        /// <summary>
+        /// Gets or sets the quantity to be purchased.  Defaults to the source subscription quantity.
+        /// </summary>
+        public int Quantity { get; set; }
+        /// <summary>
+        /// Gets or sets the upgrade target offer.
+        /// </summary>
+        public Offer TargetOffer { get; set; }
+
+        /// <summary>
+        /// Gets or sets the reasons the upgrade cannot be performed, if applicable.
+        /// </summary>
+        public IEnumerable<UpgradeError> UpgradeErrors { get; set; }
+
+        /// <summary>
+        /// Gets or sets the type of upgrade.
+        /// </summary>
+        public UpgradeType UpgradeType { get; set; }
+    }
+}

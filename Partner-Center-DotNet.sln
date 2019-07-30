@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C7450BA3-3015-4062-A4E4-8BB06C76F970}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4B45CF3E-D42B-4202-92E8-20E6369820E6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PartnerCenter", "src\PartnerCenter\PartnerCenter.csproj", "{44533755-A67F-4D35-B095-21333E013523}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44533755-A67F-4D35-B095-21333E013523}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44533755-A67F-4D35-B095-21333E013523}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44533755-A67F-4D35-B095-21333E013523}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44533755-A67F-4D35-B095-21333E013523}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44533755-A67F-4D35-B095-21333E013523} = {4B45CF3E-D42B-4202-92E8-20E6369820E6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {685837AB-1AFB-41FF-ACD6-2176F0C5DDBC}
+	EndGlobalSection
+EndGlobal
