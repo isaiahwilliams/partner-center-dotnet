@@ -3,12 +3,15 @@ name: 1.13$(rev:.r)
 pool:
   name: Hosted Windows 2019 with VS2019
 
+variables: 
+    BuildConfiguration: 'Release'
+
 steps:
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     projects: '**/*.csproj'
-    arguments: '--configuration debug'
+    arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish (.NET 4.6.1)'
@@ -16,7 +19,7 @@ steps:
     command: publish
     publishWebProjects: false
     projects: '**/*.csproj'
-    arguments: '--configuration debug --output $(build.artifactstagingdirectory)\net461 --framework net461'
+    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)\net461 --framework net461'
     zipAfterPublish: false
     modifyOutputPath: false
 
@@ -26,9 +29,17 @@ steps:
     command: publish
     publishWebProjects: false
     projects: '**/*.csproj'
-    arguments: '--configuration debug --output $(build.artifactstagingdirectory)\netstandard2.0 --framework netstandard2.0'
+    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)\netstandard2.0 --framework netstandard2.0'
     zipAfterPublish: false
     modifyOutputPath: false
+
+- task: CopyFiles@2
+  displayName: 'Copy nupkg to $(build.artifactstagingdirectory)'
+  inputs:
+    SourceFolder: '$(system.defaultworkingdirectory)'
+    Contents: '**\bin\$(BuildConfiguration)\*.nupkg'
+    TargetFolder: '$(build.artifactstagingdirectory)'
+  condition: succeededOrFailed()
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
