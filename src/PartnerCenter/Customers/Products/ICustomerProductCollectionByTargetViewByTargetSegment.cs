@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.Products
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Products;
-    using System;
 
     /// <summary>
     /// Holds operations that can be performed on products in a given catalog view and that apply to a given customer, filtered by target segment.

@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerDirectoryRoles
 {
-    using Extensions;
     using System;
+    using Extensions;
 
     /// <summary>
     /// Directory role operations class.

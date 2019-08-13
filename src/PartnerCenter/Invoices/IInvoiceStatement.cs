@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
-    using GenericOperations;
     using System.IO;
+    using GenericOperations;
 
     /// <summary>
     /// Represents the operations available to an invoice statement.

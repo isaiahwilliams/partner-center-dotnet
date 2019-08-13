@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Subscriptions;
-    using System;
 
     /// <summary>
     /// Defines the behavior for a subscription's add-ons.

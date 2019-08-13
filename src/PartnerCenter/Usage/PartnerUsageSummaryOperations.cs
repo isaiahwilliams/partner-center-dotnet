@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Usage
 {
-    using Models.Usage;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Usage;
 
     /// <summary>
     /// This class implements the operations available on a partner's usage summary.

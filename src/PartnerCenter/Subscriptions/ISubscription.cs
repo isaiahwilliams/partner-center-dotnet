@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
+    using System;
     using GenericOperations;
     using Models.Subscriptions;
-    using System;
     using Usage;
     using Utilization;
 

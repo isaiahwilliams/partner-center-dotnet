@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Carts
 {
-    using Orders;
     using System.Collections.Generic;
+    using Orders;
 
     /// <summary>Represents a result of a cart checkout.</summary>
     public class CartCheckoutResult : ResourceBase

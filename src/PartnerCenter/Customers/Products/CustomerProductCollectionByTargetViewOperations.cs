@@ -3,15 +3,15 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.Products
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Products;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Products;
 
     /// <summary>
     /// Product operations by customer id and by target view implementation class.

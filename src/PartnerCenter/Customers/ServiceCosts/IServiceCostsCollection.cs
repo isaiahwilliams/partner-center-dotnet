@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.ServiceCosts
 {
-    using Models.ServiceCosts;
     using System;
+    using Models.ServiceCosts;
 
     /// <summary>
     ///  Holds the operations related to a customer's service costs.

@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
-    using Extensions;
-    using Models.Subscriptions;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Subscriptions;
     using Usage;
     using Utilization;
 

@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
-    using GenericOperations;
-    using Models.Orders;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using GenericOperations;
+    using Models.Orders;
 
     /// <summary>
     /// Encapsulates a customer order behavior.

@@ -3,13 +3,13 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Offers;
     using Models.Orders;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Holds operations that can be performed on orders given a billing cycle type.

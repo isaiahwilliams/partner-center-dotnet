@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Subscriptions;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Subscriptions;
 
     /// <summary>
     /// The customer subscription upgrade implementation.

@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Qualification
 {
-    using Extensions;
-    using Models.Customers;
-    using Models.ValidationCodes;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Customers;
+    using Models.ValidationCodes;
 
     /// <summary>
     /// This class implements the operations available on a customer's qualification.

@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Relationships
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Relationships;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Relationships;
 
     /// <summary>
     /// This is for indirect scenarios, holds the operations for retrieving partner relationships of a customer with respect to

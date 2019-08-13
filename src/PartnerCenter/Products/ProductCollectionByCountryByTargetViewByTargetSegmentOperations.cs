@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Products
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Products;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Products;
 
     internal class ProductCollectionByCountryByTargetViewByTargetSegmentOperations : BasePartnerComponent<Tuple<string, string, string>>, IProductCollectionByCountryByTargetViewByTargetSegment
     {

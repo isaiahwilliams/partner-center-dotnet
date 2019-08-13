@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Resolvers
 {
+    using System.Reflection;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
-    using System.Reflection;
 
     /// <summary>
     /// Used by <see cref="JsonSerializer" /> to resolve a <see cref="JsonContract" /> for a given type.

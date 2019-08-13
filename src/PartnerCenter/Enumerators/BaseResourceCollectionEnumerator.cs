@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Enumerators
 {
-    using Models;
-    using Newtonsoft.Json;
-    using RequestContext;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Newtonsoft.Json;
+    using RequestContext;
 
     /// <summary>
     /// Base implementation for resource collection enumerators.

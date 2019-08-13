@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Utilization
 {
-    using Models;
-    using Models.Query;
-    using Models.Utilizations;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Query;
+    using Models.Utilizations;
 
     /// <summary>
     /// Groups behavior related to Azure subscription utilization records.

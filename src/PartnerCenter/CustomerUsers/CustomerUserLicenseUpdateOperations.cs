@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
-    using Extensions;
-    using Models.Licenses;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Licenses;
 
     /// <summary>
     /// Customer user license update collection operations class.

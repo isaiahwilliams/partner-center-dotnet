@@ -3,16 +3,16 @@
 
 namespace Microsoft.Store.PartnerCenter.DevicesDeployment
 {
-    using Extensions;
-    using Models;
-    using Models.DevicesDeployment;
-    using Models.JsonConverters;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.DevicesDeployment;
+    using Models.JsonConverters;
 
     /// <summary>
     /// Implements operations that apply to device collections.

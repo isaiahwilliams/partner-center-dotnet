@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Analytics
 {
-    using Models;
-    using Models.Analytics;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Analytics;
 
     /// <summary>
     /// Implements the operations on customer licenses deployment insights collection.

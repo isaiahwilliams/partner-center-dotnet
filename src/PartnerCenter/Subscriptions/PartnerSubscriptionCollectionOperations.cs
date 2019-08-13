@@ -3,15 +3,15 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
-    using Extensions;
-    using GenericOperations;
-    using Models;
-    using Models.Subscriptions;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using GenericOperations;
+    using Models;
+    using Models.Subscriptions;
 
     /// <summary>
     /// Implements customer subscription operations grouped by a Microsoft partner.

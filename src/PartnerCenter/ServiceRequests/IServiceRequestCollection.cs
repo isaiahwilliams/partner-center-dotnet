@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.ServiceRequests
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Query;
     using Models.ServiceRequests;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Represents the behavior of service requests.

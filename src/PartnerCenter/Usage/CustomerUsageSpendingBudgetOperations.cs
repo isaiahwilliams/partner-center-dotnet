@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Usage
 {
-    using Extensions;
-    using Microsoft.Store.PartnerCenter.Models.Usage;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Microsoft.Store.PartnerCenter.Models.Usage;
 
     /// <summary>
     /// This class implements the operations available on a customer's usage spending budget.

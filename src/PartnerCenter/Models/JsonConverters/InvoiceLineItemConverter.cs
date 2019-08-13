@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.JsonConverters
 {
+    using System;
     using Models.Invoices;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System;
 
     /// <summary>
     /// Deserializes invoice line items to the correct type.

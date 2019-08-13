@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models
 {
-    using Newtonsoft.Json;
     using System;
+    using Newtonsoft.Json;
 
     public abstract class ResourceBaseWithLinks<TLinks> : ResourceBase where TLinks : new()
     {

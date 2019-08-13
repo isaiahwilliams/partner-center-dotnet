@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.DevicesDeployment
 {
-    using Extensions;
-    using Models.DevicesDeployment;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.DevicesDeployment;
 
     /// <summary>
     /// Implements operations that apply to devices batch upload status.

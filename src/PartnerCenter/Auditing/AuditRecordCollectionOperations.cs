@@ -3,16 +3,16 @@
 
 namespace Microsoft.Store.PartnerCenter.Auditing
 {
-    using Models;
-    using Models.Auditing;
-    using Models.Query;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Auditing;
+    using Models.Query;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents the operations that can be performed on a partner's audit records.

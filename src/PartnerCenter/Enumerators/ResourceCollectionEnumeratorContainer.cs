@@ -3,6 +3,7 @@
 
 namespace Microsoft.Store.PartnerCenter.Enumerators
 {
+    using System;
     using Factories;
     using Models;
     using Models.Auditing;
@@ -11,7 +12,6 @@ namespace Microsoft.Store.PartnerCenter.Enumerators
     using Models.Offers;
     using Models.ServiceRequests;
     using Models.Users;
-    using System;
 
     /// <summary>
     /// Contains supported resource collection enumerators.

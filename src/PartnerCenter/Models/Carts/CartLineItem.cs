@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Carts
 {
-    using Models.Products;
     using System.Collections.Generic;
+    using Models.Products;
 
     /// <summary>
     /// Represents a line item on a cart.

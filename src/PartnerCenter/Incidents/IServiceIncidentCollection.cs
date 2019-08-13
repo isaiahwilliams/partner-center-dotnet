@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Incidents
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Incidents;
     using Models.Query;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Defines the operations available on service incidents.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.DevicesDeployment
 {
+    using System;
     using JsonConverters;
     using Newtonsoft.Json;
-    using System;
 
     /// <summary>
     /// Represents the settings for an OOBE(Out of box experience) policy

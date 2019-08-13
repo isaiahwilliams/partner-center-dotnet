@@ -3,6 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers
 {
+    using System;
+    using System.Globalization;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Agreements;
     using Analytics;
     using ApplicationConsents;
@@ -24,10 +28,6 @@ namespace Microsoft.Store.PartnerCenter.Customers
     using ServiceRequests;
     using SubscribedSkus;
     using Subscriptions;
-    using System;
-    using System.Globalization;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Usage;
 
     /// <summary>

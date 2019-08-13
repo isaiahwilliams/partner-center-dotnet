@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.DevicesDeployment
 {
+    using System;
+    using System.Collections.Generic;
     using GenericOperations;
     using Models;
     using Models.DevicesDeployment;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Represents the operations that can be done on the partner's devices.

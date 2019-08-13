@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Usage
 {
-    using Extensions;
-    using Models.Usage;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Usage;
 
     /// <summary>
     /// This class implements the operations for a customer's subscription.

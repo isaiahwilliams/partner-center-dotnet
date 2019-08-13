@@ -3,16 +3,16 @@
 
 namespace Microsoft.Store.PartnerCenter.Utilization
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Query;
-    using Models.Utilizations;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Query;
+    using Models.Utilizations;
 
     /// <summary>
     /// Groups behavior related to Azure subscription utilization records.

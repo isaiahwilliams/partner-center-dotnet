@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Domains
 {
-    using Exceptions;
-    using Extensions;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Exceptions;
+    using Extensions;
 
     /// <summary>
     /// The domain operations implementation class.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Query
 {
+    using System.ComponentModel;
     using Models.JsonConverters;
     using Newtonsoft.Json;
-    using System.ComponentModel;
 
     /// <summary>
     /// Enumerates supported filter operations.

@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.ValidationRules
 {
-    using Extensions;
-    using Models.ValidationRules;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.ValidationRules;
 
     /// <summary>
     /// The country validation rules operations implementation.

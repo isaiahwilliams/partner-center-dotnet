@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.JsonConverters
 {
-    using Extensions;
-    using Newtonsoft.Json;
     using System;
     using System.Globalization;
     using System.Text;
+    using Extensions;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Formats the Enum values to the format that is utilized by Partner Center.

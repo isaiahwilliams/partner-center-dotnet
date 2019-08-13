@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.SubscribedSkus
 {
-    using Models;
-    using Models.Licenses;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Licenses;
 
     /// <summary>
     /// Represents the behavior of the customer's subscribed products.

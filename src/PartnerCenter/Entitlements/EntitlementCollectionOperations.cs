@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Entitlements
 {
-    using Extensions;
-    using Models;
-    using Models.Entitlements;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.Entitlements;
 
     /// <summary>
     /// Entitlement collection operations implementation class.

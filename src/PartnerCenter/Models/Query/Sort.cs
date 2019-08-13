@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Query
 {
-    using Extensions;
     using System.Globalization;
+    using Extensions;
 
     /// <summary>
     /// Specifies sort field and direction.

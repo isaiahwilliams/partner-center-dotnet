@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.JsonConverters
 {
+    using System;
     using Entitlements;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-    using System;
 
     /// <summary>
     /// Serialize and deserialize entitlement artifact to correct instance based on artifact type.

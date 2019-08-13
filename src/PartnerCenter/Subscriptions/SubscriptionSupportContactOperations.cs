@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
-    using Extensions;
-    using Models.Subscriptions;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Subscriptions;
 
     /// <summary>
     /// This class implements the operations for a customer's subscription support contact.

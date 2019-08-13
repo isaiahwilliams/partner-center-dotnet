@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Profiles
 {
-    using Extensions;
-    using Models.Partners;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Partners;
 
     /// <summary>
     /// The Microsoft Partner Network (MPN) profile operations implementation.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.GenericOperations
 {
-    using Models;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
 
     /// <summary>
     /// Groups operations for patching a single entity.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.ServiceRequests
 {
+    using System;
     using GenericOperations;
     using Models.ServiceRequests;
-    using System;
 
     /// <summary>
     /// Groups operations that can be performed on a single service request.

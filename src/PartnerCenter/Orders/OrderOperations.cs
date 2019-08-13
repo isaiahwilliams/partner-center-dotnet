@@ -3,13 +3,13 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
-    using Extensions;
-    using Models.Orders;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Orders;
 
     /// <summary>
     /// The order operations implementation class.

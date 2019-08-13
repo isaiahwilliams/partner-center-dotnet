@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions
 {
-    using Properties;
     using System;
     using System.Globalization;
+    using Properties;
 
     /// <summary>
     /// Groups useful validation extension methods.

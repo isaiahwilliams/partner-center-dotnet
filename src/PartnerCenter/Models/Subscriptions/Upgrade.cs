@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Subscriptions
 {
-    using Offers;
     using System.Collections.Generic;
+    using Offers;
 
     /// <summary>
     /// Represents a form of upgrade for a subscription.

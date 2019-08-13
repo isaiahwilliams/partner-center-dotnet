@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Profiles
 {
-    using GenericOperations;
-    using Models.Partners;
     using System.Threading;
     using System.Threading.Tasks;
+    using GenericOperations;
+    using Models.Partners;
 
     /// <summary>
     /// Encapsulates behavior of a partner's MPN profile.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
+    using System;
     using GenericOperations;
     using Models.Subscriptions;
-    using System;
 
     /// <summary>
     /// The subscription provisioning status.

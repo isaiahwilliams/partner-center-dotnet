@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Orders;
-    using System;
 
     /// <summary>
     /// Represents the customer order line item activation link operations.

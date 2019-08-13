@@ -3,13 +3,13 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerDirectoryRoles
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Query;
     using Models.Roles;
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Represents the behavior of user member collection.

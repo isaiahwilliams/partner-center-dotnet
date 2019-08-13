@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
-    using Models.Invoices;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Invoices;
 
     /// <summary>
     /// Represents the operations that can be done on an invoice summary.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Entitlements
 {
+    using System.Collections.Generic;
     using JsonConverters;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Class that represents an entitlement artifact.

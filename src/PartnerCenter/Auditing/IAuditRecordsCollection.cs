@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Auditing
 {
-    using Models;
-    using Models.Auditing;
-    using Models.Query;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Auditing;
+    using Models.Query;
 
     /// <summary>
     /// Represents the operations that can be done on partners audit collection.

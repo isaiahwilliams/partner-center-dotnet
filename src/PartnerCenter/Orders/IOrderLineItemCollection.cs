@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
-    using GenericOperations;
     using System;
+    using GenericOperations;
 
     /// <summary>
     /// Represents the available order line item operations.

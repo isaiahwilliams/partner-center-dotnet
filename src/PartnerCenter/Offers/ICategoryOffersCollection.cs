@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Offers
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Offers;
-    using System;
 
     /// <summary>
     /// Represents the operations that can be performed on offers that belong to an offer category.

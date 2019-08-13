@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions
 {
-    using IdentityModel.Clients.ActiveDirectory;
-    using RequestContext;
     using System;
     using System.Threading.Tasks;
+    using IdentityModel.Clients.ActiveDirectory;
+    using RequestContext;
 
     /// <summary>
     /// Partner service credentials based on Azure Active Directory application credentials.

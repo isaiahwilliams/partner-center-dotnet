@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models
 {
-    using Newtonsoft.Json;
     using System;
+    using Newtonsoft.Json;
 
     public sealed class ResourceAttributes
     {

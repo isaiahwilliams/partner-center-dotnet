@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Offers
 {
-    using Models;
-    using Models.Offers;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Offers;
 
     /// <summary>
     /// Customer Offer Category operations implementation class.

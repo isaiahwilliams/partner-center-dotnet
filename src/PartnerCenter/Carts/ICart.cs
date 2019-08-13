@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Carts
 {
-    using GenericOperations;
-    using Models.Carts;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using GenericOperations;
+    using Models.Carts;
 
     /// <summary>
     /// Encapsulates a customer cart behavior.

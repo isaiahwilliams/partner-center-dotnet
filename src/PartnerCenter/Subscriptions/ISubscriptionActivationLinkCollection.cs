@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Orders;
-    using System;
 
     /// <summary>
     /// Represents the subscription activation link opreations.

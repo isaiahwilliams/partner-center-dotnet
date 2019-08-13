@@ -3,13 +3,13 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
-    using Models;
-    using Models.Invoices;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Invoices;
 
     /// <summary>
     /// The operations available for the partner's invoice line item collection.

@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Invoices;
     using Models.Query;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Represents the operations that can be done on the partner's invoices.

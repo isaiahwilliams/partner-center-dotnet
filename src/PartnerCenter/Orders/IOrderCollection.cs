@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Offers;
     using Models.Orders;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Encapsulates the order collection operations.

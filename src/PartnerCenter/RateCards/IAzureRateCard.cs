@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.RateCards
 {
-    using Models.RateCards;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.RateCards;
 
     /// <summary>
     /// Holds operations that apply to Azure rate card.
