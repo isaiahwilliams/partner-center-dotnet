@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Relationships
 {
-    using Models;
-    using Models.JsonConverters;
-    using Models.Query;
-    using Models.Relationships;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Query;
+    using Models.Relationships;
 
     /// <summary>
     /// The relationship collection implementation.

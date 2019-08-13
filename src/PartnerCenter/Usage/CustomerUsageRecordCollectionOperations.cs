@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Usage
 {
-    using Models;
-    using Models.Usage;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Usage;
 
     /// <summary>
     /// Implements operations related to a partner's customers usage record.

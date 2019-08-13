@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
+    using System;
     using GenericOperations;
     using Models.Users;
-    using System;
 
     /// <summary>
     /// Encapsulates a customer user behavior.

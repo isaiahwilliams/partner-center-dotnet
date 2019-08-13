@@ -1,3 +1,5 @@
+name: 1.13$(rev:.r)
+
 pool:
   name: Hosted Windows 2019 with VS2019
 
@@ -32,4 +34,4 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))

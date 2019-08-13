@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.RelationshipRequests
 {
-    using Models.RelationshipRequests;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.RelationshipRequests;
 
     /// <summary>
     /// Customer relationship request implementation class.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.DevicesDeployment
 {
+    using System;
     using GenericOperations;
     using Models.DevicesDeployment;
-    using System;
 
     /// <summary>
     /// Represents the operations that can be done on the partner's Batch Upload Status.

@@ -3,16 +3,16 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerDirectoryRoles
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Query;
-    using Models.Roles;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Query;
+    using Models.Roles;
 
     /// <summary>
     /// User member collection operations class.

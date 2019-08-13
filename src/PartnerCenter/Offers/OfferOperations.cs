@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Offers
 {
-    using Models.Offers;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Offers;
 
     /// <summary>
     /// Single offer operations implementation.

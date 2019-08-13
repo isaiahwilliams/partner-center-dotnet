@@ -3,13 +3,13 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.Products
 {
-    using Extensions;
-    using Models.Products;
-    using PartnerCenter.Products;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Products;
+    using PartnerCenter.Products;
 
     /// <summary>
     /// Single customer availability operations implementation.

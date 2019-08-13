@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.Profiles
 {
+    using System;
     using Extensions;
     using Models.Customers;
-    using System;
 
     /// <summary>
     /// Implements customer profile collection operations.

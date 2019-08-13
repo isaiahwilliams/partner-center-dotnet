@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Agreements
 {
-    using Models;
-    using Models.Agreements;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Agreements;
 
     /// <summary>
     /// Agreement details collection operations implementation class.

@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Roles;
-    using System;
 
     /// <summary>
     /// Represents the behavior of the customers user's directory roles.

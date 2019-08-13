@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
+    using System;
     using GenericOperations;
     using Models.Licenses;
-    using System;
 
     /// <summary>
     /// Represents the behavior of a customer user's license update collection.

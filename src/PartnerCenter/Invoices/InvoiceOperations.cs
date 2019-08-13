@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
-    using Models.Invoices;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Invoices;
 
     /// <summary>
     /// Represents the operations that can be performed on the reseller's invoice.

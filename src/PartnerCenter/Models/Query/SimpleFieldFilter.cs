@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Query
 {
-    using Extensions;
     using System.Globalization;
+    using Extensions;
 
     /// <summary>
     /// A simple filter applied to a field. An example is (Year lessThan 1999).

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Products
 {
+    using System;
     using GenericOperations;
     using Models.Products;
-    using System;
 
     /// <summary>
     /// Holds operations that can be performed on a single product.

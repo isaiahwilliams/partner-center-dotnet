@@ -3,18 +3,18 @@
 
 namespace Microsoft.Store.PartnerCenter.ServiceRequests
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Query;
-    using Models.ServiceRequests;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Query;
+    using Models.ServiceRequests;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// The partner's service requests operations and implementation.

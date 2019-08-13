@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Models
 {
-    using Newtonsoft.Json;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Text;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents a failure with the API.

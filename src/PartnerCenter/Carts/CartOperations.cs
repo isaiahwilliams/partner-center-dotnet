@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Carts
 {
-    using Extensions;
-    using Models.Carts;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Carts;
 
     /// <summary>
     /// Cart operations implementation class.

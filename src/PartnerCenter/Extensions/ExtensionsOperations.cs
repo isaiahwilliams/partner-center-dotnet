@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions
 {
-    using Products;
     using System;
+    using Products;
 
     /// <summary>
     /// Extensions operations implementation.

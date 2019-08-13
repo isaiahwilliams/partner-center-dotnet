@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.ApplicationConsents
 {
-    using Extensions;
-    using Models.ApplicationConsents;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.ApplicationConsents;
 
     internal class ApplicationConsentCollectionOperations : BasePartnerComponent<string>, IApplicationConsentCollection
     {

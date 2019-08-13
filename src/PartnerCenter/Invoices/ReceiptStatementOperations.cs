@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
-    using Extensions;
     using System;
     using System.Globalization;
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
 
     /// <summary>
     /// Represents the operations available on an receipt statement.

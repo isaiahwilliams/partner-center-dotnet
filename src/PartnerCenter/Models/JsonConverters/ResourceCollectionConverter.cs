@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.JsonConverters
 {
-    using Extensions;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using Extensions;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Serialize and Deserialize ResourceCollection to correct ResourceCollection instance.

@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Factories
 {
-    using RequestContext;
     using System.Net.Http;
+    using RequestContext;
 
     /// <summary>
     /// Creates instances of partner operations object.

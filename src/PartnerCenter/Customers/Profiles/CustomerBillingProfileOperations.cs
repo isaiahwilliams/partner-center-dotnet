@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.Profiles
 {
-    using Extensions;
-    using Models.Customers;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Customers;
 
     /// <summary>
     /// Implements the customer billing profile operations.

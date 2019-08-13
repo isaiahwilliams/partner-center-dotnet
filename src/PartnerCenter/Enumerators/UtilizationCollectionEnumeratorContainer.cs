@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Enumerators
 {
+    using System;
     using Factories;
     using Models;
     using Models.Utilizations;
-    using System;
 
     /// <summary>
     /// Utilization collection enumerator container implementation class.

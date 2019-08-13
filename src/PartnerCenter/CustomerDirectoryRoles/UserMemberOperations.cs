@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerDirectoryRoles
 {
-    using Extensions;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
 
     /// <summary>
     /// User member operations operations class.

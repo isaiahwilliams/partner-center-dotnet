@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
-    using Extensions;
-    using Models.Users;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Users;
 
     /// <summary>
     /// Customer user operations class.

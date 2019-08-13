@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Auditing
 {
-    using Extensions;
-    using Newtonsoft.Json.Serialization;
     using System;
     using System.Collections.Generic;
     using System.Runtime.Serialization;
+    using Extensions;
+    using Newtonsoft.Json.Serialization;
 
     /// <summary>
     /// Represents a record of operation performed by a partner user or application.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
+    using System;
     using GenericOperations;
     using Models.Subscriptions;
-    using System;
 
     /// <summary>
     /// Defines the operations available on a customer's subscription support contact.

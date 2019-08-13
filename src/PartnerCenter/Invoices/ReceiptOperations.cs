@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
-    using Extensions;
     using System;
+    using Extensions;
 
     /// <summary>
     /// Implements the available receipt operations.

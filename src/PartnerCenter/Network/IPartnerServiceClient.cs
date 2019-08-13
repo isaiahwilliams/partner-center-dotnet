@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Network
 {
-    using Models;
-    using Models.Authentication;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Authentication;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents the mediator between the SDK and partner service.

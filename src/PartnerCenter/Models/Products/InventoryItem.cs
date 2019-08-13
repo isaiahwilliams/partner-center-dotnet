@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Products
 {
-    using Newtonsoft.Json;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Class that represents an inventory item.

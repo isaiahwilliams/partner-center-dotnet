@@ -3,13 +3,13 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Customers;
     using Models.Query;
     using RelationshipRequests;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Usage;
 
     /// <summary>

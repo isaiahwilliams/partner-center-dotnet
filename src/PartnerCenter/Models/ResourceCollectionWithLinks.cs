@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Models
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     [JsonObject]
     public class ResourceCollection<TResource, TLinks> : ResourceBaseWithLinks<TLinks> where TLinks : new()

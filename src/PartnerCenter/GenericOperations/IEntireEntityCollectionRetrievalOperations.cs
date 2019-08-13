@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.GenericOperations
 {
-    using Models;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
 
     /// <summary>
     /// A generic interface which represents operations for getting an entire collection of entities.

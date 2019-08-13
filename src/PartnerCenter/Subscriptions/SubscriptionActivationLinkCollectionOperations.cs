@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Orders;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Orders;
 
     /// <summary>
     /// Implements getting customer subscription activation link resource collection for a given subscription.

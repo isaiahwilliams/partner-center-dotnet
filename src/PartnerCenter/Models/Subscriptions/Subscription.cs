@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Subscriptions
 {
-    using Invoices;
-    using Offers;
     using System;
     using System.Collections.Generic;
+    using Invoices;
+    using Offers;
 
     /// <summary>
     /// The subscription resource represents the life cycle of a subscription and includes properties that define the states

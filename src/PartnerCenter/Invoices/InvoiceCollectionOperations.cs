@@ -3,18 +3,18 @@
 
 namespace Microsoft.Store.PartnerCenter.Invoices
 {
-    using Extensions;
-    using Models;
-    using Models.Invoices;
-    using Models.JsonConverters;
-    using Models.Query;
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Net;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.Invoices;
+    using Models.JsonConverters;
+    using Models.Query;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents the operations that can be done on Partner's invoices.

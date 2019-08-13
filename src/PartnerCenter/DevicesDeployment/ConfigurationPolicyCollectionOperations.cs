@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.DevicesDeployment
 {
-    using Extensions;
-    using Models;
-    using Models.DevicesDeployment;
-    using Models.JsonConverters;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.DevicesDeployment;
+    using Models.JsonConverters;
 
     /// <summary>
     /// Implements operations that apply to configuration policy collections.

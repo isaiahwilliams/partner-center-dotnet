@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.ServiceRequests
 {
-    using Models;
-    using Models.JsonConverters;
-    using Models.ServiceRequests;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.JsonConverters;
+    using Models.ServiceRequests;
 
     /// <summary>
     /// The operations that can be performed on support topics. Support Topics operations are localizable.

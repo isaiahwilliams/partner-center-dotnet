@@ -3,15 +3,15 @@
 
 namespace Microsoft.Store.PartnerCenter
 {
-    using Factories;
-    using Newtonsoft.Json;
-    using RequestContext;
     using System;
     using System.Dynamic;
     using System.IO;
     using System.Net.Http;
     using System.Reflection;
     using System.Threading.Tasks;
+    using Factories;
+    using Newtonsoft.Json;
+    using RequestContext;
 
     /// <summary>
     /// This class contains the Partner Center SDK properties and acts as the main entry point to create partners.

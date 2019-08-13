@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions.Products
 {
-    using Extensions;
-    using Models.Products;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.Products;
 
     /// <summary>
     /// Product extensions operations implementation by country.

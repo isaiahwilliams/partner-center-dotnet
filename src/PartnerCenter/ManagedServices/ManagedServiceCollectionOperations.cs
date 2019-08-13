@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.ManagedServices
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.ManagedServices;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.ManagedServices;
 
     /// <summary>
     /// Implements a customer's managed services operations.

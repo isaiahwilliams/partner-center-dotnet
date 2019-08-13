@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Enumerators
 {
-    using Models;
-    using RequestContext;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using RequestContext;
 
     /// <summary>
     /// Provides resource collection enumeration capabilities. This interface can page through results and determines whether the current page

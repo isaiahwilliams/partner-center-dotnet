@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Entitlements
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Entitlements;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Represents the operations that can be performed on entitlements (by type) associated to the customer based on the logged in partner.

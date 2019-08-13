@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.ServiceCosts
 {
+    using System;
     using GenericOperations;
     using Models.ServiceCosts;
-    using System;
 
     /// <summary>
     /// This interface defines the operations available on a customer's service cost summary.

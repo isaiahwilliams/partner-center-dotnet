@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
-    using Extensions;
     using System;
+    using Extensions;
 
     /// <summary>
     /// Implements the available order line item operations.

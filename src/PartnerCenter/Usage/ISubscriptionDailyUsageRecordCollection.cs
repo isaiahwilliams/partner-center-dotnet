@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Usage
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Usage;
-    using System;
 
     /// <summary>
     /// Defines the behavior for a subscription's daily usage records.

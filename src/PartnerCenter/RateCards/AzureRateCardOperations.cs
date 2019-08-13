@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.RateCards
 {
-    using Models.RateCards;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.RateCards;
 
     /// <summary>
     /// Implements operations that apply to Azure rate card.

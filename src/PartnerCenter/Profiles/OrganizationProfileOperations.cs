@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Profiles
 {
-    using Models.Partners;
     using System;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Partners;
 
     /// <summary>
     /// The organization profile operations implementation.

@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Offers
 {
+    using System;
     using GenericOperations;
     using Models.Offers;
-    using System;
 
     /// <summary>
     /// Represents operations that can be performed on a single offer.

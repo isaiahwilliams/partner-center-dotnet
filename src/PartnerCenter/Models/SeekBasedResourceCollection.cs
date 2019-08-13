@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Models
 {
-    using Newtonsoft.Json;
     using System.Collections.Generic;
+    using Newtonsoft.Json;
 
     [JsonObject]
     public sealed class SeekBasedResourceCollection<TResource> : ResourceCollection<TResource>

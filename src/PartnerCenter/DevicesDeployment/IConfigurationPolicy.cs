@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.DevicesDeployment
 {
+    using System;
     using GenericOperations;
     using Models.DevicesDeployment;
-    using System;
 
     /// <summary>
     /// Represents all the operations that can be done on a configuration policy.

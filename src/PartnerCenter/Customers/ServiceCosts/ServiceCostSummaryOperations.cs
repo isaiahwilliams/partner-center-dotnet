@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.ServiceCosts
 {
-    using Extensions;
-    using Models.ServiceCosts;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.ServiceCosts;
 
     /// <summary>
     /// This class implements the operations for a customer's service costs summary.

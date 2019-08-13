@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Orders;
-    using System;
 
     /// <summary>
     /// Holds operations that apply Order provisioning status.

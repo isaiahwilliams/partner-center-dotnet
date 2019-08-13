@@ -3,16 +3,16 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.Products
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Products;
-    using PartnerCenter.Products;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Products;
+    using PartnerCenter.Products;
 
     /// <summary>
     /// Implementation of customer sku collection operations by target segment.

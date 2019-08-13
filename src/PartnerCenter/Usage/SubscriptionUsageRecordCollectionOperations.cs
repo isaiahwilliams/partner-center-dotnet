@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Usage
 {
-    using Extensions;
     using System;
+    using Extensions;
 
     /// <summary>
     /// Implementation class for subscription usage record collection operations.

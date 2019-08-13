@@ -3,6 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter
 {
+    using System;
+    using System.Net.Http;
     using Agreements;
     using Analytics;
     using Auditing;
@@ -22,8 +24,6 @@ namespace Microsoft.Store.PartnerCenter
     using RequestContext;
     using Roles;
     using ServiceRequests;
-    using System;
-    using System.Net.Http;
     using Usage;
     using ValidationRules;
     using Validations;

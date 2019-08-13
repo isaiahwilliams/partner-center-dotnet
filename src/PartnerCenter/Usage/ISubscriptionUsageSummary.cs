@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Usage
 {
+    using System;
     using GenericOperations;
     using Models.Usage;
-    using System;
 
     /// <summary>
     /// This interface defines the operations available on a customer's subscription usage summary.

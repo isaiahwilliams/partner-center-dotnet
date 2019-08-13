@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Validations
 {
-    using Models;
-    using Models.ValidationCodes;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.ValidationCodes;
 
     /// <summary>
     /// Represents the behavior of a validation operations.

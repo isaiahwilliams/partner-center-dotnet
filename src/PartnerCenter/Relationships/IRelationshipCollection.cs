@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Relationships
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using Models;
     using Models.Query;
     using Models.Relationships;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// This interface represents the operations that can be done on a partner's relationships.

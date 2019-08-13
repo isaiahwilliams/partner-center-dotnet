@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Offers
 {
-    using Invoices;
     using System;
     using System.Collections.Generic;
+    using Invoices;
 
     /// <summary>
     /// Represents a form of product availability to customer.

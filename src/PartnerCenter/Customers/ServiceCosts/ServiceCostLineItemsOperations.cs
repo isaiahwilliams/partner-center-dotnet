@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.ServiceCosts
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.ServiceCosts;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.ServiceCosts;
 
     /// <summary>
     /// Represents the behavior of the customer service cost line items as a whole.

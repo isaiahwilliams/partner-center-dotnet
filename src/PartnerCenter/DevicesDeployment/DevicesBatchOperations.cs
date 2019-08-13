@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.DevicesDeployment
 {
-    using Extensions;
     using System;
+    using Extensions;
 
     /// <summary>
     /// Represents the operations that apply to devices batch of the customer.

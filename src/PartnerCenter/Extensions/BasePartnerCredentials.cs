@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions
 {
-    using RequestContext;
     using System;
     using System.Threading.Tasks;
+    using RequestContext;
 
     /// <summary>
     /// A base implementation for partner credentials.

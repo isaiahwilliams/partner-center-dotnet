@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Query;
     using Models.Users;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Represents the behavior of the customers users.

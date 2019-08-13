@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions
 {
+    using System;
+    using System.Threading.Tasks;
     using Exceptions;
     using Properties;
     using RequestContext;
-    using System;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Partner service credentials based on Azure Active Directory user credentials.

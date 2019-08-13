@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.Profiles
 {
-    using Models.Customers;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Customers;
 
     /// <summary>
     /// Implements the customer company profile operations.

@@ -3,14 +3,14 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
-    using Extensions;
-    using Models;
-    using Models.JsonConverters;
-    using Models.Roles;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Roles;
 
     /// <summary>
     /// Represents the behavior of the customers user's directory roles.

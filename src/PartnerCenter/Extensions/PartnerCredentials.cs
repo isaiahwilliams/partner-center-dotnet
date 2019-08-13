@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions
 {
-    using RequestContext;
     using System.Threading.Tasks;
+    using RequestContext;
 
     /// <summary>
     /// Use this class to generate Partner Center API credentials. User plus application based authentication and application only authentication

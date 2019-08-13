@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.ServiceRequests
 {
-    using Models.ServiceRequests;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.ServiceRequests;
 
     /// <summary>
     /// Represents the behavior of partner service requests.

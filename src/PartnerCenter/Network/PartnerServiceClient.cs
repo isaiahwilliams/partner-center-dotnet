@@ -3,15 +3,6 @@
 
 namespace Microsoft.Store.PartnerCenter.Network
 {
-    using Exceptions;
-    using Extensions;
-    using Models;
-    using Models.Authentication;
-    using Models.JsonConverters;
-    using Models.Resolvers;
-    using Newtonsoft.Json;
-    using RequestContext;
-    using Rest;
     using System;
     using System.Collections.Generic;
     using System.Globalization;
@@ -21,6 +12,15 @@ namespace Microsoft.Store.PartnerCenter.Network
     using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
+    using Exceptions;
+    using Extensions;
+    using Models;
+    using Models.Authentication;
+    using Models.JsonConverters;
+    using Models.Resolvers;
+    using Newtonsoft.Json;
+    using RequestContext;
+    using Rest;
 
     /// <summary>
     /// Acts as mediator betweeen the SDK and the partner service.

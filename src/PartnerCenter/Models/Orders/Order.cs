@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Models.Orders
 {
-    using Offers;
     using System;
     using System.Collections.Generic;
+    using Offers;
 
     /// <summary>
     /// An order is the mean of purchasing offers. Offers are represented by line items within the order.

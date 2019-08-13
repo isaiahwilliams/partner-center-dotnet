@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerUsers
 {
-    using Models;
-    using Models.Licenses;
     using System;
     using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models;
+    using Models.Licenses;
 
     /// <summary>
     /// Represents the behavior of a customer's user license collection.

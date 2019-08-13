@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.Subscriptions;
-    using System;
 
     /// <summary>
     /// This interface defines the upgrade operations available on a customer's subscription.

@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
-    using Extensions;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
 
     /// <summary>
     /// This class implements the operations available on a customer's subscription registration.

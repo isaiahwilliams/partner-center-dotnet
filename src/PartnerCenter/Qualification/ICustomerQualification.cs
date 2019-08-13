@@ -3,11 +3,11 @@
 
 namespace Microsoft.Store.PartnerCenter.Qualification
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models.Customers;
     using Models.ValidationCodes;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Defines the operations available on a customer's qualification.

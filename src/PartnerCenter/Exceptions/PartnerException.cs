@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Exceptions
 {
-    using Models;
-    using RequestContext;
     using System;
     using System.Runtime.Serialization;
+    using Models;
+    using RequestContext;
 
     /// <summary>
     /// The standard exception thrown by the partner service. This pertains to errors accessing the partner service. Other standard exceptions

@@ -3,10 +3,10 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers.ServiceCosts
 {
+    using System;
     using GenericOperations;
     using Models;
     using Models.ServiceCosts;
-    using System;
 
     /// <summary>
     /// Represents the behavior of the customer service cost line items as a whole.

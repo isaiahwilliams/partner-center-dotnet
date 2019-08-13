@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.ServiceRequests
 {
-    using Extensions;
-    using Models.ServiceRequests;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models.ServiceRequests;
 
     /// <summary>
     /// Implements operations that can be performed on a single partner's service requests.

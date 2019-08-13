@@ -3,12 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Roles
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Query;
     using Models.Roles;
-    using System.Threading;
-    using System.Threading.Tasks;
 
     /// <summary>
     /// Represents the available operations for roles.

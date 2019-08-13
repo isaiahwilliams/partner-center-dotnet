@@ -3,9 +3,9 @@
 
 namespace Microsoft.Store.PartnerCenter.CustomerDirectoryRoles
 {
+    using System;
     using GenericOperations;
     using Models.Roles;
-    using System;
 
     /// <summary>
     /// Represents the behavior of a user member.

@@ -3,13 +3,13 @@
 
 namespace Microsoft.Store.PartnerCenter.Orders
 {
-    using Extensions;
-    using Models;
-    using Models.Orders;
     using System;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
+    using Extensions;
+    using Models;
+    using Models.Orders;
 
     /// <summary>
     /// Implements the customer order line item activation link operations.

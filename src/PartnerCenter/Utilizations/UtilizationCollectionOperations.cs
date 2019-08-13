@@ -3,8 +3,8 @@
 
 namespace Microsoft.Store.PartnerCenter.Utilization
 {
-    using Extensions;
     using System;
+    using Extensions;
 
     /// <summary>
     /// Implements subscription utilization behavior.

@@ -3,6 +3,12 @@
 
 namespace Microsoft.Store.PartnerCenter.Customers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Globalization;
+    using System.Net;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Extensions;
     using Models;
     using Models.Customers;
@@ -10,12 +16,6 @@ namespace Microsoft.Store.PartnerCenter.Customers
     using Models.Query;
     using Newtonsoft.Json;
     using RelationshipRequests;
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
-    using System.Net;
-    using System.Threading;
-    using System.Threading.Tasks;
     using Usage;
 
     /// <summary>
