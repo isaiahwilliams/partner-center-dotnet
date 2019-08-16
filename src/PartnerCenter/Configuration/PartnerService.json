@@ -256,15 +256,20 @@
         "userId": "userId"
       }
     },
-    "GetPartnerRoles": {
-      "Path": "roles",
+    "GetPartnerRole": {
+      "Path": "roles/{0}",
       "Parameters": {
-        "RoleId": "role_id",
-        "SeekOperation": "seekOperation",
-        "SortDirection": "sortDirection",
-        "SortField": "sortField",
-        "Size": "size"
+        "roleId": "role_id"
       }
+    },
+    "GetPartnerRoleMembers": {
+      "Path": "roles/{0}/usermembers",
+      "Parameters": {
+        "roleId": "role_id"
+      }
+    },
+    "GetPartnerRoles": {
+      "Path": "roles"
     },
     "CustomerUserDirectoryRoles": {
       "Path": "customers/{0}/users/{1}/directoryroles",
