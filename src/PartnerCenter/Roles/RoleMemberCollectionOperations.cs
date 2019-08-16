@@ -31,16 +31,16 @@ namespace Microsoft.Store.PartnerCenter.Roles
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The directory role user memberships.</returns>
-        public async Task<SeekBasedResourceCollection<RoleMember>> GetAsync(CancellationToken cancellationToken = default)
+        public async Task<SeekBasedResourceCollection<UserMember>> GetAsync(CancellationToken cancellationToken = default)
         {
-            return await Partner.ServiceClient.GetAsync<SeekBasedResourceCollection<RoleMember>>(
+            return await Partner.ServiceClient.GetAsync<SeekBasedResourceCollection<UserMember>>(
                 new Uri(
                     string.Format(
                         CultureInfo.InvariantCulture,
                         $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetPartnerRoleMembers.Path}",
                         Context),
                     UriKind.Relative),
-                new ResourceCollectionConverter<RoleMember>(),
+                new ResourceCollectionConverter<UserMember>(),
                 cancellationToken).ConfigureAwait(false);
         }
     }

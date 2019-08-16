@@ -10,7 +10,7 @@ namespace Microsoft.Store.PartnerCenter.Roles
     /// <summary>
     /// Represents the behavior of the role member collection.
     /// </summary>
-    public interface IRoleMemberCollection : IPartnerComponent<string>, IEntireEntityCollectionRetrievalOperations<RoleMember, SeekBasedResourceCollection<RoleMember>>
+    public interface IRoleMemberCollection : IPartnerComponent<string>, IEntireEntityCollectionRetrievalOperations<UserMember, SeekBasedResourceCollection<UserMember>>
     {
     }
 }
