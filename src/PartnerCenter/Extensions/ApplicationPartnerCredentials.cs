@@ -5,7 +5,7 @@ namespace Microsoft.Store.PartnerCenter.Extensions
 {
     using System;
     using System.Threading.Tasks;
-    using IdentityModel.Clients.ActiveDirectory;
+    using Identity.Client;
     using RequestContext;
 
     /// <summary>
@@ -100,22 +100,21 @@ namespace Microsoft.Store.PartnerCenter.Extensions
         /// <returns>An instance of <see cref="Task" /> that represents the asynchronous operation.</returns>
         public override async Task AuthenticateAsync(IRequestContext requestContext = null)
         {
-            AuthenticationContext authContext = new AuthenticationContext(
-                new UriBuilder(activeDirectoryAuthority)
-                {
-                    Path = aadApplicationDomain
-                }.Uri.AbsoluteUri);
+            IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(ApplicationId)
+                .WithAuthority(activeDirectoryAuthority)
+                .WithClientSecret(applicationSecret)
+                .WithTenantId(aadApplicationDomain)
+                .Build();
+            
+            AcquireTokenForClientParameterBuilder builder = app.AcquireTokenForClient(
+               new string[] { $"{graphApiEndpoint}/.default" });
 
             if (requestContext != null)
             {
-                authContext.CorrelationId = requestContext.CorrelationId;
+                builder = builder.WithCorrelationId(requestContext.CorrelationId);
             }
 
-            AuthenticationResult authResult = await authContext.AcquireTokenAsync(
-                graphApiEndpoint,
-                new ClientCredential(
-                    ApplicationId,
-                    applicationSecret)).ConfigureAwait(false);
+            AuthenticationResult authResult = await builder.ExecuteAsync().ConfigureAwait(false);
 
             AADToken = new AuthenticationToken(authResult.AccessToken, authResult.ExpiresOn);
         }
