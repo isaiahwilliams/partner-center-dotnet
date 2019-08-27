@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Microsoft.Store.PartnerCenter</AssemblyName>
     <RootNamespace>Microsoft.Store.PartnerCenter</RootNamespace>
     <Authors>Isaiah Williams</Authors>
@@ -18,14 +18,9 @@
     <PackageId>PartnerCenter.DotNet</PackageId>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Revision>$([MSBuild]::Divide($([System.DateTime]::get_Now().get_TimeOfDay().get_TotalSeconds()), 2).ToString('F0'))</Revision>
-    <Version Condition=" '$(BUILD_BUILDNUMBER)' == '' ">1.13.$([System.DateTime]::Now.ToString(yyMM)).$(Revision)</Version>
+    <Version Condition=" '$(BUILD_BUILDNUMBER)' == '' ">2.0.$([System.DateTime]::Now.ToString(yyMM)).$(Revision)</Version>
     <Version Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
   </PropertyGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <Reference Include="System.Web" />
-  </ItemGroup>
 
   <ItemGroup>
     <None Remove="Configuration\PartnerService.json" />
@@ -37,7 +32,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="4.3.0" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="3.0.8" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.19" />
   </ItemGroup>
 

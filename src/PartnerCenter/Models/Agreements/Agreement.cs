@@ -6,7 +6,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Agreements
     using System;
 
     /// <summary>
-    /// The class represents an agreement object.
+    /// Represents an agreement object.
     /// </summary>
     public sealed class Agreement
     {
@@ -30,8 +30,10 @@ namespace Microsoft.Store.PartnerCenter.Models.Agreements
         /// </summary>
         public string TemplateId { get; set; }
 
-        /// <summary>Gets or sets the agreement type.</summary>
-        public AgreementType Type { get; set; }
+        /// <summary>
+        /// Gets or sets the agreement type.
+        /// </summary>
+        public string Type { get; set; }
 
         /// <summary>
         /// Gets or sets the partner's user identifier.

@@ -6,7 +6,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Agreements
     using System;
 
     /// <summary>
-    /// This class represents the meta data about agreements.
+    /// Represents the meta data for agreements.
     /// </summary>
     public sealed class AgreementMetaData
     {
@@ -18,7 +18,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Agreements
         /// <summary>
         /// Gets or sets the agreement type.
         /// </summary>
-        public AgreementType AgreementType { get; set; }
+        public string AgreementType { get; set; }
 
         /// <summary>
         /// Gets or sets the template identifier for the agreement.

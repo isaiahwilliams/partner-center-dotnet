@@ -4,6 +4,7 @@
 namespace Microsoft.Store.PartnerCenter.Agreements
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
@@ -53,12 +54,26 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         }
 
         /// <summary>
-        /// Gets the partner-customer agreements.
+        /// Gets the list of agreements between a partner and customer.
         /// </summary>
+        /// <param name="agreementType">The agreement type used to filter.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>A list of agreements between the partner and customer.</returns>
-        public async Task<ResourceCollection<Agreement>> GetAsync(CancellationToken cancellationToken = default)
+        /// <returns>The list of customer's agreements.</returns>
+        public async Task<ResourceCollection<Agreement>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default)
         {
+            IDictionary<string, string> parameters = null;
+
+            if (!string.IsNullOrEmpty(agreementType))
+            {
+                parameters = new Dictionary<string, string>
+                {
+                    {
+                        PartnerService.Instance.Configuration.Apis.GetCustomerAgreements.Parameters.AgreementType,
+                        agreementType
+                    }
+                };
+            }
+
             return await Partner.ServiceClient.GetAsync<ResourceCollection<Agreement>>(
                 new Uri(
                     string.Format(
@@ -66,6 +81,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
                         $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetCustomerAgreements.Path}",
                         Context),
                     UriKind.Relative),
+                parameters,
                 cancellationToken).ConfigureAwait(false);
         }
     }

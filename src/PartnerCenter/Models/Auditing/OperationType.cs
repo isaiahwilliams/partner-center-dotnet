@@ -211,6 +211,11 @@ namespace Microsoft.Store.PartnerCenter.Models.Auditing
         /// <summary>
         /// Extend a relationship from an indirect partner to an indirect provider.
         /// </summary>
-        ExtendRelationship = 39
+        ExtendRelationship = 39,
+
+        /// <summary>
+        /// A transfer was created
+        /// </summary>
+        CreateTransfer = 40,
     }
 }
