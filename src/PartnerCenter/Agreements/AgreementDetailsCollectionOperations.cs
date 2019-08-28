@@ -28,6 +28,22 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         }
 
         /// <summary>
+        /// Gets the available agreement template operations.
+        /// </summary>
+        /// <param name="id">Identifier for the agreement.</param>
+        public IAgreement this[string id] => ById(id);
+
+        /// <summary>
+        /// Gets the available agreement template operations.
+        /// </summary>
+        /// <param name="id">Identifier for the agreement.</param>
+        /// <returns>The available agreement template operations.</returns>
+        public IAgreement ById(string id)
+        {
+            return new AgreementOperations(Partner, id);
+        }
+
+        /// <summary>
         /// Gets the agreement details.
         /// </summary>
         /// <param name="agreementType">The agreement type used to filter.</param>

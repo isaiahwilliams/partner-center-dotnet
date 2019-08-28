@@ -37,9 +37,9 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// <summary>
         /// Creates an agreement between the partner and customer.
         /// </summary>
-        /// <param name="newEntity">The customer agreement to be created.</param>
+        /// <param name="newEntity">The agreement to be created.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The newly created customer agreement.</returns>
+        /// <returns>The newly created agreement.</returns>
         public async Task<Agreement> CreateAsync(Agreement newEntity, CancellationToken cancellationToken = default)
         {
             return await Partner.ServiceClient.PostAsync<Agreement, Agreement>(
@@ -58,7 +58,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// </summary>
         /// <param name="agreementType">The agreement type used to filter.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The list of customer's agreements.</returns>
+        /// <returns>The list of the customer's agreements.</returns>
         public async Task<ResourceCollection<Agreement>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default)
         {
             IDictionary<string, string> parameters = null;

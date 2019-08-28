@@ -7,11 +7,12 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     using System.Threading.Tasks;
     using Models;
     using Models.Agreements;
+    using GenericOperations;
 
     /// <summary>
     /// Represents the agreement details behavior.
     /// </summary>
-    public interface IAgreementDetailsCollection : IPartnerComponent<string>
+    public interface IAgreementDetailsCollection : IPartnerComponent<string>, IEntitySelector<string, IAgreement>
     {
         /// <summary>
         /// Gets the agreement details.

@@ -33,6 +33,13 @@
         "AgreementType": "agreementType"
       }
     },
+    "GetAgreementTemplate": {
+      "Path": "agreementtemplates/{0}/document",
+      "Parameters": {
+        "Country":  "country",
+        "Language": "language"
+      }
+    },
     "CreateCustomerAgreement": {
       "Path": "customers/{0}/agreements"
     },
