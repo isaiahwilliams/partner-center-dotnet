@@ -4,6 +4,8 @@
 namespace Microsoft.Store.PartnerCenter.Subscriptions
 {
     using System;
+    using System.Threading;
+    using System.Threading.Tasks;
     using GenericOperations;
     using Models.Subscriptions;
     using Usage;
@@ -68,5 +70,12 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
         /// Gets the current subscription's utilization operations.
         /// </summary>
         IUtilizationCollection Utilization { get; }
+
+        /// <summary>
+        /// Activates a third-party subscription.
+        /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>The result from the subscription activation.</returns>
+        Task<SubscriptionActivationResult> ActivateAsync(CancellationToken cancellationToken = default);
     }
 }

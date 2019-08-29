@@ -36,7 +36,7 @@
     "GetAgreementTemplate": {
       "Path": "agreementtemplates/{0}/document",
       "Parameters": {
-        "Country":  "country",
+        "Country": "country",
         "Language": "language"
       }
     },
@@ -222,6 +222,13 @@
     },
     "UpdateSubscriptionRegistrationStatus": {
       "Path": "customers/{0}/subscriptions/{1}/registrations",
+      "Parameters": {
+        "customerId": "customerId",
+        "subscriptionId": "subscriptionId"
+      }
+    },
+    "Activate3ppSubscription": {
+      "Path": "customers/{0}/subscriptions/{1}/activate",
       "Parameters": {
         "customerId": "customerId",
         "subscriptionId": "subscriptionId"
