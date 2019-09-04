@@ -9,7 +9,6 @@ namespace Microsoft.Store.PartnerCenter.Network
     using System.Threading;
     using System.Threading.Tasks;
     using Models;
-    using Models.Authentication;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -17,51 +16,6 @@ namespace Microsoft.Store.PartnerCenter.Network
     /// </summary>
     public interface IPartnerServiceClient
     {
-        /// <summary>
-        /// Acquires device code from the authority.
-        /// </summary>
-        /// <param name="authority"></param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The device code result which includes the device code, expiration, and user code.</returns>
-        Task<DeviceCodeResult> AcquireDeviceCodeAsync(Uri authority, string resource, string clientId, string clientSecret = null, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Acquires an access token from the authority.
-        /// </summary>
-        /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        Task<AuthenticationResult> AcquireTokenAsync(Uri authority, string resource, string clientId, string clientSecret, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Acquires an access token from the authority.
-        /// </summary>
-        /// <param name="authority">Address of the authority to issue the token.></param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
-        /// <param name="code">The authorization code received from service authorization endpoint.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        Task<AuthenticationResult> AcquireTokenByAuthorizationCodeAsync(Uri authority, string resource, Uri redirectUri, string code, string clientId, string clientSecret = null, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Acquires security token from the authority using an device code previously received.
-        /// </summary>
-        /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="deviceCodeResult">The device code result received from calling AcquireDeviceCodeAsync.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        Task<AuthenticationResult> AcquireTokenByDeviceCodeAsync(Uri authority, DeviceCodeResult deviceCodeResult, string clientSecret = null, CancellationToken cancellationToken = default);
-
         /// <summary>
         /// Executes a HTTP DELETE request against the partner service.
         /// </summary>
@@ -205,17 +159,5 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The response from the HTTP PUT request.</returns>
         Task<TResource> PutAsync<TRequest, TResource>(Uri relativeUri, TRequest content, IDictionary<string, string> parameters = null, CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Refreshes the access token using a refresh token.
-        /// </summary>
-        /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="refreshToken">The refresh token to be used to obtain a new access token.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        Task<AuthenticationResult> RefreshAccessTokenAsync(Uri authority, string resource, string refreshToken, string clientId, string clientSecret = null, CancellationToken cancellationToken = default);
     }
 }

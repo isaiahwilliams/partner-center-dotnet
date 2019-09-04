@@ -5,9 +5,9 @@ namespace Microsoft.Store.PartnerCenter.Agreements
 {
     using System.Threading;
     using System.Threading.Tasks;
+    using GenericOperations;
     using Models;
     using Models.Agreements;
-    using GenericOperations;
 
     /// <summary>
     /// Represents the agreement details behavior.

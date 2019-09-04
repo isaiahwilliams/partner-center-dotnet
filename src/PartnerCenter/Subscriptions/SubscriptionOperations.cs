@@ -164,10 +164,13 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
         public IUtilizationCollection Utilization => subscriptionUtilizationOperations.Value;
 
         /// <summary>
-        /// Activates a third-party subscription.
+        /// Activates a the subscription.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The result from the subscription activation.</returns>
+        /// <remarks>
+        /// This operation is currently available for the integration sandbox, and it is used used to activate a third-party subscriptions.
+        /// </remarks>
         public async Task<SubscriptionActivationResult> ActivateAsync(CancellationToken cancellationToken = default)
         {
             return await Partner.ServiceClient.GetAsync<SubscriptionActivationResult>(

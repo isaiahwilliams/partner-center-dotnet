@@ -6,9 +6,9 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using Models.Agreements;
     using System.Threading;
     using System.Threading.Tasks;
+    using Models.Agreements;
 
     /// <summary>
     /// Implements the available agreement template operations.

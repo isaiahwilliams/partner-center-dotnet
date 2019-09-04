@@ -8,7 +8,7 @@ namespace Microsoft.Store.PartnerCenter.GenericOperations
     /// </summary>
     /// <typeparam name="TTYpe">The type of identifier.</typeparam>
     /// <typeparam name="TEntity">The type of the entity behavior.</typeparam>
-    public interface IEntitySelector<TTYpe, out TEntity>
+    public interface IEntitySelector<in TTYpe, out TEntity>
     {
         /// <summary>
         /// Gets the behavior for an entity using the entity's identifer.
