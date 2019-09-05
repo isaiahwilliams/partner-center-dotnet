@@ -5,9 +5,9 @@ namespace Microsoft.Store.PartnerCenter.Exceptions
 {
     using System;
     using System.Runtime.Serialization;
-    using Microsoft.Rest;
     using Models;
     using RequestContext;
+    using Rest;
 
     /// <summary>
     /// The standard exception thrown by the partner service. This pertains to errors accessing the partner service. Other standard exceptions
