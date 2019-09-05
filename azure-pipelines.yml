@@ -1,12 +1,5 @@
-strategy:
-  matrix:
-    mac:
-      imageName: 'macos-10.13'
-    windows:
-      imageName: 'vs2017-win2016'
-
 pool:
-  name: $(imageName)
+  name: Hosted Windows 2019 with VS2019
 
 variables: 
     BuildConfiguration: 'Release'
