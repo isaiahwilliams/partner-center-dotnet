@@ -5,6 +5,7 @@ namespace Microsoft.Store.PartnerCenter.Exceptions
 {
     using System;
     using System.Runtime.Serialization;
+    using Microsoft.Rest;
     using Models;
     using RequestContext;
 
@@ -143,6 +144,16 @@ namespace Microsoft.Store.PartnerCenter.Exceptions
         /// Gets the partner context associated with the exception.
         /// </summary>
         public IRequestContext Context => requestContex;
+
+        /// <summary>
+        /// Gets or sets information about the associated HTTP request.
+        /// </summary>
+        public HttpRequestMessageWrapper Request { get; set; }
+
+        /// <summary>
+        /// Gets or sets information about the associated HTTP response.
+        /// </summary>
+        public HttpResponseMessageWrapper Response { get; set; }
 
         /// <summary>
         /// Gets the service error payload.
