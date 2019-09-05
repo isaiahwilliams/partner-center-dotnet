@@ -7,6 +7,7 @@ namespace Microsoft.Store.PartnerCenter.Exceptions
     using System.Runtime.Serialization;
     using Models;
     using RequestContext;
+    using Rest;
 
     /// <summary>
     /// The standard exception thrown by the partner service. This pertains to errors accessing the partner service. Other standard exceptions
@@ -143,6 +144,16 @@ namespace Microsoft.Store.PartnerCenter.Exceptions
         /// Gets the partner context associated with the exception.
         /// </summary>
         public IRequestContext Context => requestContex;
+
+        /// <summary>
+        /// Gets or sets information about the associated HTTP request.
+        /// </summary>
+        public HttpRequestMessageWrapper Request { get; set; }
+
+        /// <summary>
+        /// Gets or sets information about the associated HTTP response.
+        /// </summary>
+        public HttpResponseMessageWrapper Response { get; set; }
 
         /// <summary>
         /// Gets the service error payload.

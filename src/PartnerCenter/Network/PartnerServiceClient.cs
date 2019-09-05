@@ -15,7 +15,6 @@ namespace Microsoft.Store.PartnerCenter.Network
     using Exceptions;
     using Extensions;
     using Models;
-    using Models.Authentication;
     using Models.JsonConverters;
     using Models.Resolvers;
     using Newtonsoft.Json;
@@ -83,6 +82,11 @@ namespace Microsoft.Store.PartnerCenter.Network
         private readonly IPartner rootPartnerOperations;
 
         /// <summary>
+        /// The request context amended to the partner service operations.
+        /// </summary>
+        private IRequestContext requestContext;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="PartnerServiceClient" /> class.
         /// </summary>
         /// <param name="httpClient">The client used to perform HTTP operations.</param>
@@ -143,231 +147,6 @@ namespace Microsoft.Store.PartnerCenter.Network
         public Uri Endpoint { get; private set; }
 
         /// <summary>
-        /// Acquires device code from the authority.
-        /// </summary>
-        /// <param name="authority"></param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The device code result which includes the device code, expiration, and user code.</returns>
-        public async Task<DeviceCodeResult> AcquireDeviceCodeAsync(Uri authority, string resource, string clientId, string clientSecret = null, CancellationToken cancellationToken = default)
-        {
-            Dictionary<string, string> content;
-            HttpResponseMessage response = null;
-            DeviceCodeResponse deviceCodeResponse;
-            string responseBody;
-
-            authority.AssertNotNull(nameof(authority));
-            resource.AssertNotEmpty(nameof(resource));
-            clientId.AssertNotEmpty(nameof(clientId));
-
-            try
-            {
-                using (HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Post,
-                    new Uri($"https://{authority.Host}/{authority.Segments[authority.Segments.Length - 1].TrimEnd('/')}/oauth2/devicecode")))
-                {
-                    content = new Dictionary<string, string>
-                    {
-                        ["client_id"] = clientId,
-                        ["resource"] = resource
-                    };
-
-                    if (!string.IsNullOrEmpty(clientSecret))
-                    {
-                        content.Add("client_secret", clientSecret);
-                    }
-
-                    request.Content = new FormUrlEncodedContent(content);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    deviceCodeResponse = JsonConvert.DeserializeObject<DeviceCodeResponse>(responseBody, GetSerializationSettings());
-
-                    if (response.IsSuccessStatusCode)
-                    {
-                        return deviceCodeResponse.GetResult(clientId, resource);
-                    }
-
-                    throw new AuthenticationException(deviceCodeResponse.Error, deviceCodeResponse.ErrorDescription);
-                }
-            }
-            finally
-            {
-                response?.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Acquires an access token from the authority.
-        /// </summary>
-        /// <param name="authority"Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        public async Task<AuthenticationResult> AcquireTokenAsync(Uri authority, string resource, string clientId, string clientSecret, CancellationToken cancellationToken = default)
-        {
-            Dictionary<string, string> content;
-            HttpResponseMessage response = null;
-            AuthenticationResponse authResponse;
-
-            try
-            {
-                using (HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Post,
-                    new Uri($"https://{authority.Host}/{authority.Segments[authority.Segments.Length - 1].TrimEnd('/')}/oauth2/token")))
-                {
-                    content = new Dictionary<string, string>
-                    {
-                        ["client_id"] = clientId,
-                        ["client_secret"] = clientSecret,
-                        ["grant_type"] = "client_credentials",
-                        ["resource"] = resource
-                    };
-
-                    request.Content = new FormUrlEncodedContent(content);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-                    authResponse = await HandleAuthenticationResponseAsync(response).ConfigureAwait(false);
-
-                    return new AuthenticationResult(authResponse);
-                }
-            }
-            finally
-            {
-                response?.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Acquires an access token from the authority.
-        /// </summary>
-        /// <param name="authority"Address of the authority to issue the token.></param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="redirectUri">Address to return to upon receiving a response from the authority.</param>
-        /// <param name="code">The authorization code received from service authorization endpoint.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        public async Task<AuthenticationResult> AcquireTokenByAuthorizationCodeAsync(Uri authority, string resource, Uri redirectUri, string code, string clientId, string clientSecret = null, CancellationToken cancellationToken = default)
-        {
-            Dictionary<string, string> content;
-            HttpResponseMessage response = null;
-            AuthenticationResponse authResponse;
-
-            try
-            {
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post,
-                    new Uri($"https://{authority.Host}/{authority.Segments[authority.Segments.Length - 1].TrimEnd('/')}/oauth2/token")))
-                {
-                    content = new Dictionary<string, string>
-                    {
-                        ["client_id"] = clientId,
-                        ["code"] = code,
-                        ["grant_type"] = "authorization_code",
-                        ["redirect_uri"] = redirectUri.OriginalString,
-                        ["resource"] = resource
-                    };
-
-                    if (!string.IsNullOrEmpty(clientSecret))
-                    {
-                        content.Add("client_secret", clientSecret);
-                    }
-
-                    request.Content = new FormUrlEncodedContent(content);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-                    authResponse = await HandleAuthenticationResponseAsync(response).ConfigureAwait(false);
-
-                    return new AuthenticationResult(authResponse);
-                }
-            }
-            finally
-            {
-                response?.Dispose();
-            }
-        }
-
-        /// <summary>
-        /// Acquires security token from the authority using an device code previously received.
-        /// </summary>
-        /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="deviceCodeResult">The device code result received from calling AcquireDeviceCodeAsync.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        public async Task<AuthenticationResult> AcquireTokenByDeviceCodeAsync(Uri authority, DeviceCodeResult deviceCodeResult, string clientSecret = null, CancellationToken cancellationToken = default)
-        {
-            AuthenticationResponse authResponse = null;
-            Dictionary<string, string> content;
-            HttpResponseMessage response = null;
-            TimeSpan timeSpan;
-
-            deviceCodeResult.AssertNotNull(nameof(deviceCodeResult));
-
-            timeSpan = deviceCodeResult.ExpiresOn - DateTimeOffset.UtcNow;
-
-            while (timeSpan.TotalSeconds > 0.0)
-            {
-                try
-                {
-                    using (HttpRequestMessage request = new HttpRequestMessage(
-                        HttpMethod.Post,
-                        new Uri($"https://{authority.Host}/{authority.Segments[authority.Segments.Length - 1].TrimEnd('/')}/oauth2/token")))
-                    {
-                        content = new Dictionary<string, string>
-                        {
-                            ["client_id"] = deviceCodeResult.ClientId,
-                            ["code"] = deviceCodeResult.DeviceCode,
-                            ["grant_type"] = "device_code",
-                            ["resource"] = deviceCodeResult.Resource
-                        };
-
-
-                        if (!string.IsNullOrEmpty(clientSecret))
-                        {
-                            content.Add("client_secret", clientSecret);
-                        }
-
-                        request.Content = new FormUrlEncodedContent(content);
-
-                        response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-                        authResponse = await HandleAuthenticationResponseAsync(response).ConfigureAwait(false);
-
-                        break;
-                    }
-                }
-                catch (AuthenticationException ex)
-                {
-                    if (!ex.ErrorCode.Equals("authorization_pending", StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw;
-                    }
-                }
-                finally
-                {
-                    response?.Dispose();
-                }
-
-                await Task.Delay(TimeSpan.FromSeconds(deviceCodeResult.Interval)).ConfigureAwait(false);
-
-                timeSpan = deviceCodeResult.ExpiresOn - DateTimeOffset.UtcNow;
-            }
-
-            if (authResponse == null)
-            {
-                throw new AuthenticationException("code_expired", "Verification code expired before contacting the server");
-            }
-
-            return new AuthenticationResult(authResponse);
-        }
-
-        /// <summary>
         /// Executes a HTTP DELETE request against the partner service.
         /// </summary>
         /// <param name="relativeUri">Relative address of the request.</param>
@@ -375,22 +154,10 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>A task representing the asynchronous operation.</returns>
         public async Task DeleteAsync(Uri relativeUri, CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = null;
-
-            try
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, new Uri(Endpoint, relativeUri)))
             {
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, new Uri(Endpoint, relativeUri)))
-                {
-                    await AddRequestHeadersAsync(request).ConfigureAwait(false);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    await HandleResponseAsync(response).ConfigureAwait(false);
-                }
-            }
-            finally
-            {
-                response?.Dispose();
+                await AddRequestHeadersAsync(request).ConfigureAwait(false);
+                await HandleResponseAsync(request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -404,30 +171,16 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>The response from the HTTP GET request.</returns>
         public async Task<TResource> GetAsync<TResource>(Link link, JsonConverter converter = null, CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = null;
-            string content;
 
-            try
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri(Endpoint, $"/{PartnerService.Instance.ApiVersion}/{link.Uri}")))
             {
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri(Endpoint, $"/{PartnerService.Instance.ApiVersion}/{link.Uri}")))
+                foreach (KeyValuePair<string, string> header in link.Headers)
                 {
-                    foreach (KeyValuePair<string, string> header in link.Headers)
-                    {
-                        request.Headers.Add(header.Key, header.Value);
-                    }
-
-                    await AddRequestHeadersAsync(request).ConfigureAwait(false);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-                    content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-
-
-                    return JsonConvert.DeserializeObject<TResource>(content, GetSerializationSettings(converter));
+                    request.Headers.Add(header.Key, header.Value);
                 }
-            }
-            finally
-            {
-                response?.Dispose();
+
+                await AddRequestHeadersAsync(request).ConfigureAwait(false);
+                return await HandleResponseAsync<TResource>(request, converter, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -498,30 +251,18 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>The response from the HTTP GET request.</returns>
         public async Task<TResource> GetAsync<TResource>(Uri relativeUri, IDictionary<string, string> headers = null, IDictionary<string, string> parameters = null, JsonConverter converter = null, CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = null;
-            Uri address;
+            Uri address = new Uri(Endpoint, relativeUri);
 
-            try
+            if (parameters != null)
             {
-                address = new Uri(Endpoint, relativeUri);
-
-                if (parameters != null)
-                {
-                    address = address.AddQueryParemeters(parameters);
-                }
-
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, address))
-                {
-                    await AddRequestHeadersAsync(request).ConfigureAwait(false);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    return await HandleResponseAsync<TResource>(response, converter).ConfigureAwait(false);
-                }
+                address = address.AddQueryParemeters(parameters);
             }
-            finally
+
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, address))
             {
-                response?.Dispose();
+                await AddRequestHeadersAsync(request).ConfigureAwait(false);
+
+                return await HandleResponseAsync<TResource>(request, converter, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -577,22 +318,11 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns></returns>
         public async Task<TResource> HeadAsync<TResource>(Uri relativeUri, CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = null;
-
-            try
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, new Uri(Endpoint, relativeUri)))
             {
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, new Uri(Endpoint, relativeUri)))
-                {
-                    await AddRequestHeadersAsync(request).ConfigureAwait(false);
+                await AddRequestHeadersAsync(request).ConfigureAwait(false);
 
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    return await HandleResponseAsync<TResource>(response).ConfigureAwait(false);
-                }
-            }
-            finally
-            {
-                response?.Dispose();
+                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -607,25 +337,14 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>The response from the HTTP PATCH request.</returns>
         public async Task<TResource> PatchAsync<TRequest, TResource>(Uri relativeUri, TRequest content, CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = null;
-
-            try
+            using (HttpRequestMessage request = new HttpRequestMessage(new HttpMethod(PatchMethod), new Uri(Endpoint, relativeUri)))
             {
-                using (HttpRequestMessage request = new HttpRequestMessage(new HttpMethod(PatchMethod), new Uri(Endpoint, relativeUri)))
-                {
-                    await AddRequestHeadersAsync(request).ConfigureAwait(false);
+                await AddRequestHeadersAsync(request).ConfigureAwait(false);
 
-                    request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
-                    request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
+                request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
 
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    return await HandleResponseAsync<TResource>(response).ConfigureAwait(false);
-                }
-            }
-            finally
-            {
-                response?.Dispose();
+                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -655,33 +374,21 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>The response from the HTTP POST request.</returns>
         public async Task<TResource> PostAsync<TRequest, TResource>(Uri relativeUri, TRequest content, IDictionary<string, string> parameters = null, CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = null;
-            Uri address;
+            Uri address = new Uri(Endpoint, relativeUri);
 
-            try
+            if (parameters != null)
             {
-                address = new Uri(Endpoint, relativeUri);
-
-                if (parameters != null)
-                {
-                    address = address.AddQueryParemeters(parameters);
-                }
-
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, address))
-                {
-                    await AddRequestHeadersAsync(request).ConfigureAwait(false);
-
-                    request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
-                    request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    return await HandleResponseAsync<TResource>(response).ConfigureAwait(false);
-                }
+                address = address.AddQueryParemeters(parameters);
             }
-            finally
+
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, address))
             {
-                response?.Dispose();
+                await AddRequestHeadersAsync(request).ConfigureAwait(false);
+
+                request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
+
+                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -711,106 +418,41 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>The response from the HTTP PUT request.</returns>
         public async Task<TResource> PutAsync<TRequest, TResource>(Uri relativeUri, TRequest content, IDictionary<string, string> parameters = null, CancellationToken cancellationToken = default)
         {
-            HttpResponseMessage response = null;
-            Uri address;
+            Uri address = new Uri(Endpoint, relativeUri);
 
-            try
+            if (parameters != null)
             {
-                address = new Uri(Endpoint, relativeUri);
-
-                if (parameters != null)
-                {
-                    address = address.AddQueryParemeters(parameters);
-                }
-
-                using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, address))
-                {
-                    await AddRequestHeadersAsync(request).ConfigureAwait(false);
-
-                    request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
-                    request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    return await HandleResponseAsync<TResource>(response).ConfigureAwait(false);
-                }
+                address = address.AddQueryParemeters(parameters);
             }
-            finally
+
+            using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, address))
             {
-                response?.Dispose();
-            }
-        }
+                await AddRequestHeadersAsync(request).ConfigureAwait(false);
 
-        /// <summary>
-        /// Refreshes the access token using a refresh token.
-        /// </summary>
-        /// <param name="authority">Address of the authority to issue the token.</param>
-        /// <param name="resource">Identifier of the target resource that is the recipient of the requested token.</param>
-        /// <param name="refreshToken">The refresh token to be used to obtain a new access token.</param>
-        /// <param name="clientId">Identifier of the client requesting the token.</param>
-        /// <param name="clientSecret">Secret of the client requesting the token.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>An instance of <see cref="AuthenticationResult"/> that represents the access token.</returns>
-        public async Task<AuthenticationResult> RefreshAccessTokenAsync(Uri authority, string resource, string refreshToken, string clientId, string clientSecret = null, CancellationToken cancellationToken = default)
-        {
-            Dictionary<string, string> content;
-            HttpResponseMessage response = null;
-            AuthenticationResponse authResponse;
+                request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
+                request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
 
-            try
-            {
-                using (HttpRequestMessage request = new HttpRequestMessage(
-                    HttpMethod.Post,
-                    new Uri($"https://{authority.Host}/{authority.Segments[authority.Segments.Length - 1].TrimEnd('/')}/oauth2/token")))
-                {
-                    content = new Dictionary<string, string>
-                    {
-                        ["client_id"] = clientId,
-                        ["grant_type"] = "refresh_token",
-                        ["refresh_token"] = refreshToken,
-                        ["resource"] = resource
-                    };
-
-                    if (!string.IsNullOrEmpty(clientSecret))
-                    {
-                        content.Add("client_secret", clientSecret);
-                    }
-
-                    request.Content = new FormUrlEncodedContent(content);
-
-                    response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
-
-                    authResponse = await HandleAuthenticationResponseAsync(response).ConfigureAwait(false);
-
-                    return new AuthenticationResult(authResponse);
-                }
-            }
-            finally
-            {
-                response?.Dispose();
+                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
             }
         }
 
         /// <summary>
         /// Adds the headers to the request.
         /// </summary>
-        /// <param name="rootPartnerOperations">The root partner operations instance.</param>
         /// <param name="request">The HTTP request being made.</param>
         /// <param name="additionalHeaders">Additional headers to be added.</param>
         private async Task AddRequestHeadersAsync(HttpRequestMessage request, IDictionary<string, string> additionalHeaders = null)
         {
-            IRequestContext context;
-
-            if (rootPartnerOperations.RequestContext.RequestId == default)
+            if (rootPartnerOperations.RequestContext.RequestId == Guid.Empty)
             {
-                context = RequestContextFactory.Create(
+                requestContext = RequestContextFactory.Create(
                     rootPartnerOperations.RequestContext.CorrelationId,
                     Guid.NewGuid(),
                     rootPartnerOperations.RequestContext.Locale);
             }
             else
             {
-                context = rootPartnerOperations.RequestContext;
+                requestContext = rootPartnerOperations.RequestContext;
             }
 
             if (!string.IsNullOrEmpty(PartnerService.Instance.ApplicationName))
@@ -826,9 +468,9 @@ namespace Microsoft.Store.PartnerCenter.Network
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaType));
 
             request.Headers.Add(ClientHeader, PartnerService.Instance.Configuration.PartnerCenterClient);
-            request.Headers.Add(CorrelationIdHeaderName, context.CorrelationId.ToString());
-            request.Headers.Add(LocaleHeaderName, context.Locale);
-            request.Headers.Add(RequestIdHeaderName, context.RequestId.ToString());
+            request.Headers.Add(CorrelationIdHeaderName, requestContext.CorrelationId.ToString());
+            request.Headers.Add(LocaleHeaderName, requestContext.Locale);
+            request.Headers.Add(RequestIdHeaderName, requestContext.RequestId.ToString());
             request.Headers.Add(SdkVersionHeader, PartnerService.Instance.AssemblyVersion);
 
             if (rootPartnerOperations.Credentials.IsExpired())
@@ -837,13 +479,13 @@ namespace Microsoft.Store.PartnerCenter.Network
                 {
                     await PartnerService.Instance.RefreshCredentials(
                         rootPartnerOperations.Credentials,
-                        context).ConfigureAwait(false);
+                        requestContext).ConfigureAwait(false);
                 }
                 else
                 {
                     throw new PartnerException(
                         "The partner credentials have expired. Please provide updated credentials.",
-                        rootPartnerOperations.RequestContext,
+                        requestContext,
                         PartnerErrorCategory.Unauthorized);
                 }
             }
@@ -921,43 +563,35 @@ namespace Microsoft.Store.PartnerCenter.Network
             };
         }
 
-        private async Task<AuthenticationResponse> HandleAuthenticationResponseAsync(HttpResponseMessage response)
+        private async Task HandleResponseAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
         {
-            AuthenticationResponse entity;
-            string content;
-
-            content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-            entity = JsonConvert.DeserializeObject<AuthenticationResponse>(content, GetSerializationSettings());
-
-            if (response.IsSuccessStatusCode)
-            {
-                return entity;
-            }
-
-            throw new AuthenticationException(entity.Error, entity.ErrorDescription);
-        }
-
-        private async Task HandleResponseAsync(HttpResponseMessage response)
-        {
-            string content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
                 return;
             }
 
-            ApiFault fault = JsonConvert.DeserializeObject<ApiFault>(content, GetSerializationSettings());
+            ApiFault fault = JsonConvert.DeserializeObject<ApiFault>(responseContent, GetSerializationSettings());
             PartnerErrorCategory errorCategory = GetErrorCategory(response.StatusCode);
 
-            throw new PartnerException(
-                fault,
-                rootPartnerOperations.RequestContext,
-                errorCategory);
+            throw new PartnerException(fault, requestContext, errorCategory)
+            {
+                Request = new HttpRequestMessageWrapper(request, null),
+                Response = new HttpResponseMessageWrapper(response, responseContent)
+            };
         }
 
-        private async Task<TResource> HandleResponseAsync<TResource>(HttpResponseMessage response, JsonConverter converter = null)
+        private async Task<TResource> HandleResponseAsync<TResource>(HttpRequestMessage request, CancellationToken cancellationToken = default)
         {
-            string content = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            return await HandleResponseAsync<TResource>(request, null, cancellationToken).ConfigureAwait(false);
+        }
+
+        private async Task<TResource> HandleResponseAsync<TResource>(HttpRequestMessage request, JsonConverter converter = null, CancellationToken cancellationToken = default)
+        {
+            HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
@@ -966,30 +600,32 @@ namespace Microsoft.Store.PartnerCenter.Network
                     return (TResource)Convert.ChangeType(response, typeof(TResource));
                 }
 
-                if (string.IsNullOrEmpty(content))
+                if (string.IsNullOrEmpty(responseContent))
                 {
-                    content = string.Empty;
+                    responseContent = string.Empty;
                 }
 
-                return JsonConvert.DeserializeObject<TResource>(content, GetSerializationSettings(converter));
+                return JsonConvert.DeserializeObject<TResource>(responseContent, GetSerializationSettings(converter));
             }
 
             PartnerErrorCategory errorCategory = GetErrorCategory(response.StatusCode);
 
-            if (string.IsNullOrEmpty(content))
+            if (string.IsNullOrEmpty(responseContent))
             {
-                throw new PartnerException(
-                    response.ReasonPhrase,
-                    rootPartnerOperations.RequestContext,
-                    errorCategory);
+                throw new PartnerException(response.ReasonPhrase, requestContext, errorCategory)
+                {
+                    Request = new HttpRequestMessageWrapper(request, null),
+                    Response = new HttpResponseMessageWrapper(response, responseContent)
+                };
             }
 
-            ApiFault fault = JsonConvert.DeserializeObject<ApiFault>(content, GetSerializationSettings(converter));
+            ApiFault fault = JsonConvert.DeserializeObject<ApiFault>(responseContent, GetSerializationSettings(converter));
 
-            throw new PartnerException(
-                fault,
-                rootPartnerOperations.RequestContext,
-                errorCategory);
+            throw new PartnerException(fault, requestContext, errorCategory)
+            {
+                Request = new HttpRequestMessageWrapper(request, null),
+                Response = new HttpResponseMessageWrapper(response, responseContent)
+            };
         }
     }
 }

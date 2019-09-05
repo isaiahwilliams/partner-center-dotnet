@@ -33,7 +33,7 @@ namespace Microsoft.Store.PartnerCenter
     public interface IPartner
     {
         /// <summary>
-        /// Gets the agreement details operations available.
+        /// Gets the available agreement details operations.
         /// </summary>
         IAgreementDetailsCollection AgreementDetails { get; }
 

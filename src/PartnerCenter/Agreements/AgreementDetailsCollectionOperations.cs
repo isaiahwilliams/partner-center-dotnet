@@ -4,6 +4,7 @@
 namespace Microsoft.Store.PartnerCenter.Agreements
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
     using Models;
@@ -27,16 +28,47 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         }
 
         /// <summary>
-        /// Gets the list of agreement details.
+        /// Gets the available agreement template operations.
         /// </summary>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>List of agreement details.</returns>
-        public async Task<ResourceCollection<AgreementMetaData>> GetAsync(CancellationToken cancellationToken = default)
+        /// <param name="id">Identifier for the agreement.</param>
+        public IAgreement this[string id] => ById(id);
+
+        /// <summary>
+        /// Gets the available agreement template operations.
+        /// </summary>
+        /// <param name="id">Identifier for the agreement.</param>
+        /// <returns>The available agreement template operations.</returns>
+        public IAgreement ById(string id)
         {
+            return new AgreementOperations(Partner, id);
+        }
+
+        /// <summary>
+        /// Gets the agreement details.
+        /// </summary>
+        /// <param name="agreementType">The agreement type used to filter.</param>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>List of details about agreements.</returns>
+        public async Task<ResourceCollection<AgreementMetaData>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default)
+        {
+            IDictionary<string, string> parameters = null;
+
+            if (!string.IsNullOrEmpty(agreementType))
+            {
+                parameters = new Dictionary<string, string>
+                {
+                    {
+                        PartnerService.Instance.Configuration.Apis.GetAgreementsDetails.Parameters.AgreementType,
+                        agreementType
+                    }
+                };
+            }
+
             return await Partner.ServiceClient.GetAsync<ResourceCollection<AgreementMetaData>>(
                 new Uri(
                      $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetAgreementsDetails.Path}",
                      UriKind.Relative),
+                parameters,
                 cancellationToken).ConfigureAwait(false);
         }
     }

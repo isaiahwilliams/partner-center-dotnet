@@ -3,7 +3,6 @@
 
 namespace Microsoft.Store.PartnerCenter.Extensions
 {
-    using System;
     using System.Threading.Tasks;
     using Identity.Client;
     using RequestContext;
@@ -105,14 +104,9 @@ namespace Microsoft.Store.PartnerCenter.Extensions
                 .WithClientSecret(applicationSecret)
                 .WithTenantId(aadApplicationDomain)
                 .Build();
-            
+
             AcquireTokenForClientParameterBuilder builder = app.AcquireTokenForClient(
                new string[] { $"{graphApiEndpoint}/.default" });
-
-            if (requestContext != null)
-            {
-                builder = builder.WithCorrelationId(requestContext.CorrelationId);
-            }
 
             AuthenticationResult authResult = await builder.ExecuteAsync().ConfigureAwait(false);
 

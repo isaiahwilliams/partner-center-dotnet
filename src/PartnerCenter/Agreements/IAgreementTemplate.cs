@@ -6,20 +6,19 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     using System.Threading;
     using System.Threading.Tasks;
     using GenericOperations;
-    using Models;
     using Models.Agreements;
 
     /// <summary>
-    /// Represents the agreement details behavior.
+    /// Represents the available agreement template operations.
     /// </summary>
-    public interface IAgreementDetailsCollection : IPartnerComponent<string>, IEntitySelector<string, IAgreement>
+    public interface IAgreementTemplate : IPartnerComponent<string>, IEntityGetOperations<AgreementTemplate>
     {
         /// <summary>
-        /// Gets the agreement details.
+        /// Gets the specified agreement template document.
         /// </summary>
-        /// <param name="agreementType">The agreement type used to filter.</param>
+        /// <param name="country">The country where the agreement template applies.</param>
+        /// <param name="language">The localized langage for the agreement template.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>List of details about agreements.</returns>
-        Task<ResourceCollection<AgreementMetaData>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default);
+        Task<AgreementTemplate> GetAsync(string country, string language, CancellationToken cancellationToken = default);
     }
 }
