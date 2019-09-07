@@ -18,7 +18,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// <summary>
         /// The agreement type used to filter.
         /// </summary>
-        private string agreementType;
+        private readonly string agreementType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AgreementDetailsCollectionOperations" /> class.

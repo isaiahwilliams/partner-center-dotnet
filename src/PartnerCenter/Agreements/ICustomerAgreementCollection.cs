@@ -3,8 +3,6 @@
 
 namespace Microsoft.Store.PartnerCenter.Agreements
 {
-    using System.Threading;
-    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Agreements;

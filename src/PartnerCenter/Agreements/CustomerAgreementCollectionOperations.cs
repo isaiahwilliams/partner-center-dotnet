@@ -20,7 +20,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// <summary>
         /// The agreement type used to filter.
         /// </summary>
-        private string agreementType; 
+        private readonly string agreementType;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerAgreementCollectionOperations" /> class.
@@ -64,7 +64,6 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// <summary>
         /// Gets the list of agreements between a partner and customer.
         /// </summary>
-        /// <param name="agreementType">The agreement type used to filter.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The list of the customer's agreements.</returns>
         public async Task<ResourceCollection<Agreement>> GetAsync(CancellationToken cancellationToken = default)
