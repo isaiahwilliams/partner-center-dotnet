@@ -3,8 +3,6 @@
 
 namespace Microsoft.Store.PartnerCenter.Agreements
 {
-    using System.Threading;
-    using System.Threading.Tasks;
     using GenericOperations;
     using Models;
     using Models.Agreements;
@@ -12,14 +10,13 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     /// <summary>
     /// Represents the agreement details behavior.
     /// </summary>
-    public interface IAgreementDetailsCollection : IPartnerComponent<string>, IEntitySelector<string, IAgreement>
+    public interface IAgreementDetailsCollection : IPartnerComponent<string>, IEntireEntityCollectionRetrievalOperations<AgreementMetaData, ResourceCollection<AgreementMetaData>>, IEntitySelector<string, IAgreement>
     {
         /// <summary>
-        /// Gets the agreement details.
+        /// Scopes agreements behavior to a specific agreement type.
         /// </summary>
-        /// <param name="agreementType">The agreement type used to filter.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>List of details about agreements.</returns>
-        Task<ResourceCollection<AgreementMetaData>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default);
+        /// <param name="agreementType">The agreement type used to scope.</param>
+        /// <returns>The agreement collection operations customized for the given agreement type.</returns>
+        IAgreementDetailsCollection ByAgreementType(string agreementType);
     }
 }

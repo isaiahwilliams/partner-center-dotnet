@@ -16,15 +16,22 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     internal class AgreementDetailsCollectionOperations : BasePartnerComponent<string>, IAgreementDetailsCollection
     {
         /// <summary>
+        /// The agreement type used to filter.
+        /// </summary>
+        private readonly string agreementType;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AgreementDetailsCollectionOperations" /> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
+        /// <param name="agreementType">The agreement type used to filter.</param>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="rootPartnerOperations"/> is null.
         /// </exception>
-        public AgreementDetailsCollectionOperations(IPartner rootPartnerOperations)
+        public AgreementDetailsCollectionOperations(IPartner rootPartnerOperations, string agreementType = null)
           : base(rootPartnerOperations)
         {
+            this.agreementType = agreementType;
         }
 
         /// <summary>
@@ -32,6 +39,16 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// </summary>
         /// <param name="id">Identifier for the agreement.</param>
         public IAgreement this[string id] => ById(id);
+
+        /// <summary>
+        /// Scopes agreements behavior to a specific agreement type.
+        /// </summary>
+        /// <param name="agreementType">The agreement type used to scope.</param>
+        /// <returns>The agreement collection operations customized for the given agreement type.</returns>
+        public IAgreementDetailsCollection ByAgreementType(string agreementType)
+        {
+            return new AgreementDetailsCollectionOperations(Partner, agreementType);
+        }
 
         /// <summary>
         /// Gets the available agreement template operations.
@@ -46,10 +63,9 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// <summary>
         /// Gets the agreement details.
         /// </summary>
-        /// <param name="agreementType">The agreement type used to filter.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>List of details about agreements.</returns>
-        public async Task<ResourceCollection<AgreementMetaData>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default)
+        public async Task<ResourceCollection<AgreementMetaData>> GetAsync(CancellationToken cancellationToken = default)
         {
             IDictionary<string, string> parameters = null;
 
