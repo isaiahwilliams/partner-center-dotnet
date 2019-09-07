@@ -12,14 +12,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     /// <summary>
     /// Defines the operations available on a partner-customer agreement.
     /// </summary>
-    public interface ICustomerAgreementCollection : IPartnerComponent<string>, IEntityCreateOperations<Agreement, Agreement>
+    public interface ICustomerAgreementCollection : IPartnerComponent<string>, IEntityCreateOperations<Agreement, Agreement>, IEntireEntityCollectionRetrievalOperations<Agreement, ResourceCollection<Agreement>>
     {
-        /// <summary>
-        /// Gets the list of agreements between a partner and customer.
-        /// </summary>
-        /// <param name="agreementType">The agreement type used to filter.</param>
-        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The list of the customer's agreements.</returns>
-        Task<ResourceCollection<Agreement>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default);
     }
 }

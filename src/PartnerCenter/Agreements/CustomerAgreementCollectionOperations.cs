@@ -18,20 +18,28 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     internal class CustomerAgreementCollectionOperations : BasePartnerComponent<string>, ICustomerAgreementCollection
     {
         /// <summary>
+        /// The agreement type used to filter.
+        /// </summary>
+        private string agreementType; 
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="CustomerAgreementCollectionOperations" /> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
         /// <param name="customerId">The identifier for the customer.</param>
+        /// <param name="agreementType">The agreement type used to filter.</param>
         /// <exception cref="ArgumentNullException">
         /// <paramref name="rootPartnerOperations"/> is null.
         /// </exception>
         /// <exception>
         /// <paramref name="customerId"/> is empty or null.
         /// </exception>
-        public CustomerAgreementCollectionOperations(IPartner rootPartnerOperations, string customerId)
+        public CustomerAgreementCollectionOperations(IPartner rootPartnerOperations, string customerId, string agreementType = null)
           : base(rootPartnerOperations, customerId)
         {
             customerId.AssertNotEmpty(nameof(customerId));
+
+            this.agreementType = agreementType;
         }
 
         /// <summary>
@@ -59,7 +67,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         /// <param name="agreementType">The agreement type used to filter.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The list of the customer's agreements.</returns>
-        public async Task<ResourceCollection<Agreement>> GetAsync(string agreementType = null, CancellationToken cancellationToken = default)
+        public async Task<ResourceCollection<Agreement>> GetAsync(CancellationToken cancellationToken = default)
         {
             IDictionary<string, string> parameters = null;
 
