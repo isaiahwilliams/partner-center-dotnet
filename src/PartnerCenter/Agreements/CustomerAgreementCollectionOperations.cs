@@ -43,6 +43,16 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         }
 
         /// <summary>
+        /// Scopes customer agreements behavior to a specific agreement type.
+        /// </summary>
+        /// <param name="agreementType">The type of agreement used to filter.</param>
+        /// <returns>The customer agreement collection operations customized for the given type.</returns>
+        public ICustomerAgreementCollection ByAgreementType(string agreementType)
+        {
+            return new CustomerAgreementCollectionOperations(Partner, Context, agreementType);
+        }
+
+        /// <summary>
         /// Creates an agreement between the partner and customer.
         /// </summary>
         /// <param name="newEntity">The agreement to be created.</param>
