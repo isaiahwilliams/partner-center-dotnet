@@ -39,6 +39,11 @@ namespace Microsoft.Store.PartnerCenter
         private readonly Lazy<IAgreementDetailsCollection> agreementDetails;
 
         /// <summary>
+        /// Provides access to the agreement template operations.
+        /// </summary>
+        private readonly Lazy<IAgreementTemplateCollection> agreementTemplates;
+
+        /// <summary>
         /// Provides access to the partner analytics collection operations.
         /// </summary>
         private readonly Lazy<IPartnerAnalyticsCollection> analytics;
@@ -139,6 +144,7 @@ namespace Microsoft.Store.PartnerCenter
         private PartnerOperations()
         {
             agreementDetails = new Lazy<IAgreementDetailsCollection>(() => new AgreementDetailsCollectionOperations(this));
+            agreementTemplates = new Lazy<IAgreementTemplateCollection>(() => new AgreementTemplateCollectionOperations(this));
             analytics = new Lazy<IPartnerAnalyticsCollection>(() => new PartnerAnalyticsCollectionOperations(this));
             auditRecords = new Lazy<IAuditRecordsCollection>(() => new AuditRecordCollectionOperations(this));
             countryValidationRules = new Lazy<ICountryValidationRulesCollection>(() => new CountryValidationRulesCollectionOperations(this));
@@ -213,6 +219,11 @@ namespace Microsoft.Store.PartnerCenter
         /// Gets the agreement details operations available.
         /// </summary>
         public IAgreementDetailsCollection AgreementDetails => agreementDetails.Value;
+
+        /// <summary>
+        /// Gets the agreement template operations available.
+        /// </summary>
+        public IAgreementTemplateCollection AgreementTemplates => agreementTemplates.Value;
 
         /// <summary>
         /// Gets the analytics collection operations available to the partner.

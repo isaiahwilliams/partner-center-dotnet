@@ -38,6 +38,11 @@ namespace Microsoft.Store.PartnerCenter
         IAgreementDetailsCollection AgreementDetails { get; }
 
         /// <summary>
+        /// Gets the available agreement templates operations.
+        /// </summary>
+        IAgreementTemplateCollection AgreementTemplates { get; }
+
+        /// <summary>
         /// Gets the analytics collection operations available to the partner.
         /// </summary>
         IPartnerAnalyticsCollection Analytics { get; }
