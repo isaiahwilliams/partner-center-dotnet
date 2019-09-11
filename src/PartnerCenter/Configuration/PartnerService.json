@@ -33,7 +33,7 @@
         "AgreementType": "agreementType"
       }
     },
-    "GetAgreementTemplate": {
+    "GetAgreementDocument": {
       "Path": "agreementtemplates/{0}/document",
       "Parameters": {
         "Country": "country",

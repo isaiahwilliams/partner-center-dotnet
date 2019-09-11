@@ -253,7 +253,7 @@ namespace Microsoft.Store.PartnerCenter.Network
         {
             Uri address = new Uri(Endpoint, relativeUri);
 
-            if (parameters != null)
+            if (parameters != null && parameters.Count > 0)
             {
                 address = address.AddQueryParemeters(parameters);
             }
