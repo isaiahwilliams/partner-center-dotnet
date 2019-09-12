@@ -9,7 +9,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Agreements
     public class AgreementDocument
     {
         /// <summary>
-        /// Gets or sets the country of the agreement document.
+        /// Gets or sets the ISO alpha-2 code of the country for which the agreement document is tailored.
         /// </summary>
         public string Country { get; set; }
 
@@ -27,6 +27,5 @@ namespace Microsoft.Store.PartnerCenter.Models.Agreements
         /// Gets or sets the language and locale of the agreement document.
         /// </summary>
         public string Language { get; set; }
-
     }
 }

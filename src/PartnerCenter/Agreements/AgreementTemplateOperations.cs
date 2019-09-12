@@ -4,9 +4,9 @@
 
 namespace Microsoft.Store.PartnerCenter.Agreements
 {
-    using Models.Agreements;
     using System;
     using Extensions;
+    using Models.Agreements;
 
     /// <summary>
     /// Supports operations on agreement templates.
