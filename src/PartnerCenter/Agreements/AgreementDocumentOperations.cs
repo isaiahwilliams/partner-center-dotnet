@@ -4,12 +4,12 @@
 namespace Microsoft.Store.PartnerCenter.Agreements
 {
     using System;
-    using System.Threading.Tasks;
-    using Models.Agreements;
-    using Extensions;
-    using System.Threading;
     using System.Collections.Generic;
     using System.Globalization;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Extensions;
+    using Models.Agreements;
 
     /// <summary>
     /// Implements the operations on an agreement document.

@@ -7,14 +7,14 @@ namespace Microsoft.Store.PartnerCenter.Agreements
     using Models.Agreements;
 
     /// <summary>
-    /// This interface represents operations on an agreement document.
+    /// Represents operations on an agreement document.
     /// </summary>
     public interface IAgreementDocument : IPartnerComponent<AgreementDocumentContext>, IEntityGetOperations<AgreementDocument>
     {
         /// <summary>
         /// Customizes operations based on the given country.
         /// </summary>
-        /// <param name="country">The country ISO code to be used by the returned operations.</param>
+        /// <param name="country">The ISO alpha-2 code of the country for which the agreement document is tailored.</param>
         /// <returns>An operations interface customized for the provided country.</returns>
         IAgreementDocument ByCountry(string country);
 
