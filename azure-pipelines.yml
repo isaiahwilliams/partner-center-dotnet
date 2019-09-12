@@ -22,12 +22,12 @@ steps:
     modifyOutputPath: false
 
 - task: CopyFiles@2
-  displayName: 'Copy nupkg to $(build.artifactstagingdirectory)'
+  displayName: 'Copy artifacts directory to $(build.artifactstagingdirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**\bin\$(BuildConfiguration)\*.nupkg'
+    Contents: '**\artifacts\$(BuildConfiguration)\'
     TargetFolder: '$(build.artifactstagingdirectory)'
-  condition: succeededOrFailed()
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
