@@ -25,8 +25,8 @@ steps:
   displayName: 'Copy artifacts directory to $(build.artifactstagingdirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
-    Contents: '**\artifacts\$(BuildConfiguration)\'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    Contents: 'artifacts\**'
+    TargetFolder: '$(build.artifactstagingdirectory)\artifacts'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: PublishBuildArtifacts@1
