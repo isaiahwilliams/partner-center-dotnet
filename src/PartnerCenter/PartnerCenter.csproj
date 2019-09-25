@@ -22,13 +22,8 @@
     <OutputPath>$(RepoArtifacts)$(Configuration)\</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>1.14.0</Version>
-    <PackageReleaseNotes>
-      1) ***Breaking Change*** - Deprecated the AgreementType enum to enable new agreement types to be added in future without breaking existing clients.
-      2) Updated the IAgreementDetailsCollection.Get() and ICustomerAgreementCollection.Get() methods to take in an (optional) agreementType query filter.
-      3) Added new interfaces: IAgreementTemplateCollection, IAgreementTemplate and IAgreementDocument interfaces and supporting classes. These will be
-         primarily used to download agreement documents (GET /agreementtemplates/{id}/document) for specific language/locales and countries.
-</PackageReleaseNotes>
+    <Version>1.14.1</Version>
+    <PackageReleaseNotes>Resolved issue when trying to connect using application credentials</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -42,7 +37,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
     <PackageReference Include="Microsoft.Identity.Client" Version="3.0.8" />
-    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.19" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20" />
   </ItemGroup>
 
   <ItemGroup>
