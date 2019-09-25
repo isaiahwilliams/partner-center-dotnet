@@ -100,7 +100,7 @@ namespace Microsoft.Store.PartnerCenter.Extensions
         public override async Task AuthenticateAsync(IRequestContext requestContext = null)
         {
             IConfidentialClientApplication app = ConfidentialClientApplicationBuilder.Create(ApplicationId)
-                .WithAuthority(activeDirectoryAuthority)
+                .WithAuthority($"{activeDirectoryAuthority}/{aadApplicationDomain}")
                 .WithClientSecret(applicationSecret)
                 .WithTenantId(aadApplicationDomain)
                 .Build();
