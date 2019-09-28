@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\repo.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <Authors>Isaiah Williams</Authors>
+    <Copyright>Copyright © 2019</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Product>Microsoft Partner Center</Product>
+    <AssemblyName>Microsoft.Store.PartnerCenter.UnitTests</AssemblyName>
+    <RootNamespace>Microsoft.Store.PartnerCenter.UnitTests</RootNamespace>
+    <PackageId>PartnerCenter.UnitTests</PackageId>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\PartnerCenter.UnitTests</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.3.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.0.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\PartnerCenter.TestFramework\PartnerCenter.TestFramework.csproj" />
+    <ProjectReference Include="..\..\src\PartnerCenter\PartnerCenter.csproj" />
+  </ItemGroup>
+
+</Project>

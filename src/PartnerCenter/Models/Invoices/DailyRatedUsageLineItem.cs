@@ -22,7 +22,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         public string PartnerName { get; set; }
 
         /// <summary>
-        /// Gets or sets the identifier of the customer that usage belongs to.
+        /// Gets or sets the id of the customer that usage belongs to.
         /// </summary>
         public string CustomerId { get; set; }
 
@@ -154,17 +154,17 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         /// <summary>
         /// Gets or sets the uri of the resource instance that the usage is about.
         /// </summary>
-        public Uri ResourceUri { get; set; }
+        public string ResourceUri { get; set; }
 
         /// <summary>
-        /// Gets or sets the customer added tags. For more information, see Organize your Azure resources with tags.
+        /// Gets or sets the customer added tags. 
         /// </summary>
         public IDictionary<string, string> Tags { get; private set; }
 
         /// <summary>
         /// Gets or sets the service-specific metadata. For example, an image type for a virtual machine.
         /// </summary>
-        public string AdditionalInfo { get; set; }
+        public IDictionary<string, string> AdditionalInfo { get; private set; }
 
         /// <summary>
         /// Gets or sets internal Azure Service Metadata.
@@ -230,6 +230,36 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         /// Gets or sets ISO currency in which the meter is charged in USD or catalog currency used for rating.
         /// </summary>
         public string PricingCurrency { get; set; }
+
+        /// <summary>
+        /// Gets or sets the entitlement (azure's subscription) id.
+        /// </summary>
+        public string EntitlementId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the entitlement (azure's subscription) description.
+        /// </summary>
+        public string EntitlementDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pricing currency to billing currency exchange rate.
+        /// </summary>
+        public decimal PCToBCExchangeRate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pricing currency to billing currency exchange rate date.
+        /// </summary>
+        public DateTime? PCToBCExchangeRateDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the effective unit price.
+        /// </summary>
+        public decimal EffectiveUnitPrice { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rate of partner earned credit.
+        /// </summary>
+        public decimal RateOfPartnerEarnedCredit { get; set; }
 
         /// <summary>
         /// Returns the type of invoice line item

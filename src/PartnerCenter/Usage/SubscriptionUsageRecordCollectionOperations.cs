@@ -25,13 +25,13 @@ namespace Microsoft.Store.PartnerCenter.Usage
         }
 
         /// <summary>
-        /// Gets the subscription usage records grouped by days.
+        /// Gets the subscription usage records grouped by meter.
         /// </summary>
-        public ISubscriptionDailyUsageRecordCollection Daily => new SubscriptionDailyUsageRecordCollectionOperations(Partner, Context.Item1, Context.Item2);
+        public IUsageRecordByMeterCollection ByMeter =>  new UsageRecordByMeterCollectionOperations(Partner, Context.Item1, Context.Item2);
 
         /// <summary>
-        /// Gets the subscription usage records grouped by resources.
+        /// Gets the subscription usage records grouped by resource.
         /// </summary>
-        public IResourceUsageRecordCollection Resources => new ResourceUsageRecordCollectionOperations(Partner, Context.Item1, Context.Item2);
+        public IUsageRecordByResourceCollection ByResource => new UsageRecordByResourceCollectionOperations(Partner, Context.Item1, Context.Item2);
     }
 }

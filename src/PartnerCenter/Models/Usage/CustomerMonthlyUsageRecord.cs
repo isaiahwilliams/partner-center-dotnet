@@ -14,6 +14,14 @@ namespace Microsoft.Store.PartnerCenter.Models.Usage
         public SpendingBudget Budget { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the customer's Azure subscription was upgraded.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this customer's Azure subscription was upgraded; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsUpgraded { get; set; }
+
+        /// <summary>
         /// Gets or sets the percentage used out of the allocated budget.
         /// </summary>
         public decimal PercentUsed { get; set; }

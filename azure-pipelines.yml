@@ -1,5 +1,17 @@
+strategy:
+  matrix:
+    linux:
+      imageName: 'ubuntu-16.04'
+    mac:
+      imageName: 'macos-10.13'
+    windows:
+      imageName: 'Windows-2019'
+
 pool:
-  name: Hosted Windows 2019 with VS2019
+  name: $(imageName)
+
+trigger:
+- master
 
 variables: 
     BuildConfiguration: 'Release'
@@ -8,18 +20,16 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
-    projects: '**/*.csproj'
-    arguments: '--configuration $(BuildConfiguration)'
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:Build /p:Configuration=$(buildConfiguration)'
 
 - task: DotNetCoreCLI@2
-  displayName: 'Publish'
+  displayName: Test
   inputs:
-    command: publish
-    publishWebProjects: false
-    projects: '**/*.csproj'
-    arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory) --framework netstandard2.0'
-    zipAfterPublish: false
-    modifyOutputPath: false
+    command: custom
+    custom: msbuild
+    arguments: 'build.proj /t:Test /p:Configuration=$(buildConfiguration)'
 
 - task: CopyFiles@2
   displayName: 'Copy artifacts directory to $(build.artifactstagingdirectory)'

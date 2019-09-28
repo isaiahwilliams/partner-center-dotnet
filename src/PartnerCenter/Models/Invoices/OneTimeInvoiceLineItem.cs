@@ -21,6 +21,11 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         public string AvailabilityId { get; set; }
 
         /// <summary>
+        /// Gets or sets the units purchased. Per design column named as BillableQuantity.
+        /// </summary>
+        public decimal BillableQuantity { get; set; }
+
+        /// <summary>
         /// Gets the billing provider.
         /// </summary>
         public override BillingProvider BillingProvider => BillingProvider.OneTime;
@@ -72,6 +77,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         /// <summary>
         /// Gets or sets the discount details associated with this purchase.
         /// </summary>
+        [Obsolete]
         public string DiscountDetails { get; set; }
 
         /// <summary>
@@ -108,6 +114,26 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         /// Gets or sets the partner identifier.
         /// </summary>
         public string PartnerId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the exchange rate date at which the pricing currency to billing currency exchange rate was determined.
+        /// </summary>
+        public DateTime? PCToBCExchangeRateDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pricing currency to billing currency exchange rate.
+        /// </summary>
+        public decimal PCToBCExchangeRate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the price adjustment description.
+        /// </summary>
+        public string PriceAdjustmentDescription { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pricing currency code.
+        /// </summary>
+        public string PricingCurrency { get; set; }
 
         /// <summary>
         /// Gets or sets the product unique identifier.

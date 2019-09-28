@@ -11,13 +11,13 @@ namespace Microsoft.Store.PartnerCenter.Usage
     public interface ISubscriptionUsageRecordCollection : IPartnerComponent<Tuple<string, string>>
     {
         /// <summary>
-        /// Gets the subscription usage records grouped by days.
+        /// Gets the subscription usage records grouped by resource.
         /// </summary>
-        ISubscriptionDailyUsageRecordCollection Daily { get; }
+        IUsageRecordByResourceCollection ByResource { get; }
 
         /// <summary>
-        /// Gets the subscription usage records grouped by resources.
+        /// Gets the subscription usage records grouped by meter.
         /// </summary>
-        IResourceUsageRecordCollection Resources { get; }
+        IUsageRecordByMeterCollection ByMeter { get; }
     }
 }
