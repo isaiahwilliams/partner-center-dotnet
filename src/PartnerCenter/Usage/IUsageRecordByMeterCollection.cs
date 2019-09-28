@@ -9,9 +9,9 @@ namespace Microsoft.Store.PartnerCenter.Usage
     using Models.Usage;
 
     /// <summary>
-    /// Defines the behavior for a subscription's daily usage records.
+    /// Defines the behavior for a subscription's meter usage records.
     /// </summary>
-    public interface ISubscriptionDailyUsageRecordCollection : IPartnerComponent<Tuple<string, string>>, IEntireEntityCollectionRetrievalOperations<SubscriptionDailyUsageRecord, ResourceCollection<SubscriptionDailyUsageRecord>>
+    public interface IUsageRecordByMeterCollection : IPartnerComponent<Tuple<string, string>>, IEntireEntityCollectionRetrievalOperations<MeterUsageRecord, ResourceCollection<MeterUsageRecord>>
     {
     }
 }

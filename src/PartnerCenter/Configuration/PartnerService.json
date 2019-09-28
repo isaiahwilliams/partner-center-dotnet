@@ -188,11 +188,11 @@
     "GetSubscriptionUsageSummary": {
       "Path": "customers/{0}/subscriptions/{1}/usagesummary"
     },
-    "GetSubscriptionDailyUsageRecords": {
-      "Path": "customers/{0}/subscriptions/{1}/usagerecords/daily"
+    "GetSubscriptionUsageRecordsByResource": {
+      "Path": "customers/{0}/subscriptions/{1}/resourceusagerecords"
     },
-    "GetSubscriptionResourceUsageRecords": {
-      "Path": "customers/{0}/subscriptions/{1}/usagerecords/resources"
+    "GetSubscriptionUsageRecordsByMeter": {
+      "Path": "customers/{0}/subscriptions/{1}/meterusagerecords"
     },
     "GetSubscriptionSupportContact": {
       "Path": "customers/{0}/subscriptions/{1}/supportcontact"

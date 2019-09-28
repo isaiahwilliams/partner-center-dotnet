@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="$(MSBuildThisFileDirectory)..\..\repo.props" />
+
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Microsoft.Store.PartnerCenter.TestFramework</AssemblyName>
+    <RootNamespace>Microsoft.Store.PartnerCenter.TestFramework</RootNamespace>
+    <Authors>Isaiah Williams</Authors>
+    <Copyright>Copyright © 2019</Copyright>
+    <NeutralLanguage>en-US</NeutralLanguage>
+    <Product>Microsoft Partner Center Test Framework</Product>
+    <PackageProjectUrl>https://github.com/isaiahwilliams/partner-center-dotnet</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/isaiahwilliams/partner-center-dotnet.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <LangVersion>latest</LangVersion>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>Test framework for the Partner Center .NET SDK</Description>
+    <PackageId>PartnerCenter.DotNet.TestFramework</PackageId>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <OutputPath>$(RepoArtifacts)$(Configuration)\PartnerCenter.TestFramework</OutputPath>
+    <PublishDir>$(OutputPath)</PublishDir>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Version>1.15.0-beta</Version>
+    <PackageReleaseNotes></PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PartnerCenter\PartnerCenter.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="SessionRecords\*.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

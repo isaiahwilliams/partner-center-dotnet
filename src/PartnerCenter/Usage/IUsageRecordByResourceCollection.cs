@@ -11,7 +11,7 @@ namespace Microsoft.Store.PartnerCenter.Usage
     /// <summary>
     /// Defines the behavior for a subscription's resource usage records.
     /// </summary>
-    public interface IResourceUsageRecordCollection : IPartnerComponent<Tuple<string, string>>, IEntireEntityCollectionRetrievalOperations<AzureResourceMonthlyUsageRecord, ResourceCollection<AzureResourceMonthlyUsageRecord>>
+    public interface IUsageRecordByResourceCollection : IPartnerComponent<Tuple<string, string>>, IEntireEntityCollectionRetrievalOperations<ResourceUsageRecord, ResourceCollection<ResourceUsageRecord>>
     {
     }
 }

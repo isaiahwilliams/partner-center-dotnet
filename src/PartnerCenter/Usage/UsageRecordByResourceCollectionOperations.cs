@@ -13,17 +13,17 @@ namespace Microsoft.Store.PartnerCenter.Usage
     using Models.Usage;
 
     /// <summary>
-    /// Implements operations related to a single subscription resource usage records.
+    /// Implements operations related to a single subscription's meter usage records.
     /// </summary>
-    internal class ResourceUsageRecordCollectionOperations : BasePartnerComponent<Tuple<string, string>>, IResourceUsageRecordCollection
+    internal class UsageRecordByResourceCollectionOperations : BasePartnerComponent<Tuple<string, string>>, IUsageRecordByResourceCollection
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ResourceUsageRecordCollectionOperations" /> class.
+        /// Initializes a new instance of the <see cref="UsageRecordByResourceCollectionOperations" /> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
-        /// <param name="customerId">The customer identifer.</param>
+        /// <param name="customerId">The customer identifier.</param>
         /// <param name="subscriptionId">The subscription identifier.</param>
-        public ResourceUsageRecordCollectionOperations(IPartner rootPartnerOperations, string customerId, string subscriptionId)
+        public UsageRecordByResourceCollectionOperations(IPartner rootPartnerOperations, string customerId, string subscriptionId)
           : base(rootPartnerOperations, new Tuple<string, string>(customerId, subscriptionId))
         {
             customerId.AssertNotEmpty(nameof(customerId));
@@ -31,21 +31,21 @@ namespace Microsoft.Store.PartnerCenter.Usage
         }
 
         /// <summary>
-        /// Retrieves the subscription usage records.
+        /// Retrieves the subscription's resource usage records.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>Collection of subscription usage records.</returns>
-        public async Task<ResourceCollection<AzureResourceMonthlyUsageRecord>> GetAsync(CancellationToken cancellationToken = default)
+        /// <returns>Collection of subscription's resource usage records.</returns>
+        public async Task<ResourceCollection<ResourceUsageRecord>> GetAsync(CancellationToken cancellationToken = default)
         {
-            return await Partner.ServiceClient.GetAsync<ResourceCollection<AzureResourceMonthlyUsageRecord>>(
+            return await Partner.ServiceClient.GetAsync<ResourceCollection<ResourceUsageRecord>>(
                 new Uri(
                     string.Format(
                         CultureInfo.InvariantCulture,
-                        $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetSubscriptionResourceUsageRecords.Path}",
+                        $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetSubscriptionUsageRecordsByResource.Path}",
                         Context.Item1,
                         Context.Item2),
                     UriKind.Relative),
-                new ResourceCollectionConverter<AzureResourceMonthlyUsageRecord>(),
+                new ResourceCollectionConverter<MeterUsageRecord>(),
                 cancellationToken).ConfigureAwait(false);
         }
     }
