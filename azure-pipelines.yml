@@ -50,22 +50,22 @@ steps:
     arguments: 'build.proj /t:Test /p:Configuration=$(buildConfiguration)'
 
 - task: CopyFiles@2
-  displayName: 'Copy artifacts directory to $(build.artifactstagingdirectory)'
+  displayName: 'Copy artifacts directory to $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: 'artifacts\**'
-    TargetFolder: '$(build.artifactstagingdirectory)\artifacts'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\artifacts'
 
 - task: BinSkim@3
   displayName: BinSkim
   inputs:
     InputType: 'Basic'
     Function: 'analyze'
-    AnalyzeTarget: '$(Build.ArtifactStagingDirectory)\*.dll;$(Build.ArtifactStagingDirectory)\*.exe'
+    AnalyzeTarget: '$(Build.ArtifactStagingDirectory)\*.dll;'
   condition: eq(variables['Agent.OS'], 'Windows_NT')
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
