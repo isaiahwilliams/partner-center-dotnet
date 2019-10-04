@@ -10,6 +10,9 @@ strategy:
 pool:
   vmImage: $(imageName)
 
+pr:
+- master
+
 trigger:
 - master
 
@@ -17,6 +20,19 @@ variables:
     BuildConfiguration: 'Release'
 
 steps:
+- task: CredScan@2
+  displayName: CredScan
+  inputs:
+    toolMajorVersion: 'V2'
+
+- task: PoliCheck@1
+  displayName: PoliCheck
+  inputs:
+    inputType: 'Basic'
+    targetType: 'F'
+    targetArgument: '$(Build.SourcesDirectory)'
+    result: 'PoliCheck.xml'
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -38,6 +54,13 @@ steps:
     Contents: 'artifacts\**'
     TargetFolder: '$(build.artifactstagingdirectory)\artifacts'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+- task: BinSkim@3
+  displayName: BinSkim
+  inputs:
+    InputType: 'Basic'
+    Function: 'analyze'
+    AnalyzeTarget: '$(Build.ArtifactStagingDirectory)\*.dll;$(Build.ArtifactStagingDirectory)\*.exe'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
