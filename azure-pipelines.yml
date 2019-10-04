@@ -32,6 +32,7 @@ steps:
     targetType: 'F'
     targetArgument: '$(Build.SourcesDirectory)'
     result: 'PoliCheck.xml'
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -61,6 +62,7 @@ steps:
     InputType: 'Basic'
     Function: 'analyze'
     AnalyzeTarget: '$(Build.ArtifactStagingDirectory)\*.dll;$(Build.ArtifactStagingDirectory)\*.exe'
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
