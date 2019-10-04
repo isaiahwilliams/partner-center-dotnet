@@ -24,6 +24,7 @@ steps:
   displayName: CredScan
   inputs:
     toolMajorVersion: 'V2'
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
 
 - task: PoliCheck@1
   displayName: PoliCheck
