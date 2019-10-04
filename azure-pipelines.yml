@@ -10,6 +10,9 @@ strategy:
 pool:
   vmImage: $(imageName)
 
+pr:
+- master
+
 trigger:
 - master
 
@@ -17,6 +20,21 @@ variables:
     BuildConfiguration: 'Release'
 
 steps:
+- task: CredScan@2
+  displayName: CredScan
+  inputs:
+    toolMajorVersion: 'V2'
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
+
+- task: PoliCheck@1
+  displayName: PoliCheck
+  inputs:
+    inputType: 'Basic'
+    targetType: 'F'
+    targetArgument: '$(Build.SourcesDirectory)'
+    result: 'PoliCheck.xml'
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
+
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -32,15 +50,22 @@ steps:
     arguments: 'build.proj /t:Test /p:Configuration=$(buildConfiguration)'
 
 - task: CopyFiles@2
-  displayName: 'Copy artifacts directory to $(build.artifactstagingdirectory)'
+  displayName: 'Copy artifacts directory to $(Build.ArtifactStagingDirectory)'
   inputs:
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: 'artifacts\**'
-    TargetFolder: '$(build.artifactstagingdirectory)\artifacts'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+    TargetFolder: '$(Build.ArtifactStagingDirectory)\artifacts'
+
+- task: BinSkim@3
+  displayName: BinSkim
+  inputs:
+    InputType: 'Basic'
+    Function: 'analyze'
+    AnalyzeTarget: '$(Build.ArtifactStagingDirectory)\*.dll;'
+  condition: eq(variables['Agent.OS'], 'Windows_NT')
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(build.artifactstagingdirectory)'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
