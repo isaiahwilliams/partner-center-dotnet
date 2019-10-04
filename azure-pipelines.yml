@@ -55,7 +55,6 @@ steps:
     SourceFolder: '$(system.defaultworkingdirectory)'
     Contents: 'artifacts\**'
     TargetFolder: '$(build.artifactstagingdirectory)\artifacts'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
 - task: BinSkim@3
   displayName: BinSkim
