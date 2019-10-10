@@ -27,7 +27,7 @@ namespace Microsoft.Store.PartnerCenter.Usage
         /// <summary>
         /// Gets the subscription usage records grouped by meter.
         /// </summary>
-        public IUsageRecordByMeterCollection ByMeter =>  new UsageRecordByMeterCollectionOperations(Partner, Context.Item1, Context.Item2);
+        public IUsageRecordByMeterCollection ByMeter => new UsageRecordByMeterCollectionOperations(Partner, Context.Item1, Context.Item2);
 
         /// <summary>
         /// Gets the subscription usage records grouped by resource.

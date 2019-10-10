@@ -7,6 +7,7 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
     using System.Threading;
     using System.Threading.Tasks;
     using GenericOperations;
+    using Models;
     using Models.Subscriptions;
     using Usage;
     using Utilization;
@@ -80,5 +81,12 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
         /// This operation is currently available for the integration sandbox, and it is used used to activate a third-party subscriptions.
         /// </remarks>
         Task<SubscriptionActivationResult> ActivateAsync(CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets an Azure Plan's subscription entitlements.
+        /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>A resource collection of Azure entitlements.</returns>
+        Task<ResourceCollection<AzureEntitlement>> GetAzurePlanSubscriptionEntitlementsAsync(CancellationToken cancellationToken = default);
     }
 }
