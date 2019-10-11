@@ -8,8 +8,8 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
     using System.Threading;
     using System.Threading.Tasks;
     using Extensions;
-    using Microsoft.Store.PartnerCenter.Models.JsonConverters;
     using Models;
+    using Models.JsonConverters;
     using Models.Subscriptions;
     using Usage;
     using Utilization;

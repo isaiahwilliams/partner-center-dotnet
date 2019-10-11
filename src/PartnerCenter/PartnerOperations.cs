@@ -15,10 +15,10 @@ namespace Microsoft.Store.PartnerCenter
     using GenericOperations;
     using Incidents;
     using Invoices;
-    using Microsoft.Store.PartnerCenter.ProductUpgrades;
     using Network;
     using Offers;
     using Products;
+    using ProductUpgrades;
     using Profiles;
     using RateCards;
     using Relationships;

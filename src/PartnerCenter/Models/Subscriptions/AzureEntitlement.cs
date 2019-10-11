@@ -8,7 +8,6 @@ namespace Microsoft.Store.PartnerCenter.Models.Subscriptions
     /// </summary>
     public class AzureEntitlement
     {
-
         /// <summary>
         /// Gets or sets the friendly name of the entitlement.
         /// </summary>
