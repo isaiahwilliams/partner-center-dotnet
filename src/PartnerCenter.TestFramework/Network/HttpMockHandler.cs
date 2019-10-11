@@ -73,7 +73,7 @@ namespace Microsoft.Store.PartnerCenter.TestFramework.Network
                 {
                     key = matcher.GetMatchingKey(request);
 
-                    if(records[key] == null)
+                    if (records[key] == null)
                     {
                         throw new ResponseNotFoundException($"Unable to locate a reponse for {key}");
                     }

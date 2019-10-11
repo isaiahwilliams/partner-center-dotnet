@@ -22,8 +22,7 @@
     <OutputPath>$(RepoArtifacts)$(Configuration)\</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>1.14.1</Version>
-    <PackageReleaseNotes>Resolved issue when trying to connect using application credentials</PackageReleaseNotes>
+    <Version>1.15.0-preview</Version>
   </PropertyGroup>
 
   <ItemGroup>

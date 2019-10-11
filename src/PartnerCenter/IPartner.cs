@@ -16,6 +16,7 @@ namespace Microsoft.Store.PartnerCenter
     using Network;
     using Offers;
     using Products;
+    using ProductUpgrades;
     using Profiles;
     using RateCards;
     using Relationships;
@@ -101,6 +102,11 @@ namespace Microsoft.Store.PartnerCenter
         /// Gets the product operations available to the partner.
         /// </summary>
         IProductCollection Products { get; }
+
+        /// <summary>
+        /// Gets the product upgrades operations available to the partner.
+        /// </summary>
+        IProductUpgradesCollection ProductUpgrades { get; }
 
         /// <summary>
         /// Gets the profiles operations available to the partner.

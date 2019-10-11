@@ -96,6 +96,11 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         public string InvoiceNumber { get; set; }
 
         /// <summary>
+        /// Gets or sets the description for the meter.
+        /// </summary>
+        public string MeterDescription { get; set; }
+
+        /// <summary>
         /// Gets or sets the MPN identifier associated to this line item.
         /// </summary>
         public string MpnId { get; set; }

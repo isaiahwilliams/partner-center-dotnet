@@ -8,6 +8,8 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
     using System.Threading;
     using System.Threading.Tasks;
     using Extensions;
+    using Models;
+    using Models.JsonConverters;
     using Models.Subscriptions;
     using Usage;
     using Utilization;
@@ -221,6 +223,25 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
                         Context.Item2),
                     UriKind.Relative),
                 entity,
+                cancellationToken).ConfigureAwait(false);
+        }
+
+        /// <summary>
+        /// Gets an Azure Plan's subscription entitlements.
+        /// </summary>
+        /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
+        /// <returns>A resource collection of Azure entitlements.</returns>
+        public async Task<ResourceCollection<AzureEntitlement>> GetAzurePlanSubscriptionEntitlementsAsync(CancellationToken cancellationToken = default)
+        {
+            return await Partner.ServiceClient.GetAsync<SeekBasedResourceCollection<AzureEntitlement>>(
+                new Uri(
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetAzureEntitlements.Path}",
+                        Context.Item1,
+                        Context.Item2),
+                    UriKind.Relative),
+                new ResourceCollectionConverter<AzureEntitlement>(),
                 cancellationToken).ConfigureAwait(false);
         }
     }
