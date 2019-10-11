@@ -15,6 +15,7 @@ namespace Microsoft.Store.PartnerCenter
     using GenericOperations;
     using Incidents;
     using Invoices;
+    using Microsoft.Store.PartnerCenter.ProductUpgrades;
     using Network;
     using Offers;
     using Products;
@@ -99,6 +100,11 @@ namespace Microsoft.Store.PartnerCenter
         private readonly Lazy<IProductCollection> products;
 
         /// <summary>
+        /// Provides access ot the product upgrades colllection operations.
+        /// </summary>
+        private readonly Lazy<IProductUpgradesCollection> productUpgrades;
+
+        /// <summary>
         /// Provides access to the partner profile collection operations.
         /// </summary>
         private readonly Lazy<IPartnerProfileCollection> profiles;
@@ -156,6 +162,7 @@ namespace Microsoft.Store.PartnerCenter
             offerCategories = new Lazy<ICountrySelector<IOfferCategoryCollection>>(() => new OfferCountrySelector(this));
             offers = new Lazy<ICountrySelector<IOfferCollection>>(() => new OfferCountrySelector(this));
             products = new Lazy<IProductCollection>(() => new ProductCollectionOperations(this));
+            productUpgrades = new Lazy<IProductUpgradesCollection>(() => new ProductUpgradesCollectionOperations(this));
             profiles = new Lazy<IPartnerProfileCollection>(() => new PartnerProfileCollectionOperations(this));
             rateCards = new Lazy<IRateCardCollection>(() => new RateCardCollectionOperations(this));
             relationships = new Lazy<IRelationshipCollection>(() => new RelationshipCollectionOperations(this));
@@ -284,6 +291,11 @@ namespace Microsoft.Store.PartnerCenter
         /// Gets the product operations available to the partner.
         /// </summary>
         public IProductCollection Products => products.Value;
+
+        /// <summary>
+        /// Gets the product upgrades operations available to the partner.
+        /// </summary>
+        public IProductUpgradesCollection ProductUpgrades => productUpgrades.Value;
 
         /// <summary>
         /// Gets the profiles operations available to the partner.
