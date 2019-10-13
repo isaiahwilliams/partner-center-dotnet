@@ -6,7 +6,7 @@ namespace Microsoft.Store.PartnerCenter.Models.ProductUpgrades
     /// <summary>
     /// Represents error details for a product upgrade.
     /// </summary>
-    public class ProductUpgradesErrorDetails
+    public class ProductUpgradeErrorDetails
     {
         /// <summary>
         /// Gets or sets the error code of the product upgrade.

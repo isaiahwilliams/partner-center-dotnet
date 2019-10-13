@@ -6,7 +6,7 @@ namespace Microsoft.Store.PartnerCenter.Models.ProductUpgrades
     /// <summary>
     /// Represents a product upgrade request body.
     /// </summary>
-    public class ProductUpgradesRequest
+    public class ProductUpgradeRequest
     {
         /// <summary>
         /// Gets or sets the customer id.

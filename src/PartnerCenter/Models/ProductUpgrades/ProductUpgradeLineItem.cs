@@ -8,17 +8,17 @@ namespace Microsoft.Store.PartnerCenter.Models.ProductUpgrades
     /// <summary>
     /// Represents the product upgrade line item.
     /// </summary>
-    public class ProductUpgradesLineItem
+    public class ProductUpgradeLineItem
     {
         /// <summary>
         /// Gets or sets the product upgrade error details.
         /// </summary>
-        public ProductUpgradesErrorDetails ErrorDetails { get; set; }
+        public ProductUpgradeErrorDetails ErrorDetails { get; set; }
 
         /// <summary>
         /// Gets or sets the product being upgraded.
         /// </summary>
-        public UpgradedProductDetails SourceProduct { get; set; }
+        public ProductUpgradeDetail SourceProduct { get; set; }
 
         /// <summary>
         /// Gets or sets the product upgrade status.
@@ -28,7 +28,7 @@ namespace Microsoft.Store.PartnerCenter.Models.ProductUpgrades
         /// <summary>
         /// Gets or sets the product being upgraded to.
         /// </summary>
-        public UpgradedProductDetails TargetProduct { get; set; }
+        public ProductUpgradeDetail TargetProduct { get; set; }
 
         /// <summary>
         /// Gets or sets the product upgrade date.

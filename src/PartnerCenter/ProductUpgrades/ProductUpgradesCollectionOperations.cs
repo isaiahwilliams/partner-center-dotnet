@@ -48,11 +48,11 @@ namespace Microsoft.Store.PartnerCenter.ProductUpgrades
         /// <param name="productUpgradesRequest">The product upgrade request.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The eligibility object for the customer.</returns>
-        public async Task<ProductUpgradesEligibility> CheckEligibilityAsync(ProductUpgradesRequest productUpgradesRequest, CancellationToken cancellationToken = default)
+        public async Task<ProductUpgradeEligibility> CheckEligibilityAsync(ProductUpgradeRequest productUpgradesRequest, CancellationToken cancellationToken = default)
         {
             productUpgradesRequest.AssertNotNull(nameof(productUpgradesRequest));
 
-            return await Partner.ServiceClient.PostAsync<ProductUpgradesRequest, ProductUpgradesEligibility>(
+            return await Partner.ServiceClient.PostAsync<ProductUpgradeRequest, ProductUpgradeEligibility>(
                 new Uri(
                     string.Format(
                         CultureInfo.InvariantCulture,
@@ -69,11 +69,11 @@ namespace Microsoft.Store.PartnerCenter.ProductUpgrades
         /// <param name="newEntity">The product upgrade request.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The identifier for the product upgrade.</returns>
-        public async Task<string> CreateAsync(ProductUpgradesRequest newEntity, CancellationToken cancellationToken = default)
+        public async Task<string> CreateAsync(ProductUpgradeRequest newEntity, CancellationToken cancellationToken = default)
         {
             newEntity.AssertNotNull(nameof(newEntity));
 
-            HttpResponseMessage response = await Partner.ServiceClient.PostAsync<ProductUpgradesRequest, HttpResponseMessage>(
+            HttpResponseMessage response = await Partner.ServiceClient.PostAsync<ProductUpgradeRequest, HttpResponseMessage>(
                 new Uri(
                     string.Format(
                         CultureInfo.InvariantCulture,

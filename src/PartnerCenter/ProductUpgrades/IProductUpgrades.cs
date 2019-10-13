@@ -18,6 +18,6 @@ namespace Microsoft.Store.PartnerCenter.ProductUpgrades
         /// <param name="productUpgradesRequest">The product upgrade status request.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The eligibility object for the customer.</returns>        
-        Task<ProductUpgradesStatus> CheckStatusAsync(ProductUpgradesRequest productUpgradesRequest, CancellationToken cancellationToken = default);
+        Task<ProductUpgradeStatus> CheckStatusAsync(ProductUpgradeRequest productUpgradesRequest, CancellationToken cancellationToken = default);
     }
 }

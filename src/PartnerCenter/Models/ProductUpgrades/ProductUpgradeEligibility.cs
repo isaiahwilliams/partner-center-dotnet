@@ -6,7 +6,7 @@ namespace Microsoft.Store.PartnerCenter.Models.ProductUpgrades
     /// <summary>
     /// Represents a product upgrade eligibility.
     /// </summary>
-    public class ProductUpgradesEligibility
+    public class ProductUpgradeEligibility
     {
         /// <summary>
         /// Gets or sets the customer id.
