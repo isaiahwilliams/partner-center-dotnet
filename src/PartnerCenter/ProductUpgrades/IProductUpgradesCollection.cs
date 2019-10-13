@@ -11,7 +11,7 @@ namespace Microsoft.Store.PartnerCenter.ProductUpgrades
     /// <summary>
     /// Represents the operations that apply to product upgrades.
     /// </summary>
-    public interface IProductUpgradesCollection : IPartnerComponent<string>, IEntityCreateOperations<ProductUpgradesRequest, string>, IEntitySelector<string, IProductUpgrades>
+    public interface IProductUpgradesCollection : IPartnerComponent<string>, IEntityCreateOperations<ProductUpgradeRequest, string>, IEntitySelector<string, IProductUpgrades>
     {
         /// <summary>
         /// Checks the product upgrade eligibility.
@@ -19,6 +19,6 @@ namespace Microsoft.Store.PartnerCenter.ProductUpgrades
         /// <param name="productUpgradesRequest">The product upgrade request.</param>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The eligibility object for the customer.</returns>
-        Task<ProductUpgradesEligibility> CheckEligibilityAsync(ProductUpgradesRequest productUpgradesRequest, CancellationToken cancellationToken = default);
+        Task<ProductUpgradeEligibility> CheckEligibilityAsync(ProductUpgradeRequest productUpgradesRequest, CancellationToken cancellationToken = default);
     }
 }

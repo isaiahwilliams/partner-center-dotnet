@@ -4,17 +4,17 @@
 namespace Microsoft.Store.PartnerCenter.Models.ProductUpgrades
 {
     /// <summary>
-    /// Represents an upgraded product's details.
+    /// Represents an the details for a product upgrade.
     /// </summary>
-    public class UpgradedProductDetails
+    public class ProductUpgradeDetail
     {
         /// <summary>
-        /// Gets or sets the id of the product to upgrade.
+        /// Gets or sets the identifier of the product upgrade.
         /// </summary>
         public string Id { get; set; }
 
         /// <summary>
-        /// Gets or sets the name of the product to upgrade.
+        /// Gets or sets the name of the product upgrade.
         /// </summary>
         public string Name { get; set; }
     }
