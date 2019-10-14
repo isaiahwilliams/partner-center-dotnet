@@ -4,7 +4,7 @@
 namespace Microsoft.Store.PartnerCenter.Models.Usage
 {
     /// <summary>
-    /// This class defines the monthly usage record of a customer for all its subscriptions.
+    /// Defines the monthly usage record of a customer for all its subscriptions.
     /// </summary>
     public sealed class CustomerMonthlyUsageRecord : UsageRecordBase
     {
