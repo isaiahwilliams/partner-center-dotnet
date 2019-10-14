@@ -19,6 +19,11 @@ namespace Microsoft.Store.PartnerCenter.Models.Usage
         public string EntitlementName { get; set; }
 
         /// <summary>
+        /// Gets or sets the name of the resource.
+        /// </summary>
+        public string Name { get; set; }
+
+        /// <summary>
         /// Gets or sets the resource group name.
         /// </summary>
         public string ResourceGroupName { get; set; }

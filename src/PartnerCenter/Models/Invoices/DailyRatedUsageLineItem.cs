@@ -167,7 +167,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         public IDictionary<string, string> AdditionalInfo { get; private set; }
 
         /// <summary>
-        /// Gets or sets internal Azure Service Metadata.
+        /// Gets or sets internal Azure Service metadata.
         /// </summary>
         public string ServiceInfo1 { get; set; }
 
@@ -232,12 +232,12 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         public string PricingCurrency { get; set; }
 
         /// <summary>
-        /// Gets or sets the entitlement (azure's subscription) id.
+        /// Gets or sets the entitlement identifier.
         /// </summary>
         public string EntitlementId { get; set; }
 
         /// <summary>
-        /// Gets or sets the entitlement (azure's subscription) description.
+        /// Gets or sets the entitlement description.
         /// </summary>
         public string EntitlementDescription { get; set; }
 
