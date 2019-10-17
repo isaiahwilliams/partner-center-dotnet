@@ -16,7 +16,7 @@
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Open source version of the Partner Center .NET SDK</Description>
+    <Description>Open source version of the Partner Center SDK for .NET</Description>
     <PackageId>PartnerCenter.DotNet</PackageId>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <OutputPath>$(RepoArtifacts)$(Configuration)\</OutputPath>

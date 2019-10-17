@@ -17,13 +17,13 @@
     <LangVersion>latest</LangVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>Test framework for the Partner Center .NET SDK</Description>
+    <Description>Test framework for the Partner Center SDK for .NET</Description>
     <PackageId>PartnerCenter.DotNet.TestFramework</PackageId>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <OutputPath>$(RepoArtifacts)$(Configuration)\PartnerCenter.TestFramework</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>1.15.0-beta</Version>
+    <Version>1.15.0-preview</Version>
     <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
