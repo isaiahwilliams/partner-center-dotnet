@@ -21,6 +21,11 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         public string AvailabilityId { get; set; }
 
         /// <summary>
+        /// Gets or sets the billing frequency.
+        /// </summary>
+        public string BillingFrequency { get; set; }
+
+        /// <summary>
         /// Gets or sets the units purchased. Per design column named as BillableQuantity.
         /// </summary>
         public decimal BillableQuantity { get; set; }
