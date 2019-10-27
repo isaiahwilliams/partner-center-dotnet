@@ -52,6 +52,21 @@ namespace Microsoft.Store.PartnerCenter.Products
         }
 
         /// <summary>
+        /// Gets the operations that can be applied on availabilities filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The availability reservation scope filter.</param>
+        /// <returns>The availability collection operations by reservation scope.</returns>
+        public IAvailabilityCollectionByReservationScopeOperations ByReservationScope(string reservationScope)
+        {
+            return new AvailabilityCollectionByReservationScopeOperations(
+                Partner, 
+                Context.Item1,
+                Context.Item2, 
+                Context.Item3, 
+                reservationScope);
+        }
+
+        /// <summary>
         /// Gets the operations that can be applied on availabilities filtered by a specific target segment.
         /// </summary>
         /// <param name="targetSegment">The availability segment filter.</param>

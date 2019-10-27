@@ -80,13 +80,15 @@
       "Parameters": {
         "TargetView": "targetView",
         "Country": "country",
+        "ReservationScope": "reservationScope",
         "TargetSegment": "targetSegment"
       }
     },
     "GetProduct": {
       "Path": "products/{0}",
       "Parameters": {
-        "Country": "country"
+        "Country": "country",
+        "ReservationScope": "reservationScope"
       }
     },
     "CheckInventory": {
@@ -99,50 +101,63 @@
       "Path": "products/{0}/skus",
       "Parameters": {
         "Country": "country",
+        "ReservationScope": "reservationScope",
         "TargetSegment": "targetSegment"
       }
     },
     "GetSku": {
       "Path": "products/{0}/skus/{1}",
       "Parameters": {
-        "Country": "country"
+        "Country": "country",
+        "ReservationScope": "reservationScope"
       }
     },
     "GetAvailabilities": {
       "Path": "products/{0}/skus/{1}/availabilities",
       "Parameters": {
         "Country": "country",
+        "ReservationScope": "reservationScope",
         "TargetSegment": "targetSegment"
       }
     },
     "GetAvailability": {
       "Path": "products/{0}/skus/{1}/availabilities/{2}",
       "Parameters": {
-        "Country": "country"
+        "Country": "country",
+        "ReservationScope": "reservationScope"
       }
     },
     "GetCustomerProducts": {
       "Path": "customers/{0}/products",
       "Parameters": {
+        "ReservationScope": "reservationScope",
         "TargetView": "targetView",
         "TargetSegment": "targetSegment"
       }
     },
     "GetCustomerProduct": {
-      "Path": "customers/{0}/products/{1}"
+      "Path": "customers/{0}/products/{1}",
+      "Parameters": {
+        "ReservationScope": "reservationScope"
+      }
     },
     "GetCustomerSkus": {
       "Path": "customers/{0}/products/{1}/skus",
       "Parameters": {
+        "ReservationScope": "reservationScope",
         "TargetSegment": "targetSegment"
       }
     },
     "GetCustomerSku": {
-      "Path": "customers/{0}/products/{1}/skus/{2}"
+      "Path": "customers/{0}/products/{1}/skus/{2}",
+      "Parameters": {
+        "ReservationScope": "reservationScope"
+      }
     },
     "GetCustomerAvailabilities": {
       "Path": "customers/{0}/products/{1}/skus/{2}/availabilities",
       "Parameters": {
+        "ReservationScope": "reservationScope",
         "TargetSegment": "targetSegment"
       }
     },

@@ -3,44 +3,36 @@
 
 namespace Microsoft.Store.PartnerCenter.Products
 {
-    using System;
     using System.Collections.Generic;
+    using GenericOperations;
+    using System;
+    using Models;
     using System.Threading;
     using System.Threading.Tasks;
-    using Extensions;
-    using Models;
+    using System.Globalization;
     using Models.JsonConverters;
     using Models.Products;
-    using System.Globalization;
 
     /// <summary>
-    /// Availabilities implementation class.
+    /// Implements the operations to get availabilities by reservation scope.
     /// </summary>
-    internal class AvailabilityCollectionByTargetSegmentOperations : BasePartnerComponent<Tuple<string, string, string, string>>, IAvailabilityCollectionByTargetSegment
+    internal class AvailabilityCollectionByReservationScopeOperations : BasePartnerComponent<Tuple<string, string, string, string>>, IAvailabilityCollectionByReservationScopeOperations
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="AvailabilityCollectionByTargetSegmentOperations" /> class.
+        /// Initializes a new instance of the <see cref="AvailabilityCollectionByReservationScopeOperations"/> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
         /// <param name="productId">The corresponding product identifier.</param>
         /// <param name="skuId">The corresponding SKU identifier.</param>
         /// <param name="country">The country on which to base the product.</param>
-        /// <param name="targetSegment">The target segment used for filtering the availabilities.</param>
-        public AvailabilityCollectionByTargetSegmentOperations(
-          IPartner rootPartnerOperations,
-          string productId,
-          string skuId,
-          string country,
-          string targetSegment) : base(rootPartnerOperations, new Tuple<string, string, string, string>(productId, skuId, country, targetSegment))
+        /// <param name="reservationScope">The reservation scope used for filtering the availabilities.</param>
+        public AvailabilityCollectionByReservationScopeOperations(IPartner rootPartnerOperations, string productId, string skuId, string country, string reservationScope) :
+            base(rootPartnerOperations, new Tuple<string, string, string, string>(productId, skuId, country, reservationScope))
         {
-            productId.AssertNotEmpty(nameof(productId));
-            skuId.AssertNotEmpty(nameof(skuId));
-            country.AssertNotEmpty(nameof(country));
-            targetSegment.AssertNotEmpty(nameof(targetSegment));
         }
 
         /// <summary>
-        /// Gets all the availabilities for the provided SKU on a specific target segment.
+        /// Gets all the availabilities for the provided SKU on a specific reservation scope.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
         /// <returns>The availability for the provided SKU on a specific target segment.</returns>
@@ -53,7 +45,7 @@ namespace Microsoft.Store.PartnerCenter.Products
                     Context.Item3
                 },
                 {
-                    PartnerService.Instance.Configuration.Apis.GetAvailabilities.Parameters.TargetSegment,
+                    PartnerService.Instance.Configuration.Apis.GetAvailabilities.Parameters.ReservationScope,
                     Context.Item4
                 }
             };

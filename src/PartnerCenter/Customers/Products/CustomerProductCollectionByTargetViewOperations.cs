@@ -32,6 +32,21 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         }
 
         /// <summary>
+        /// Gets the operations that can be applied on products in a given catalog view and that apply to a given customer, filtered by reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The product segment filter.</param>
+        /// <returns>The product collection operations by customer, by target view and by reservation scope.</returns>
+        public ICustomerProductCollectionByTargetViewByReservationScope ByReservationScope(string reservationScope)
+        {
+            return new CustomerProductCollectionByTargetViewByReservationScopeOperations(
+                Partner,
+                Context.Item1,
+                Context.Item2,
+                reservationScope);
+
+        }
+
+        /// <summary>
         /// Gets the operations that can be applied on products in a given catalog view and that apply to a given customer, filtered by target segment.
         /// </summary>
         /// <param name="targetSegment">The product segment filter.</param>
