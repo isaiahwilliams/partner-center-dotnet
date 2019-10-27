@@ -41,10 +41,10 @@ namespace Microsoft.Store.PartnerCenter.Products
         public ISkuCollectionByTargetSegmentByReservationScope ByReservationScope(string reservationScope)
         {
             return new SkuCollectionByTargetSegmentByReservationScopeOperations(
-                Partner, 
-                Context.Item1, 
-                Context.Item2, 
-                Context.Item3, 
+                Partner,
+                Context.Item1,
+                Context.Item2,
+                Context.Item3,
                 reservationScope);
         }
 

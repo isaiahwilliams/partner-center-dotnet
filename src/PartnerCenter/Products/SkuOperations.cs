@@ -10,7 +10,6 @@ namespace Microsoft.Store.PartnerCenter.Products
     using System.Threading.Tasks;
     using Extensions;
     using Models.Products;
-    using Customers.Products;
 
     /// <summary>
     /// Implements a single SKU operations.

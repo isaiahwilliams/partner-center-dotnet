@@ -49,9 +49,9 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         public ICustomerProductByReservationScope ByCustomerReservationScope(string reservationScope)
         {
             return new CustomerProductByReservationScopeOperations(
-                Partner, 
-                Context.Item1, 
-                Context.Item2, 
+                Partner,
+                Context.Item1,
+                Context.Item2,
                 reservationScope);
         }
 
@@ -63,9 +63,9 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         public IProductByReservationScope ByReservationScope(string reservationScope)
         {
             return new ProductByReservationScopeOperations(
-                Partner, 
-                Context.Item1, 
-                Context.Item2, 
+                Partner,
+                Context.Item1,
+                Context.Item2,
                 reservationScope);
         }
 

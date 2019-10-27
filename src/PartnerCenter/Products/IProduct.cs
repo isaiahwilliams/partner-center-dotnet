@@ -5,7 +5,6 @@ namespace Microsoft.Store.PartnerCenter.Products
 {
     using System;
     using GenericOperations;
-    using Customers.Products;
     using Models.Products;
 
     /// <summary>

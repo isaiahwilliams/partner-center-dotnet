@@ -5,12 +5,11 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
 {
     using System;
     using System.Collections.Generic;
-    using System.Text;
+    using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
     using Extensions;
     using Models;
-    using System.Globalization;
     using Models.JsonConverters;
     using Models.Products;
 

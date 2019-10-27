@@ -59,10 +59,10 @@ namespace Microsoft.Store.PartnerCenter.Products
         public IAvailabilityCollectionByReservationScopeOperations ByReservationScope(string reservationScope)
         {
             return new AvailabilityCollectionByReservationScopeOperations(
-                Partner, 
+                Partner,
                 Context.Item1,
-                Context.Item2, 
-                Context.Item3, 
+                Context.Item2,
+                Context.Item3,
                 reservationScope);
         }
 

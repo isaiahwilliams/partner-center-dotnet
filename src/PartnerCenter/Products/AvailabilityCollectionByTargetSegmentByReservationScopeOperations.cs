@@ -4,13 +4,13 @@ namespace Microsoft.Store.PartnerCenter.Products
 {
     using System;
     using System.Collections.Generic;
-    using Extensions;
-    using System.Threading.Tasks;
+    using System.Globalization;
     using System.Threading;
+    using System.Threading.Tasks;
+    using Extensions;
     using Models;
     using Models.JsonConverters;
     using Models.Products;
-    using System.Globalization;
 
     /// <summary>
     /// Implements the operations for availabilities by target segement and reservation scope.

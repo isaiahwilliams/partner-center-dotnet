@@ -8,7 +8,6 @@ namespace Microsoft.Store.PartnerCenter.Products
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
-    using Models;
     using Models.Products;
 
     /// <summary>

@@ -4,8 +4,8 @@
 namespace Microsoft.Store.PartnerCenter.Products
 {
     using System;
-    using Models;
     using GenericOperations;
+    using Models;
     using Models.Products;
 
     /// <summary>

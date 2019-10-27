@@ -4,14 +4,14 @@
 namespace Microsoft.Store.PartnerCenter.Customers.Products
 {
     using System;
-    using Models;
-    using Extensions;
-    using Models.JsonConverters;
+    using System.Collections.Generic;
+    using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
+    using Extensions;
+    using Models;
+    using Models.JsonConverters;
     using Models.Products;
-    using System.Globalization;
 
     /// <summary>
     /// Implements the product operations by customer, by target view, by target segment, and by reservation scope.

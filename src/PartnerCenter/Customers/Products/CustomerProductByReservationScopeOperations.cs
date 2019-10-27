@@ -9,8 +9,6 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     using System.Threading;
     using System.Threading.Tasks;
     using Extensions;
-    using Models;
-    using Models.JsonConverters;
     using Models.Products;
 
     /// <summary>

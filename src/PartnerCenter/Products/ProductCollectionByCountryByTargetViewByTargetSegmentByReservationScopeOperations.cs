@@ -4,13 +4,13 @@
 namespace Microsoft.Store.PartnerCenter.Products
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading;
     using System.Threading.Tasks;
-    using System.Collections.Generic;
-    using Models;
-    using Models.Products;
-    using Models.JsonConverters;
     using Extensions;
+    using Models;
+    using Models.JsonConverters;
+    using Models.Products;
 
     /// <summary>
     /// Implements the product operations by country, by collection id and by reservation scope.

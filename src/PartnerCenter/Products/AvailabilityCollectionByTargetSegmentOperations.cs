@@ -5,13 +5,13 @@ namespace Microsoft.Store.PartnerCenter.Products
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
     using Extensions;
     using Models;
     using Models.JsonConverters;
     using Models.Products;
-    using System.Globalization;
 
     /// <summary>
     /// Availabilities implementation class.
