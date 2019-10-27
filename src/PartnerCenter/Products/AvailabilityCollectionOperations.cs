@@ -14,7 +14,7 @@ namespace Microsoft.Store.PartnerCenter.Products
     using Models.Products;
 
     /// <summary>
-    /// Availabilities implementation class.
+    /// Implements the availabilities collection operations.
     /// </summary>
     internal class AvailabilityCollectionOperations : BasePartnerComponent<Tuple<string, string, string>>, IAvailabilityCollection
     {
@@ -22,8 +22,8 @@ namespace Microsoft.Store.PartnerCenter.Products
         /// Initializes a new instance of the <see cref="AvailabilityCollectionOperations" /> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
-        /// <param name="productId">The corresponding product id.</param>
-        /// <param name="skuId">The corresponding sku id.</param>
+        /// <param name="productId">The corresponding product identifier.</param>
+        /// <param name="skuId">The corresponding SKU identifier.</param>
         /// <param name="country">The country on which to base the product.</param>
         public AvailabilityCollectionOperations(IPartner rootPartnerOperations, string productId, string skuId, string country)
           : base(rootPartnerOperations, new Tuple<string, string, string>(productId, skuId, country))

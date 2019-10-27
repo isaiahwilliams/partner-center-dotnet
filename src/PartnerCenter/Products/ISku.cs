@@ -8,7 +8,7 @@ namespace Microsoft.Store.PartnerCenter.Products
     using Models.Products;
 
     /// <summary>
-    /// Holds operations that can be performed on a single SKU.
+    /// Represents the operations that can be performed on a single SKU.
     /// </summary>
     public interface ISku : IPartnerComponent<Tuple<string, string, string>>, IEntityGetOperations<Sku>
     {
@@ -16,5 +16,12 @@ namespace Microsoft.Store.PartnerCenter.Products
         /// Gets the operations for the current SKU's availabilities.
         /// </summary>
         IAvailabilityCollection Availabilities { get; }
+
+        /// <summary>
+        /// Gets the operations that can be applied on SKU identifiers filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The individual SKU operations sorted by reservation scope.</returns>
+        ISkuByReservationScope ByReservationScope(string reservationScope);
     }
 }

@@ -14,7 +14,7 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     /// <summary>
     /// Implements operations for a single customer SKU.
     /// </summary>
-    internal class CustomerSkuOperations : BasePartnerComponent<Tuple<string, string, string>>, ISku
+    internal class CustomerSkuOperations : BasePartnerComponent<Tuple<string, string, string>>, ICustomerSku
     {
         /// <summary>
         /// Provides the availabilities operations.
@@ -42,6 +42,26 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         /// Gets the operations for the current SKU's availabilities.
         /// </summary>
         public IAvailabilityCollection Availabilities => availabilities.Value;
+
+        /// <summary>
+        /// Gets the operations that can be applied on a customer's SKU identifiers filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The individual sku operations sorted by reservation scope.</returns>
+        public ICustomerSkuByReservationScope ByCustomerReservationScope(string reservationScope)
+        {
+            return new CustomerSkuByReservationScopeOperations(Partner, Context.Item1, Context.Item2, Context.Item3, reservationScope);
+        }
+
+        /// <summary>
+        /// Gets the operations that can be applied on SKU identifiers filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The individual sku operations sorted by reservation scope.</returns>
+        public ISkuByReservationScope ByReservationScope(string reservationScope)
+        {
+            return new SkuByReservationScopeOperations(Partner, Context.Item1, Context.Item2, Context.Item3, reservationScope);
+        }
 
         /// <summary>
         /// Gets the SKU information.

@@ -22,8 +22,8 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         /// Initializes a new instance of the <see cref="CustomerProductByReservationScopeOperations"/> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
-        /// <param name="customerId">The customer Id.</param>
-        /// <param name="productId">The product Id.</param>
+        /// <param name="customerId">The customer identifier.</param>
+        /// <param name="productId">The product identifier.</param>
         /// <param name="reservationScope">The reservation scope on which to base the product.</param>
         public CustomerProductByReservationScopeOperations(IPartner rootPartnerOperations, string customerId, string productId, string reservationScope) :
             base(rootPartnerOperations, new Tuple<string, string, string>(customerId, productId, reservationScope))

@@ -8,7 +8,7 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     using Models.Products;
 
     /// <summary>
-    /// Represents the operations that can be performed on a single product filtered by reservation scope
+    /// Represents operations that can be performed on a single product filtered by reservation scope
     /// </summary>
     public interface ICustomerProductByReservationScope : IPartnerComponent<Tuple<string, string, string>>, IEntityGetOperations<Product>
     {

@@ -49,6 +49,16 @@ namespace Microsoft.Store.PartnerCenter.Products
         }
 
         /// <summary>
+        /// Gets the operations that can be applied on SKU identifiers filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The individual sku operations sorted by reservation scope.</returns>
+        public ISkuCollectionByReservationScope ByReservationScope(string reservationScope)
+        {
+            return new SkuCollectionByReservationScopeOperations(Partner, Context.Item1, Context.Item2, reservationScope);
+        }
+
+        /// <summary>
         /// Retrieves the operations that can be applied on skus that belong to a segment.
         /// </summary>
         /// <param name="targetSegment">The sku segment filter.</param>

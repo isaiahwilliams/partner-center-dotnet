@@ -37,6 +37,22 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         }
 
         /// <summary>
+        /// Gets the operations that can be applied on products that belong to a given target segment, and reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The availability collection operations by target segment by reservation scope.</returns>
+        public IAvailabilityCollectionByTargetSegmentByReservationScopeOperations ByReservationScope(string reservationScope)
+        {
+            return new CustomerAvailabilityCollectionByTargetSegmentByReservationScopeOperations(
+                Partner,
+                Context.Item1,
+                Context.Item2,
+                Context.Item3,
+                Context.Item4,
+                reservationScope);
+        }
+
+        /// <summary>
         /// Gets all the availabilities for the provided SKU on a specific target segment.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
