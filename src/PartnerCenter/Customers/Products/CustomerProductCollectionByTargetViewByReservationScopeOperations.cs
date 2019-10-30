@@ -14,51 +14,37 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     using Models.Products;
 
     /// <summary>
-    /// Product operations by customer identifier, by target view and by target segment implementation class.
+    /// Implements the product operations by customer and by reservation scope operations.
     /// </summary>
-    internal class CustomerProductCollectionByTargetViewByTargetSegmentOperations : BasePartnerComponent<Tuple<string, string, string>>, ICustomerProductCollectionByTargetViewByTargetSegment
+    internal class CustomerProductCollectionByTargetViewByReservationScopeOperations : BasePartnerComponent<Tuple<string, string, string>>, ICustomerProductCollectionByTargetViewByReservationScope
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomerProductCollectionByTargetViewByTargetSegmentOperations" /> class.
+        /// Initializes a new instance of the <see cref="CustomerProductCollectionByTargetViewByReservationScopeOperations"/> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
-        /// <param name="customerId">The customer identifier.</param>
+        /// <param name="customerId">The customer identifier for which to retrieve the products.</param>
         /// <param name="targetView">The target view which contains the products.</param>
-        /// <param name="targetSegment">The target segment used for filtering the products.</param>
-        public CustomerProductCollectionByTargetViewByTargetSegmentOperations(IPartner rootPartnerOperations, string customerId, string targetView, string targetSegment)
-          : base(rootPartnerOperations, new Tuple<string, string, string>(customerId, targetView, targetSegment))
+        /// <param name="reservationScope">The reservation scope which contains the products.</param>
+        public CustomerProductCollectionByTargetViewByReservationScopeOperations(IPartner rootPartnerOperations, string customerId, string targetView, string reservationScope) :
+            base(rootPartnerOperations, new Tuple<string, string, string>(customerId, targetView, reservationScope))
         {
             customerId.AssertNotEmpty(nameof(customerId));
             targetView.AssertNotEmpty(nameof(targetView));
-            targetSegment.AssertNotEmpty(nameof(targetSegment));
+            reservationScope.AssertNotEmpty(nameof(reservationScope));
         }
 
-        /// <summary>
-        /// Gets the operations that can be applied on customer products filtered by a specific reservation scope.
-        /// </summary>
-        /// <param name="reservationScope">The customer products reservation scope filter.</param>
-        /// <returns>The customer products collection operations by reservation scope.</returns>
-        public ICustomerProductCollectionByTargetViewByTargetSegmentByReservationScope ByReservationScope(string reservationScope)
-        {
-            return new CustomerProductCollectionByTargetViewByTargetSegmentByReservationScopeOperations(
-                Partner,
-                Context.Item1,
-                Context.Item2,
-                Context.Item3,
-                reservationScope);
-        }
 
         /// <summary>
-        /// Gets all the products in a given catalog view and that apply to a given customer, filtered by target segment.
+        /// Gets all the products in a given product collection and that apply to a given customer, filtered by reservation scope.
         /// </summary>
         /// <param name="cancellationToken">A cancellation token that can be used by other objects or threads to receive notice of cancellation.</param>
-        /// <returns>The products in a given catalog view and that apply to a given customer, filtered by target segment.</returns>
+        /// <returns>The products in a given product collection and that apply to a given customer, filtered by reservation scope.</returns>
         public async Task<ResourceCollection<Product>> GetAsync(CancellationToken cancellationToken = default)
         {
             IDictionary<string, string> parameters = new Dictionary<string, string>
             {
                 {
-                    PartnerService.Instance.Configuration.Apis.GetCustomerProducts.Parameters.TargetSegment,
+                    PartnerService.Instance.Configuration.Apis.GetCustomerProducts.Parameters.ReservationScope,
                     Context.Item3
                 },
                 {

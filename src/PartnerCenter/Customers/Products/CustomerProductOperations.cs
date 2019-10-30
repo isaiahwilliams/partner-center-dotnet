@@ -14,7 +14,7 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     /// <summary>
     /// Single product by customer identifier operations implementation.
     /// </summary>
-    internal class CustomerProductOperations : BasePartnerComponent<Tuple<string, string>>, IProduct
+    internal class CustomerProductOperations : BasePartnerComponent<Tuple<string, string>>, ICustomerProduct
     {
         /// <summary>
         /// Provides the product SKU operations.
@@ -40,6 +40,34 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         /// Get the SKUs for the product.
         /// </summary>
         public ISkuCollection Skus => skus.Value;
+
+        /// <summary>
+        /// Gets the operations that can be applied on a customer's product identifier's filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The individual product operations sorted by reservation scope.</returns>
+        public ICustomerProductByReservationScope ByCustomerReservationScope(string reservationScope)
+        {
+            return new CustomerProductByReservationScopeOperations(
+                Partner,
+                Context.Item1,
+                Context.Item2,
+                reservationScope);
+        }
+
+        /// <summary>
+        /// Gets the operations that can be applied on product identifier's filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The individual product operations sorted by reservation scope.</returns>
+        public IProductByReservationScope ByReservationScope(string reservationScope)
+        {
+            return new ProductByReservationScopeOperations(
+                Partner,
+                Context.Item1,
+                Context.Item2,
+                reservationScope);
+        }
 
         /// <summary>
         /// Gets the product information.

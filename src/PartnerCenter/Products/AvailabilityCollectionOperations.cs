@@ -14,7 +14,7 @@ namespace Microsoft.Store.PartnerCenter.Products
     using Models.Products;
 
     /// <summary>
-    /// Availabilities implementation class.
+    /// Implements the availabilities collection operations.
     /// </summary>
     internal class AvailabilityCollectionOperations : BasePartnerComponent<Tuple<string, string, string>>, IAvailabilityCollection
     {
@@ -22,8 +22,8 @@ namespace Microsoft.Store.PartnerCenter.Products
         /// Initializes a new instance of the <see cref="AvailabilityCollectionOperations" /> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
-        /// <param name="productId">The corresponding product id.</param>
-        /// <param name="skuId">The corresponding sku id.</param>
+        /// <param name="productId">The corresponding product identifier.</param>
+        /// <param name="skuId">The corresponding SKU identifier.</param>
         /// <param name="country">The country on which to base the product.</param>
         public AvailabilityCollectionOperations(IPartner rootPartnerOperations, string productId, string skuId, string country)
           : base(rootPartnerOperations, new Tuple<string, string, string>(productId, skuId, country))
@@ -49,6 +49,21 @@ namespace Microsoft.Store.PartnerCenter.Products
         public IAvailability ById(string id)
         {
             return new AvailabilityOperations(Partner, Context.Item1, Context.Item2, id, Context.Item3);
+        }
+
+        /// <summary>
+        /// Gets the operations that can be applied on availabilities filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The availability reservation scope filter.</param>
+        /// <returns>The availability collection operations by reservation scope.</returns>
+        public IAvailabilityCollectionByReservationScopeOperations ByReservationScope(string reservationScope)
+        {
+            return new AvailabilityCollectionByReservationScopeOperations(
+                Partner,
+                Context.Item1,
+                Context.Item2,
+                Context.Item3,
+                reservationScope);
         }
 
         /// <summary>

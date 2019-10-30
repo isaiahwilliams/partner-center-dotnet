@@ -14,7 +14,7 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     using Models.Products;
 
     /// <summary>
-    /// Product operations by customer id and by target view implementation class.
+    /// Product operations by customer identifier and by target view implementation class.
     /// </summary>
     internal class CustomerProductCollectionByTargetViewOperations : BasePartnerComponent<Tuple<string, string>>, ICustomerProductCollectionByTargetView
     {
@@ -29,6 +29,21 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         {
             customerId.AssertNotEmpty(nameof(customerId));
             targetView.AssertNotEmpty(nameof(targetView));
+        }
+
+        /// <summary>
+        /// Gets the operations that can be applied on products in a given catalog view and that apply to a given customer, filtered by reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The product segment filter.</param>
+        /// <returns>The product collection operations by customer, by target view and by reservation scope.</returns>
+        public ICustomerProductCollectionByTargetViewByReservationScope ByReservationScope(string reservationScope)
+        {
+            return new CustomerProductCollectionByTargetViewByReservationScopeOperations(
+                Partner,
+                Context.Item1,
+                Context.Item2,
+                reservationScope);
+
         }
 
         /// <summary>

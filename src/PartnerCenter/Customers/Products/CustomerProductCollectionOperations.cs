@@ -43,7 +43,7 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         /// Gets the operations that can be applied on products in a given catalog view and that apply to a given customer.
         /// </summary>
         /// <param name="targetView">The product target view.</param>
-        /// <returns>The catalog view operations by customer id and by target view.</returns>
+        /// <returns>The catalog view operations by customer identifier and by target view.</returns>
         public ICustomerProductCollectionByTargetView ByTargetView(string targetView)
         {
             return new CustomerProductCollectionByTargetViewOperations(Partner, Context, targetView);

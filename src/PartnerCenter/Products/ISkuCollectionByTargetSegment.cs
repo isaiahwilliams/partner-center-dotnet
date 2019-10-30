@@ -9,9 +9,15 @@ namespace Microsoft.Store.PartnerCenter.Products
     using Models.Products;
 
     /// <summary>
-    /// Holds operations that can be performed on skus from a specific target segment.
+    /// Represents the operations that can be performed on skus from a specific target segment.
     /// </summary>
     public interface ISkuCollectionByTargetSegment : IPartnerComponent<Tuple<string, string, string>>, IEntireEntityCollectionRetrievalOperations<Sku, ResourceCollection<Sku>>
     {
+        /// <summary>
+        /// Gets the operations that can be applied on SKU identifiers filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The individual SKU operations sorted by reservation scope.</returns>
+        ISkuCollectionByTargetSegmentByReservationScope ByReservationScope(string reservationScope);
     }
 }

@@ -9,9 +9,9 @@ namespace Microsoft.Store.PartnerCenter.Products
     using Models.Products;
 
     /// <summary>
-    /// Represents the operations that can be performed on products that belong to a given country, a catalog view and a specific target segment.
+    /// Represents the operations that can be performed on skus from a specific reservation scope.
     /// </summary>
-    public interface IProductCollectionByCountryByTargetViewByTargetSegment : IPartnerComponent<Tuple<string, string, string>>, IEntireEntityCollectionRetrievalOperations<Product, ResourceCollection<Product>>
+    public interface ISkuCollectionByReservationScope : IPartnerComponent<Tuple<string, string, string>>, IEntireEntityCollectionRetrievalOperations<Sku, ResourceCollection<Sku>>
     {
     }
 }

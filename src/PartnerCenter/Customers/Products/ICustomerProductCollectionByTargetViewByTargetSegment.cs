@@ -9,9 +9,15 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     using Models.Products;
 
     /// <summary>
-    /// Holds operations that can be performed on products in a given catalog view and that apply to a given customer, filtered by target segment.
+    /// Represents the operations that can be performed on products in a given catalog view and that apply to a given customer, filtered by target segment.
     /// </summary>
     public interface ICustomerProductCollectionByTargetViewByTargetSegment : IPartnerComponent<Tuple<string, string, string>>, IEntireEntityCollectionRetrievalOperations<Product, ResourceCollection<Product>>
     {
+        /// <summary>
+        /// Gets the operations that can be applied on customer products filtered by a specific reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The customer products reservation scope filter.</param>
+        /// <returns>The customer products collection operations by reservation scope.</returns>
+        ICustomerProductCollectionByTargetViewByTargetSegmentByReservationScope ByReservationScope(string reservationScope);
     }
 }

@@ -8,49 +8,24 @@ namespace Microsoft.Store.PartnerCenter.Products
     using System.Globalization;
     using System.Threading;
     using System.Threading.Tasks;
-    using Extensions;
     using Models.Products;
 
     /// <summary>
-    /// Implements a single SKU operations.
+    /// Implements the product by reservation scope operations.
     /// </summary>
-    internal class SkuOperations : BasePartnerComponent<Tuple<string, string, string>>, ISku
+    internal class SkuByReservationScopeOperations : BasePartnerComponent<Tuple<string, string, string, string>>, ISkuByReservationScope
     {
         /// <summary>
-        /// Provides access to the availability operations.
-        /// </summary>
-        private readonly Lazy<IAvailabilityCollection> availabilities;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="SkuOperations" /> class.
+        /// Initializes a new instance of the <see cref="SkuByReservationScopeOperations"/> class.
         /// </summary>
         /// <param name="rootPartnerOperations">The root partner operations instance.</param>
         /// <param name="productId">The product identifier.</param>
         /// <param name="skuId">The SKU identifier.</param>
-        /// <param name="country">The country on which to base the SKU.</param>
-        public SkuOperations(IPartner rootPartnerOperations, string productId, string skuId, string country)
-          : base(rootPartnerOperations, new Tuple<string, string, string>(productId, skuId, country))
+        /// <param name="country">The country on which to base the product.</param>
+        /// <param name="reservationScope">The reservation scope on which to base the product.</param>
+        public SkuByReservationScopeOperations(IPartner rootPartnerOperations, string productId, string skuId, string country, string reservationScope) :
+            base(rootPartnerOperations, new Tuple<string, string, string, string>(productId, skuId, country, reservationScope))
         {
-            productId.AssertNotEmpty(nameof(productId));
-            skuId.AssertNotEmpty(nameof(skuId));
-            country.AssertNotEmpty(nameof(country));
-
-            availabilities = new Lazy<IAvailabilityCollection>(() => new AvailabilityCollectionOperations(rootPartnerOperations, productId, skuId, country));
-        }
-
-        /// <summary>
-        /// Gets the operations for the current SKU's availabilities.
-        /// </summary>
-        public IAvailabilityCollection Availabilities => availabilities.Value;
-
-        /// <summary>
-        /// Gets the operations that can be applied on SKU identifiers filtered by a specific reservation scope.
-        /// </summary>
-        /// <param name="reservationScope">The reservation scope filter.</param>
-        /// <returns>The individual SKU operations sorted by reservation scope.</returns>
-        public ISkuByReservationScope ByReservationScope(string reservationScope)
-        {
-            return new SkuByReservationScopeOperations(Partner, Context.Item1, Context.Item2, Context.Item3, reservationScope);
         }
 
         /// <summary>
@@ -65,6 +40,10 @@ namespace Microsoft.Store.PartnerCenter.Products
                 {
                     PartnerService.Instance.Configuration.Apis.GetSku.Parameters.Country,
                     Context.Item3
+                },
+                {
+                    PartnerService.Instance.Configuration.Apis.GetSku.Parameters.ReservationScope,
+                    Context.Item4
                 }
             };
 
