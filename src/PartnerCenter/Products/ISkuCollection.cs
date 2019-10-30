@@ -17,13 +17,13 @@ namespace Microsoft.Store.PartnerCenter.Products
         /// Gets the operations that can be applied on SKU identifiers filtered by a specific reservation scope.
         /// </summary>
         /// <param name="reservationScope">The reservation scope filter.</param>
-        /// <returns>The individual sku operations sorted by reservation scope.</returns>
+        /// <returns>The individual SKU operations sorted by reservation scope.</returns>
         ISkuCollectionByReservationScope ByReservationScope(string reservationScope);
 
         /// <summary>
-        /// Gets the operations that can be applied on skus that belong to a segment.
+        /// Gets the operations that can be applied on SKUs that belong to a segment.
         /// </summary>
-        /// <param name="targetSegment">The sku segment filter.</param>
+        /// <param name="targetSegment">The SKU segment filter.</param>
         /// <returns>The sku collection operations by target segment.</returns>
         ISkuCollectionByTargetSegment ByTargetSegment(string targetSegment);
     }

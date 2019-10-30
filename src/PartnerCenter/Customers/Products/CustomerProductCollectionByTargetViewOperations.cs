@@ -14,7 +14,7 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     using Models.Products;
 
     /// <summary>
-    /// Product operations by customer id and by target view implementation class.
+    /// Product operations by customer identifier and by target view implementation class.
     /// </summary>
     internal class CustomerProductCollectionByTargetViewOperations : BasePartnerComponent<Tuple<string, string>>, ICustomerProductCollectionByTargetView
     {

@@ -6,7 +6,7 @@ namespace Microsoft.Store.PartnerCenter.Models.Products
     using System.Collections.Generic;
 
     /// <summary>
-    /// Class that represents a SKU.
+    /// Defines a SKU for a product.
     /// </summary>
     public sealed class Sku : ResourceBaseWithLinks<StandardResourceLinks>
     {
