@@ -14,17 +14,17 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
     public interface ICustomerProductCollectionByTargetView : IPartnerComponent<Tuple<string, string>>, IEntireEntityCollectionRetrievalOperations<Product, ResourceCollection<Product>>
     {
         /// <summary>
+        /// Gets the operations that can be applied on products in a given catalog view and that apply to a given customer, filtered by reservation scope.
+        /// </summary>
+        /// <param name="reservationScope">The reservation scope filter.</param>
+        /// <returns>The product collection operations by customer, by target view and by reservation scope.</returns>
+        ICustomerProductCollectionByTargetViewByReservationScope ByReservationScope(string reservationScope);
+
+        /// <summary>
         /// Gets the operations that can be applied on products in a given catalog view and that apply to a given customer, filtered by target segment.
         /// </summary>
         /// <param name="targetSegment">The product segment filter.</param>
         /// <returns>The product collection operations by customer, by target view and by target segment.</returns>
         ICustomerProductCollectionByTargetViewByTargetSegment ByTargetSegment(string targetSegment);
-
-        /// <summary>
-        /// Gets the operations that can be applied on products in a given catalog view and that apply to a given customer, filtered by reservation scope.
-        /// </summary>
-        /// <param name="reservationScope">The product segment filter.</param>
-        /// <returns>The product collection operations by customer, by target view and by reservation scope.</returns>
-        ICustomerProductCollectionByTargetViewByReservationScope ByReservationScope(string reservationScope);
     }
 }

@@ -16,7 +16,7 @@ namespace Microsoft.Store.PartnerCenter.Customers.Products
         /// <summary>
         /// Gets the operations that can be applied on customer products filtered by a specific reservation scope.
         /// </summary>
-        /// <param name="reservationScope">The customer products reservation scope filter.</param>
+        /// <param name="reservationScope">The reservation scope filter.</param>
         /// <returns>The customer products collection operations by reservation scope.</returns>
         ICustomerProductCollectionByTargetViewByTargetSegmentByReservationScope ByReservationScope(string reservationScope);
     }
