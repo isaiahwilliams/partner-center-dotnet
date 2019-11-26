@@ -167,7 +167,10 @@ namespace Microsoft.Store.PartnerCenter.CustomerUsers
 
             return await Partner.ServiceClient.GetAsync<SeekBasedResourceCollection<CustomerUser>>(
                 new Uri(
-                    $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetCustomerUsers.Path}",
+                    string.Format(
+                        CultureInfo.InvariantCulture,
+                        $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetCustomerUsers.Path}",
+                        Context),
                     UriKind.Relative),
                 headers,
                 parameters,
