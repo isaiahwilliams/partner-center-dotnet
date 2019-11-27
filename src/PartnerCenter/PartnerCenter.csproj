@@ -22,7 +22,7 @@
     <OutputPath>$(RepoArtifacts)$(Configuration)\</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>1.15.1</Version>
+    <Version>1.15.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
