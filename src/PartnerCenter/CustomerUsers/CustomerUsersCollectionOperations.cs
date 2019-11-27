@@ -176,7 +176,6 @@ namespace Microsoft.Store.PartnerCenter.CustomerUsers
                 parameters,
                 new ResourceCollectionConverter<CustomerUser>(),
                 cancellationToken).ConfigureAwait(false);
-
         }
     }
 }
