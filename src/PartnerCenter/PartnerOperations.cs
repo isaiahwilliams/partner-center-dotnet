@@ -8,6 +8,7 @@ namespace Microsoft.Store.PartnerCenter
     using Agreements;
     using Analytics;
     using Auditing;
+    using Compliance;
     using Customers;
     using Domains;
     using Enumerators;
@@ -53,6 +54,11 @@ namespace Microsoft.Store.PartnerCenter
         /// Provides access to the audit records collection operations.
         /// </summary>
         private readonly Lazy<IAuditRecordsCollection> auditRecords;
+
+        /// <summary>
+        /// Provides access to the compliance operations.
+        /// </summary>
+        private readonly Lazy<IComplianceCollection> compliance;
 
         /// <summary>
         /// Provides access to the country validation rules collection operations.
@@ -153,6 +159,7 @@ namespace Microsoft.Store.PartnerCenter
             agreementTemplates = new Lazy<IAgreementTemplateCollection>(() => new AgreementTemplateCollectionOperations(this));
             analytics = new Lazy<IPartnerAnalyticsCollection>(() => new PartnerAnalyticsCollectionOperations(this));
             auditRecords = new Lazy<IAuditRecordsCollection>(() => new AuditRecordCollectionOperations(this));
+            compliance = new Lazy<IComplianceCollection>(() => new ComplianceCollectionOperations(this));
             countryValidationRules = new Lazy<ICountryValidationRulesCollection>(() => new CountryValidationRulesCollectionOperations(this));
             customers = new Lazy<ICustomerCollection>(() => new CustomerCollectionOperations(this));
             domains = new Lazy<IDomainCollection>(() => new DomainCollectionOperations(this));
@@ -241,6 +248,11 @@ namespace Microsoft.Store.PartnerCenter
         /// Gets the audit records operations available to the partner.
         /// </summary>
         public IAuditRecordsCollection AuditRecords => auditRecords.Value;
+
+        /// <summary>
+        /// Gets the compliance operations available to the partner.
+        /// </summary>
+        public IComplianceCollection Compliance => compliance.Value;
 
         /// <summary>
         /// Gets the country validation rules collection operations available to the partner.

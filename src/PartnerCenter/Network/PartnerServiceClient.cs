@@ -154,10 +154,25 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>A task representing the asynchronous operation.</returns>
         public async Task DeleteAsync(Uri relativeUri, CancellationToken cancellationToken = default)
         {
+            string invocationId = null;
+
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Delete, new Uri(Endpoint, relativeUri)))
             {
                 await AddRequestHeadersAsync(request).ConfigureAwait(false);
-                await HandleResponseAsync(request, cancellationToken).ConfigureAwait(false);
+
+                if (ServiceClientTracing.IsEnabled)
+                {
+                    invocationId = ServiceClientTracing.NextInvocationId.ToString();
+
+                    Dictionary<string, object> tracingParameters = new Dictionary<string, object>
+                    {
+                        { "relativeUri", relativeUri }
+                    };
+
+                    ServiceClientTracing.Enter(invocationId, this, "Delete", tracingParameters);
+                }
+
+                await HandleResponseAsync(invocationId, request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -191,7 +206,7 @@ namespace Microsoft.Store.PartnerCenter.Network
                         { "cancellationToken", cancellationToken }
                     };
 
-                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                    ServiceClientTracing.Enter(invocationId, this, "Get", tracingParameters);
                 }
 
                 await AddRequestHeadersAsync(request).ConfigureAwait(false);
@@ -291,7 +306,7 @@ namespace Microsoft.Store.PartnerCenter.Network
                         { "cancellationToken", cancellationToken }
                     };
 
-                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                    ServiceClientTracing.Enter(invocationId, this, "Get", tracingParameters);
                 }
 
                 return await HandleResponseAsync<TResource>(invocationId, request, converter, cancellationToken).ConfigureAwait(false);
@@ -366,7 +381,7 @@ namespace Microsoft.Store.PartnerCenter.Network
                         { "cancellationToken", cancellationToken }
                     };
 
-                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                    ServiceClientTracing.Enter(invocationId, this, "Head", tracingParameters);
                 }
 
                 return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
@@ -404,7 +419,7 @@ namespace Microsoft.Store.PartnerCenter.Network
                         { "cancellationToken", cancellationToken }
                     };
 
-                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                    ServiceClientTracing.Enter(invocationId, this, "Patch", tracingParameters);
                 }
 
                 return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
@@ -464,7 +479,7 @@ namespace Microsoft.Store.PartnerCenter.Network
                         { "cancellationToken", cancellationToken }
                     };
 
-                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                    ServiceClientTracing.Enter(invocationId, this, "Post", tracingParameters);
                 }
 
                 return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
@@ -524,7 +539,7 @@ namespace Microsoft.Store.PartnerCenter.Network
                         { "cancellationToken", cancellationToken }
                     };
 
-                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                    ServiceClientTracing.Enter(invocationId, this, "Put", tracingParameters);
                 }
 
                 return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
@@ -600,43 +615,19 @@ namespace Microsoft.Store.PartnerCenter.Network
 
         private static PartnerErrorCategory GetErrorCategory(HttpStatusCode statusCode)
         {
-            PartnerErrorCategory partnerErrorCategory;
-
-            switch (statusCode)
+            return statusCode switch
             {
-                case HttpStatusCode.BadRequest:
-                    partnerErrorCategory = PartnerErrorCategory.BadInput;
-                    break;
-                case HttpStatusCode.Unauthorized:
-                    partnerErrorCategory = PartnerErrorCategory.Unauthorized;
-                    break;
-                case HttpStatusCode.Forbidden:
-                    partnerErrorCategory = PartnerErrorCategory.Forbidden;
-                    break;
-                case HttpStatusCode.NotFound:
-                    partnerErrorCategory = PartnerErrorCategory.NotFound;
-                    break;
-                case HttpStatusCode.MethodNotAllowed:
-                    partnerErrorCategory = PartnerErrorCategory.InvalidOperation;
-                    break;
-                case HttpStatusCode.NotAcceptable:
-                    partnerErrorCategory = PartnerErrorCategory.UnsupportedDataFormat;
-                    break;
-                case HttpStatusCode.Conflict:
-                    partnerErrorCategory = PartnerErrorCategory.AlreadyExists;
-                    break;
-                case (HttpStatusCode)429:
-                    partnerErrorCategory = PartnerErrorCategory.TooManyRequests;
-                    break;
-                case HttpStatusCode.ServiceUnavailable:
-                    partnerErrorCategory = PartnerErrorCategory.ServerBusy;
-                    break;
-                default:
-                    partnerErrorCategory = PartnerErrorCategory.ServerError;
-                    break;
-            }
-
-            return partnerErrorCategory;
+                HttpStatusCode.BadRequest => PartnerErrorCategory.BadInput,
+                HttpStatusCode.Unauthorized => PartnerErrorCategory.Unauthorized,
+                HttpStatusCode.Forbidden => PartnerErrorCategory.Forbidden,
+                HttpStatusCode.NotFound => PartnerErrorCategory.NotFound,
+                HttpStatusCode.MethodNotAllowed => PartnerErrorCategory.InvalidOperation,
+                HttpStatusCode.NotAcceptable => PartnerErrorCategory.UnsupportedDataFormat,
+                HttpStatusCode.Conflict => PartnerErrorCategory.AlreadyExists,
+                (HttpStatusCode)429 => PartnerErrorCategory.TooManyRequests,
+                HttpStatusCode.ServiceUnavailable => PartnerErrorCategory.ServerBusy,
+                _ => PartnerErrorCategory.ServerError,
+            };
         }
 
         private static JsonSerializerSettings GetSerializationSettings(JsonConverter converter = null)
@@ -658,8 +649,17 @@ namespace Microsoft.Store.PartnerCenter.Network
             };
         }
 
-        private async Task HandleResponseAsync(HttpRequestMessage request, CancellationToken cancellationToken = default)
+        private async Task HandleResponseAsync(string invocationId, HttpRequestMessage request, CancellationToken cancellationToken = default)
         {
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, request);
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+
             HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
             string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
@@ -671,11 +671,18 @@ namespace Microsoft.Store.PartnerCenter.Network
             ApiFault fault = JsonConvert.DeserializeObject<ApiFault>(responseContent, GetSerializationSettings());
             PartnerErrorCategory errorCategory = GetErrorCategory(response.StatusCode);
 
-            throw new PartnerException(fault, requestContext, errorCategory)
+            PartnerException ex = new PartnerException(fault, requestContext, errorCategory)
             {
                 Request = new HttpRequestMessageWrapper(request, null),
                 Response = new HttpResponseMessageWrapper(response, responseContent)
             };
+
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Error(invocationId, ex);
+            }
+
+            throw ex;
         }
 
         private async Task<TResource> HandleResponseAsync<TResource>(string invocationId, HttpRequestMessage request, CancellationToken cancellationToken = default)
@@ -731,11 +738,18 @@ namespace Microsoft.Store.PartnerCenter.Network
 
             ApiFault fault = JsonConvert.DeserializeObject<ApiFault>(responseContent, GetSerializationSettings(converter));
 
-            throw new PartnerException(fault, requestContext, errorCategory)
+            PartnerException ex = new PartnerException(fault, requestContext, errorCategory)
             {
                 Request = new HttpRequestMessageWrapper(request, null),
                 Response = new HttpResponseMessageWrapper(response, responseContent)
             };
+
+            if (shouldTrace)
+            {
+                ServiceClientTracing.Error(invocationId, ex);
+            }
+
+            throw ex;
         }
     }
 }

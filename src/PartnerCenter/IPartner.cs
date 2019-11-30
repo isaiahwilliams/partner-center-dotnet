@@ -6,6 +6,7 @@ namespace Microsoft.Store.PartnerCenter
     using Agreements;
     using Analytics;
     using Auditing;
+    using Compliance;
     using Customers;
     using Domains;
     using Enumerators;
@@ -52,6 +53,11 @@ namespace Microsoft.Store.PartnerCenter
         /// Gets the audit records operations available to the partner.
         /// </summary>
         IAuditRecordsCollection AuditRecords { get; }
+
+        /// <summary>
+        /// Gets the compliance operations available to the partner.
+        /// </summary>
+        IComplianceCollection Compliance { get; }
 
         /// <summary>
         /// Gets the country validation rules collection operations available to the partner.
