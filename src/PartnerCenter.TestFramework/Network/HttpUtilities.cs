@@ -18,7 +18,7 @@ namespace Microsoft.Store.PartnerCenter.TestFramework.Network
         /// <summary>
         /// The regular expression to be used when checking if the HTTP content contains binary.
         /// </summary>
-        private static Regex binaryMimeRegex = new Regex("(image/*|audio/*|video/*|application/octet-stream|multipart/form-data)");
+        private static readonly Regex binaryMimeRegex = new Regex("(image/*|audio/*|video/*|application/octet-stream|multipart/form-data)");
 
         /// <summary>
         /// Creates an instance of the <see cref="HttpContent" /> class that represents the content.

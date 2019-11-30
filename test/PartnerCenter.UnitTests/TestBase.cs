@@ -17,7 +17,7 @@ namespace Microsoft.Store.PartnerCenter.UnitTests
         /// <summary>
         /// Delegating handler used to intercept partner service client operations.
         /// </summary>
-        private readonly static HttpMockHandler httpMockHandler = new HttpMockHandler(HttpMockHandlerMode.Playback);
+        private static readonly HttpMockHandler httpMockHandler = new HttpMockHandler(HttpMockHandlerMode.Playback);
 
         /// <summary>
         /// Use the partner operations to perform the test.

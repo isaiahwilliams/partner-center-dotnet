@@ -23,7 +23,7 @@
     <OutputPath>$(RepoArtifacts)$(Configuration)\PartnerCenter.TestFramework</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>1.15.2</Version>
+    <Version>1.15.3</Version>
     <PackageReleaseNotes></PackageReleaseNotes>
   </PropertyGroup>
 
