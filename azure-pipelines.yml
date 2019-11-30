@@ -1,10 +1,10 @@
 strategy:
   matrix:
-    linux:
+    Linux:
       imageName: 'ubuntu-latest'
-    mac:
+    macOS:
       imageName: 'macOS-latest'
-    windows:
+    Windows:
       imageName: 'windows-latest'
 
 pool:
@@ -34,6 +34,13 @@ steps:
     targetArgument: '$(Build.SourcesDirectory)'
     result: 'PoliCheck.xml'
   condition: eq(variables['Agent.OS'], 'Windows_NT')
+
+- task: UseDotNet@2
+  displayName: 'Use .NET Core SDK'
+  inputs:
+    packageType: sdk
+    version: 3.0.x
+    installationPath: $(Agent.ToolsDirectory)/dotnet
 
 - task: DotNetCoreCLI@2
   displayName: Build
