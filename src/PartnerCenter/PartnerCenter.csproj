@@ -22,7 +22,7 @@
     <OutputPath>$(RepoArtifacts)$(Configuration)\</OutputPath>
     <PublishDir>$(OutputPath)</PublishDir>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>1.15.2</Version>
+    <Version>1.15.3</Version>
   </PropertyGroup>
 
   <ItemGroup>
@@ -35,7 +35,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
-    <PackageReference Include="Microsoft.Identity.Client" Version="3.0.8" />
+    <PackageReference Include="Microsoft.Identity.Client" Version="4.5.1" />
     <PackageReference Include="Microsoft.Rest.ClientRuntime" Version="2.3.20" />
   </ItemGroup>
 

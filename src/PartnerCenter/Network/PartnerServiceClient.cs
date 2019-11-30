@@ -171,6 +171,7 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>The response from the HTTP GET request.</returns>
         public async Task<TResource> GetAsync<TResource>(Link link, JsonConverter converter = null, CancellationToken cancellationToken = default)
         {
+            string invocationId = null;
 
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Get, new Uri(Endpoint, $"/{PartnerService.Instance.ApiVersion}/{link.Uri}")))
             {
@@ -179,8 +180,22 @@ namespace Microsoft.Store.PartnerCenter.Network
                     request.Headers.Add(header.Key, header.Value);
                 }
 
+                if (ServiceClientTracing.IsEnabled)
+                {
+                    invocationId = ServiceClientTracing.NextInvocationId.ToString();
+
+                    Dictionary<string, object> tracingParameters = new Dictionary<string, object>
+                    {
+                        { "link", link },
+                        { "converter", converter },
+                        { "cancellationToken", cancellationToken }
+                    };
+
+                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                }
+
                 await AddRequestHeadersAsync(request).ConfigureAwait(false);
-                return await HandleResponseAsync<TResource>(request, converter, cancellationToken).ConfigureAwait(false);
+                return await HandleResponseAsync<TResource>(invocationId, request, converter, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -252,6 +267,7 @@ namespace Microsoft.Store.PartnerCenter.Network
         public async Task<TResource> GetAsync<TResource>(Uri relativeUri, IDictionary<string, string> headers = null, IDictionary<string, string> parameters = null, JsonConverter converter = null, CancellationToken cancellationToken = default)
         {
             Uri address = new Uri(Endpoint, relativeUri);
+            string invocationId = null;
 
             if (parameters != null && parameters.Count > 0)
             {
@@ -262,7 +278,23 @@ namespace Microsoft.Store.PartnerCenter.Network
             {
                 await AddRequestHeadersAsync(request).ConfigureAwait(false);
 
-                return await HandleResponseAsync<TResource>(request, converter, cancellationToken).ConfigureAwait(false);
+                if (ServiceClientTracing.IsEnabled)
+                {
+                    invocationId = ServiceClientTracing.NextInvocationId.ToString();
+
+                    Dictionary<string, object> tracingParameters = new Dictionary<string, object>
+                    {
+                        { "relativeUri", relativeUri },
+                        { "headers", headers},
+                        { "parameters", parameters },
+                        { "converter", converter },
+                        { "cancellationToken", cancellationToken }
+                    };
+
+                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                }
+
+                return await HandleResponseAsync<TResource>(invocationId, request, converter, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -318,11 +350,26 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns></returns>
         public async Task<TResource> HeadAsync<TResource>(Uri relativeUri, CancellationToken cancellationToken = default)
         {
+            string invocationId = null;
+
             using (HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Head, new Uri(Endpoint, relativeUri)))
             {
                 await AddRequestHeadersAsync(request).ConfigureAwait(false);
 
-                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
+                if (ServiceClientTracing.IsEnabled)
+                {
+                    invocationId = ServiceClientTracing.NextInvocationId.ToString();
+
+                    Dictionary<string, object> tracingParameters = new Dictionary<string, object>
+                    {
+                        { "relativeUri", relativeUri },
+                        { "cancellationToken", cancellationToken }
+                    };
+
+                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                }
+
+                return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -337,6 +384,8 @@ namespace Microsoft.Store.PartnerCenter.Network
         /// <returns>The response from the HTTP PATCH request.</returns>
         public async Task<TResource> PatchAsync<TRequest, TResource>(Uri relativeUri, TRequest content, CancellationToken cancellationToken = default)
         {
+            string invocationId = null;
+
             using (HttpRequestMessage request = new HttpRequestMessage(new HttpMethod(PatchMethod), new Uri(Endpoint, relativeUri)))
             {
                 await AddRequestHeadersAsync(request).ConfigureAwait(false);
@@ -344,7 +393,21 @@ namespace Microsoft.Store.PartnerCenter.Network
                 request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
 
-                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
+                if (ServiceClientTracing.IsEnabled)
+                {
+                    invocationId = ServiceClientTracing.NextInvocationId.ToString();
+
+                    Dictionary<string, object> tracingParameters = new Dictionary<string, object>
+                    {
+                        { "relativeUri", relativeUri },
+                        { "content", content },
+                        { "cancellationToken", cancellationToken }
+                    };
+
+                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                }
+
+                return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -375,6 +438,7 @@ namespace Microsoft.Store.PartnerCenter.Network
         public async Task<TResource> PostAsync<TRequest, TResource>(Uri relativeUri, TRequest content, IDictionary<string, string> parameters = null, CancellationToken cancellationToken = default)
         {
             Uri address = new Uri(Endpoint, relativeUri);
+            string invocationId = null;
 
             if (parameters != null)
             {
@@ -388,7 +452,22 @@ namespace Microsoft.Store.PartnerCenter.Network
                 request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
 
-                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
+                if (ServiceClientTracing.IsEnabled)
+                {
+                    invocationId = ServiceClientTracing.NextInvocationId.ToString();
+
+                    Dictionary<string, object> tracingParameters = new Dictionary<string, object>
+                    {
+                        { "relativeUri", relativeUri },
+                        { "content", content },
+                        { "parameters", parameters },
+                        { "cancellationToken", cancellationToken }
+                    };
+
+                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                }
+
+                return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -419,6 +498,7 @@ namespace Microsoft.Store.PartnerCenter.Network
         public async Task<TResource> PutAsync<TRequest, TResource>(Uri relativeUri, TRequest content, IDictionary<string, string> parameters = null, CancellationToken cancellationToken = default)
         {
             Uri address = new Uri(Endpoint, relativeUri);
+            string invocationId = null;
 
             if (parameters != null)
             {
@@ -432,7 +512,22 @@ namespace Microsoft.Store.PartnerCenter.Network
                 request.Content = new StringContent(JsonConvert.SerializeObject(content, GetSerializationSettings()));
                 request.Content.Headers.ContentType = new MediaTypeHeaderValue(MediaType);
 
-                return await HandleResponseAsync<TResource>(request, cancellationToken).ConfigureAwait(false);
+                if (ServiceClientTracing.IsEnabled)
+                {
+                    invocationId = ServiceClientTracing.NextInvocationId.ToString();
+
+                    Dictionary<string, object> tracingParameters = new Dictionary<string, object>
+                    {
+                        { "relativeUri", relativeUri },
+                        { "content", content },
+                        { "parameters", parameters },
+                        { "cancellationToken", cancellationToken }
+                    };
+
+                    ServiceClientTracing.Enter(invocationId, this, "Validate", tracingParameters);
+                }
+
+                return await HandleResponseAsync<TResource>(invocationId, request, cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -583,14 +678,29 @@ namespace Microsoft.Store.PartnerCenter.Network
             };
         }
 
-        private async Task<TResource> HandleResponseAsync<TResource>(HttpRequestMessage request, CancellationToken cancellationToken = default)
+        private async Task<TResource> HandleResponseAsync<TResource>(string invocationId, HttpRequestMessage request, CancellationToken cancellationToken = default)
         {
-            return await HandleResponseAsync<TResource>(request, null, cancellationToken).ConfigureAwait(false);
+            return await HandleResponseAsync<TResource>(invocationId, request, null, cancellationToken).ConfigureAwait(false);
         }
 
-        private async Task<TResource> HandleResponseAsync<TResource>(HttpRequestMessage request, JsonConverter converter = null, CancellationToken cancellationToken = default)
+        private async Task<TResource> HandleResponseAsync<TResource>(string invocationId, HttpRequestMessage request, JsonConverter converter = null, CancellationToken cancellationToken = default)
         {
+            bool shouldTrace = ServiceClientTracing.IsEnabled;
+
+            if (shouldTrace)
+            {
+                ServiceClientTracing.SendRequest(invocationId, request);
+            }
+
+            cancellationToken.ThrowIfCancellationRequested();
+
             HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, response);
+            }
+
             string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
