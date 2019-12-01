@@ -20,6 +20,15 @@
 
 # Change Log
 
+## 1.15.3
+
+* Compliance
+  * Added the ability to check if a partner has accepted the Microsoft Partner Agreement
+* Diagnostic
+  * Implemented service client tracing to provide additional debug and error information
+* Invoice
+  * Addressed an issue where the *AdditionalInfo* and *Tags* properties for the [DailyRatedUsageLineItem](https://github.com/isaiahwilliams/partner-center-dotnet/blob/master/src/PartnerCenter/Models/Invoices/DailyRatedUsageLineItem.cs) resource were not deserializing as excepted
+
 ## 1.15.2
 
 * Users

@@ -5,6 +5,8 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
 {
     using System;
     using System.Collections.Generic;
+    using JsonConverters;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Represents unbilled, billed reconciliation line items for daily rated usage.
@@ -159,12 +161,14 @@ namespace Microsoft.Store.PartnerCenter.Models.Invoices
         /// <summary>
         /// Gets or sets the customer added tags. 
         /// </summary>
-        public IDictionary<string, string> Tags { get; private set; }
+        [JsonConverter(typeof(NestedResourceConverter))]
+        public Dictionary<string, string> Tags { get; private set; }
 
         /// <summary>
         /// Gets or sets the service-specific metadata. For example, an image type for a virtual machine.
         /// </summary>
-        public IDictionary<string, string> AdditionalInfo { get; private set; }
+        [JsonConverter(typeof(NestedResourceConverter))]
+        public Dictionary<string, string> AdditionalInfo { get; private set; }
 
         /// <summary>
         /// Gets or sets internal Azure Service metadata.
