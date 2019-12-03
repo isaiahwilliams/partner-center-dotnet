@@ -661,6 +661,12 @@ namespace Microsoft.Store.PartnerCenter.Network
             cancellationToken.ThrowIfCancellationRequested();
 
             HttpResponseMessage response = await HttpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+
+            if (shouldTrace)
+            {
+                ServiceClientTracing.ReceiveResponse(invocationId, response);
+            }
+
             string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
