@@ -28,6 +28,8 @@
   * Implemented service client tracing to provide additional debug and error information
 * Invoice
   * Addressed an issue where the *AdditionalInfo* and *Tags* properties for the [DailyRatedUsageLineItem](https://github.com/isaiahwilliams/partner-center-dotnet/blob/master/src/PartnerCenter/Models/Invoices/DailyRatedUsageLineItem.cs) resource were not deserializing as excepted
+* Subscriptions
+  * Addressed an issue where the request for subscriptions by partner was causing an `InvalidCastException` to be thrown  
 
 ## 1.15.2
 

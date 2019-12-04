@@ -25,7 +25,7 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
         /// </summary>
         /// <param name="partnerId">The partner identifier.</param>
         /// <returns>The partner subscriptions operations.</returns>
-        IEntityCollectionRetrievalOperations<Subscription, ResourceCollection<Subscription>> ByPartner(string partnerId);
+        IEntireEntityCollectionRetrievalOperations<Subscription, ResourceCollection<Subscription>> ByPartner(string partnerId);
 
         /// <summary>
         /// Gets the subscription usage records behavior for the customer.

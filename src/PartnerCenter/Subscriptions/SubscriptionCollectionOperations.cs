@@ -70,9 +70,9 @@ namespace Microsoft.Store.PartnerCenter.Subscriptions
         /// </summary>
         /// <param name="partnerId">The partner identifier.</param>
         /// <returns>The partner subscriptions operations.</returns>
-        public IEntityCollectionRetrievalOperations<Subscription, ResourceCollection<Subscription>> ByPartner(string partnerId)
+        public IEntireEntityCollectionRetrievalOperations<Subscription, ResourceCollection<Subscription>> ByPartner(string partnerId)
         {
-            return (IEntityCollectionRetrievalOperations<Subscription, ResourceCollection<Subscription>>)new PartnerSubscriptionCollectionOperations(Partner, Context, partnerId);
+            return new PartnerSubscriptionCollectionOperations(Partner, Context, partnerId);
         }
 
         /// <summary>
