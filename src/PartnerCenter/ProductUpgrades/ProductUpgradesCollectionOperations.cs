@@ -75,10 +75,7 @@ namespace Microsoft.Store.PartnerCenter.ProductUpgrades
 
             HttpResponseMessage response = await Partner.ServiceClient.PostAsync<ProductUpgradeRequest, HttpResponseMessage>(
                 new Uri(
-                    string.Format(
-                        CultureInfo.InvariantCulture,
-                        $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.AddDevicestoDeviceBatch.Path}",
-                        Context),
+                    $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.UpgradeProduct.Path}",
                     UriKind.Relative),
                 newEntity,
                 cancellationToken).ConfigureAwait(false);
