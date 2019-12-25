@@ -6,7 +6,7 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <Authors>Isaiah Williams</Authors>
-    <Copyright>Copyright © 2019</Copyright>
+    <Copyright>Copyright © 2020</Copyright>
     <NeutralLanguage>en-US</NeutralLanguage>
     <Product>Microsoft Partner Center</Product>
     <AssemblyName>Microsoft.Store.PartnerCenter.UnitTests</AssemblyName>

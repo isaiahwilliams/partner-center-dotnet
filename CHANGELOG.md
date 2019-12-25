@@ -20,7 +20,7 @@
 
 # Change Log
 
-## Upcoming Release
+## 1.15.4
 
 * Product Upgrades
   * Addressed an issue with starting the upgrade process for an Azure Plan
