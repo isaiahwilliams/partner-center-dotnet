@@ -20,6 +20,11 @@
 
 # Change Log
 
+## Upcoming Release
+
+* Product Upgrades
+  * Addressed an issue with starting the upgrade process for an Azure Plan
+
 ## 1.15.3
 
 * Compliance
@@ -34,4 +39,4 @@
 ## 1.15.2
 
 * Users
-  * Corrected the URI used by the customer user query operation (Thanks @erickbp)
+  * Corrected the URI used by the customer user query operation (Thanks [@erickbp](https://github.com/erickbp))
