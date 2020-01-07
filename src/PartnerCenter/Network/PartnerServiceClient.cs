@@ -47,11 +47,6 @@ namespace Microsoft.Store.PartnerCenter.Network
         private const string CorrelationIdHeaderName = "MS-CorrelationId";
 
         /// <summary>
-        /// The name of the enforce MFA header.
-        /// </summary>
-        private const string EnforceMfaHeader = "MS-Enforce-MFA";
-
-        /// <summary>
         /// The name of the locale header.
         /// </summary>
         private const string LocaleHeaderName = "X-Locale";
@@ -568,11 +563,6 @@ namespace Microsoft.Store.PartnerCenter.Network
             if (!string.IsNullOrEmpty(PartnerService.Instance.ApplicationName))
             {
                 request.Headers.Add(ApplicationNameHeader, PartnerService.Instance.ApplicationName);
-            }
-
-            if (PartnerService.Instance.EnforceMfa)
-            {
-                request.Headers.Add(EnforceMfaHeader, true.ToString(CultureInfo.InvariantCulture));
             }
 
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaType));

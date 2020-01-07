@@ -70,15 +70,6 @@ namespace Microsoft.Store.PartnerCenter
         internal dynamic Configuration { get; private set; }
 
         /// <summary>
-        /// Gets or sets a flag indicating whether or not multi-factor authentication should be enforced.
-        /// </summary>
-        /// <remarks>
-        /// This flag is only configurable while the requirement for multi-factor authentication is not required.
-        /// Once the Partner Center API requires multi-factor authentication this flag will be removed.
-        /// </remarks>
-        public bool EnforceMfa { get; set; }
-
-        /// <summary>
         /// Gets the partner factory used to create partner objects.
         /// </summary>
         internal IPartnerFactory Factory { get; set; }
@@ -117,6 +108,18 @@ namespace Microsoft.Store.PartnerCenter
         /// access all the Partner Center APIs.
         /// </summary>
         /// <param name="credentials">The partner credentials. Use the <see cref="IPartnerCredentials" /> class to obtain these.</param>
+        /// <param name="requestContext">The context used to perform operations.</param>
+        /// <returns>A configured partner operations object.</returns>
+        public IPartner CreatePartnerOperations(IPartnerCredentials credentials, IRequestContext requestContext)
+        {
+            return Factory.Build(credentials, requestContext);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="IPartner" /> instance and configures it using the provided partner credentials. The partner instance can be used to
+        /// access all the Partner Center APIs.
+        /// </summary>
+        /// <param name="credentials">The partner credentials. Use the <see cref="IPartnerCredentials" /> class to obtain these.</param>
         /// <param name="httpClient">The client used to perform HTTP operations.</param>
         /// <returns>A configured partner operations object.</returns>
         public IPartner CreatePartnerOperations(IPartnerCredentials credentials, HttpClient httpClient)
@@ -129,11 +132,37 @@ namespace Microsoft.Store.PartnerCenter
         /// access all the Partner Center APIs.
         /// </summary>
         /// <param name="credentials">The partner credentials. Use the <see cref="IPartnerCredentials" /> class to obtain these.</param>
+        /// <param name="requestContext">The context used to perform operations.</param>
+        /// <param name="httpClient">The client used to perform HTTP operations.</param>
+        /// <returns>A configured partner operations object.</returns>
+        public IPartner CreatePartnerOperations(IPartnerCredentials credentials, IRequestContext requestContext, HttpClient httpClient)
+        {
+            return Factory.Build(credentials, requestContext, httpClient);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="IPartner" /> instance and configures it using the provided partner credentials. The partner instance can be used to
+        /// access all the Partner Center APIs.
+        /// </summary>
+        /// <param name="credentials">The partner credentials. Use the <see cref="IPartnerCredentials" /> class to obtain these.</param>
         /// <param name="handlers">List of handlers from top to bottom (outer handler is the first in the list).</param>
         /// <returns>A configured partner operations object.</returns>
         public IPartner CreatePartnerOperations(IPartnerCredentials credentials, params DelegatingHandler[] handlers)
         {
             return Factory.Build(credentials, handlers);
+        }
+
+        /// <summary>
+        /// Creates a <see cref="IPartner" /> instance and configures it using the provided partner credentials. The partner instance can be used to
+        /// access all the Partner Center APIs.
+        /// </summary>
+        /// <param name="credentials">The partner credentials. Use the <see cref="IPartnerCredentials" /> class to obtain these.</param>
+        /// <param name="requestContext">The context used to perform operations.</param>
+        /// <param name="handlers">List of handlers from top to bottom (outer handler is the first in the list).</param>
+        /// <returns>A configured partner operations object.</returns>
+        public IPartner CreatePartnerOperations(IPartnerCredentials credentials, IRequestContext requestContext, params DelegatingHandler[] handlers)
+        {
+            return Factory.Build(credentials, requestContext, handlers);
         }
     }
 }
