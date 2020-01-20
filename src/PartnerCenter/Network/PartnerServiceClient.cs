@@ -704,7 +704,7 @@ namespace Microsoft.Store.PartnerCenter.Network
                 ServiceClientTracing.ReceiveResponse(invocationId, response);
             }
 
-            string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+            string responseContent = response.Content == null ? string.Empty : await response.Content.ReadAsStringAsync().ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
@@ -713,39 +713,48 @@ namespace Microsoft.Store.PartnerCenter.Network
                     return (TResource)Convert.ChangeType(response, typeof(TResource));
                 }
 
-                if (string.IsNullOrEmpty(responseContent))
-                {
-                    responseContent = string.Empty;
-                }
-
                 return JsonConvert.DeserializeObject<TResource>(responseContent, GetSerializationSettings(converter));
             }
 
+            ApiFault fault = null;
             PartnerErrorCategory errorCategory = GetErrorCategory(response.StatusCode);
+            PartnerException exception = null;
 
             if (string.IsNullOrEmpty(responseContent))
             {
-                throw new PartnerException(response.ReasonPhrase, requestContext, errorCategory)
+                exception = new PartnerException(response.ReasonPhrase, requestContext, errorCategory)
                 {
                     Request = new HttpRequestMessageWrapper(request, null),
                     Response = new HttpResponseMessageWrapper(response, responseContent)
                 };
             }
-
-            ApiFault fault = JsonConvert.DeserializeObject<ApiFault>(responseContent, GetSerializationSettings(converter));
-
-            PartnerException ex = new PartnerException(fault, requestContext, errorCategory)
+            else
             {
-                Request = new HttpRequestMessageWrapper(request, null),
-                Response = new HttpResponseMessageWrapper(response, responseContent)
-            };
+                try
+                {
+                    fault = JsonConvert.DeserializeObject<ApiFault>(responseContent, GetSerializationSettings(converter));
+
+                    exception = new PartnerException(fault, requestContext, errorCategory)
+                    {
+                        Request = new HttpRequestMessageWrapper(request, null),
+                        Response = new HttpResponseMessageWrapper(response, responseContent)
+                    };
+                }
+                catch (Exception)
+                { }
+
+                if (fault == null)
+                {
+                    exception = new PartnerException(string.IsNullOrEmpty(responseContent) ? response.ReasonPhrase : responseContent, requestContext, errorCategory);
+                }
+            }
 
             if (shouldTrace)
             {
-                ServiceClientTracing.Error(invocationId, ex);
+                ServiceClientTracing.Error(invocationId, exception);
             }
 
-            throw ex;
+            throw exception;
         }
     }
 }
