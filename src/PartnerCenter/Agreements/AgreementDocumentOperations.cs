@@ -72,7 +72,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
 
             if (!string.IsNullOrEmpty(Context.TransformOptions?.Language))
             {
-                parameters.Add(PartnerService.Instance.Configuration.Apis.GetAgreementDocument.Parameters.CouLanguagentry, Context.TransformOptions.Language);
+                parameters.Add(PartnerService.Instance.Configuration.Apis.GetAgreementDocument.Parameters.Language, Context.TransformOptions.Language);
             }
 
             return await Partner.ServiceClient.GetAsync<AgreementDocument>(
