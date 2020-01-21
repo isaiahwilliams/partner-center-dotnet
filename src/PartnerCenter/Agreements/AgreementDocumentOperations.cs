@@ -54,7 +54,6 @@ namespace Microsoft.Store.PartnerCenter.Agreements
             return new AgreementDocumentOperations(Partner, Context.TemplateId, language, Context.TransformOptions?.Country);
         }
 
-
         /// <summary>
         /// Gets the agreement document.
         /// </summary>
@@ -63,7 +62,6 @@ namespace Microsoft.Store.PartnerCenter.Agreements
         public async Task<AgreementDocument> GetAsync(CancellationToken cancellationToken = default)
         {
             IDictionary<string, string> parameters = new Dictionary<string, string>();
-
 
             if (!string.IsNullOrEmpty(Context.TransformOptions?.Country))
             {
@@ -80,7 +78,7 @@ namespace Microsoft.Store.PartnerCenter.Agreements
                     string.Format(
                         CultureInfo.InvariantCulture,
                         $"/{PartnerService.Instance.ApiVersion}/{PartnerService.Instance.Configuration.Apis.GetAgreementDocument.Path}",
-                        Context),
+                        Context.TemplateId),
                     UriKind.Relative),
                 parameters,
                 cancellationToken).ConfigureAwait(false);
