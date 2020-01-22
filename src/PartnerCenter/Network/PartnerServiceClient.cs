@@ -5,7 +5,6 @@ namespace Microsoft.Store.PartnerCenter.Network
 {
     using System;
     using System.Collections.Generic;
-    using System.Globalization;
     using System.IO;
     using System.Net;
     using System.Net.Http;
@@ -722,23 +721,14 @@ namespace Microsoft.Store.PartnerCenter.Network
 
             if (string.IsNullOrEmpty(responseContent))
             {
-                exception = new PartnerException(response.ReasonPhrase, requestContext, errorCategory)
-                {
-                    Request = new HttpRequestMessageWrapper(request, null),
-                    Response = new HttpResponseMessageWrapper(response, responseContent)
-                };
+                exception = new PartnerException(response.ReasonPhrase, requestContext, errorCategory);
             }
             else
             {
                 try
                 {
                     fault = JsonConvert.DeserializeObject<ApiFault>(responseContent, GetSerializationSettings(converter));
-
-                    exception = new PartnerException(fault, requestContext, errorCategory)
-                    {
-                        Request = new HttpRequestMessageWrapper(request, null),
-                        Response = new HttpResponseMessageWrapper(response, responseContent)
-                    };
+                    exception = new PartnerException(fault, requestContext, errorCategory);
                 }
                 catch (Exception)
                 { }
@@ -748,6 +738,9 @@ namespace Microsoft.Store.PartnerCenter.Network
                     exception = new PartnerException(string.IsNullOrEmpty(responseContent) ? response.ReasonPhrase : responseContent, requestContext, errorCategory);
                 }
             }
+
+            exception.Request = new HttpRequestMessageWrapper(request, null);
+            exception.Response = new HttpResponseMessageWrapper(response, responseContent);
 
             if (shouldTrace)
             {
